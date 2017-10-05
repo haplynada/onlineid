@@ -6,7 +6,7 @@ Created on 5. okt. 2017
 
 from passwordhandling.passwordsecurity import generate_salt, hash_password
 
-def store_password(password):
+def store_password(user, password):
     password_stored = False
     salt = generate_salt()
     hashedpassword =hash_password(salt, password)
