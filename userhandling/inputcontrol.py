@@ -29,5 +29,3 @@ def check_phonenumber(phone):
         return "invalid phone number"
     
     
-email ="tlskse@mail.com"
-print(check_email(email))
