@@ -22,8 +22,7 @@ def check_email(email):
 def check_phonenumber(phone):
     phone = phone.replace(" ", "")
     phone_length = len(phone)
-    if phone_length == 8 and (phone.isdigit()):
-       
+    if phone_length == 8 and (phone.isdigit()):  
         return True
     else:
         return "invalid phone number"
