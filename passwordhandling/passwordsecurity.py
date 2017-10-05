@@ -1,7 +1,7 @@
 '''
 Created on 18. sep. 2017
 
-@author: Torls
+@author: Tor Larssen Sekse
 '''
 
 import hashlib
@@ -25,20 +25,17 @@ def hash_password(salt, password):
     hashedpassword = hashlib.sha256(password.encode() + salt.encode()).hexdigest()
     return hashedpassword
 
+def get_hashedpassword(user):
+    hashedpassword = 
+    '''
+    this part needs to call on the database using the userid and get the hashedpassword
+    '''
+    return hashedpassword
 
+def get_salt(user):
+    salt =
+        '''
+    this part needs to call on the database using the userid and get the salt
+    '''
+    return salt
 
-
-
-'''
-
-passwordsalt = "ec27bbacaa484ce1b961dea1e956251e"
-password =input("Enter password:")
-hashedpassword = hashlib.sha256(password.encode() + passwordsalt.encode()).hexdigest()
-print(hashedpassword)
-
-if hashedpassword =="a6f8bedb7dd926e375135de5b4c3e51870fccdb3b5de7346a10c6605b71d0264":
-    print("yay")
-else:
-    print("fail")
-    
-'''
