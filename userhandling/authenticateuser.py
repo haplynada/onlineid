@@ -1,6 +1,6 @@
 '''
 Created on 5. okt. 2017
-
+this is a stupid comment
 @author: Tor Larssen Sekse
 '''
 from passwordhandling.passwordsecurity import authenticate_password
