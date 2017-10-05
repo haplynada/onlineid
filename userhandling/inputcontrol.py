@@ -41,7 +41,7 @@ def check_phonenumber(phone):
         return "invalid phone number"
     
 def check_adress(adress):
-    if set(adress).issubset(validchars_name):
+    if set(adress).issubset(validchars_email):
         return True
     else:
         return "invalid adress"
