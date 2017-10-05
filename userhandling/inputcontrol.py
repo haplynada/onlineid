@@ -26,4 +26,6 @@ def check_phonenumber(phone):
         return True
     else:
         return "invalid phone number"
-    
+
+
+''' Bjarke is just looking'''    
