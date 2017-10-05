@@ -5,7 +5,7 @@ Created on 5. okt. 2017
 '''
 
 
-def check_username(user):
+def authenticate_username(user):
     checker = False
     '''
     Need to go into the database and see if the username is there

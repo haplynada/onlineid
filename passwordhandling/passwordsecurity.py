@@ -12,7 +12,7 @@ def generate_salt():
     print(salt)
     return salt
 
-def check_password(hashedpassword, salt, password):
+def authenticate_password(hashedpassword, salt, password):
     checker = False
     testpassword =hashlib.sha256(password.encode() + salt.encode()).hexdigest()
     if testpassword == hashedpassword:
