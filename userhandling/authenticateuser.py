@@ -11,8 +11,8 @@ def authenticate_user(user, password):
     checker = False
     if authenticate_username(user) == True:
         hashedpassword = get_hashedpassword(user)
-        salt = get_salt(user)
-        checker = authenticate_password(hashedpassword, salt, password)
+        passwordsalt = get_salt(user)
+        checker = authenticate_password(hashedpassword, passwordsalt, password)
         return checker
     else :
         return checker
