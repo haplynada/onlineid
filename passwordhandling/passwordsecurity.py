@@ -9,7 +9,6 @@ import uuid
 
 def generate_salt():
     salt = uuid.uuid4().hex
-    print(salt)
     return salt
 
 def authenticate_password(hashedpassword, salt, password):
@@ -24,4 +23,3 @@ def authenticate_password(hashedpassword, salt, password):
 def hash_password(salt, password):
     hashedpassword = hashlib.sha256(password.encode() + salt.encode()).hexdigest()
     return hashedpassword
-
