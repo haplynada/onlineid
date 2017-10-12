@@ -118,4 +118,4 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
         
  
 # testing of create user below
-create_user("email", "password", "firstname", "lastname", "phone", "postcode", "country", "countrycode", "adress")
+print(create_user("$££$£$@@{{6][6", "password", "firstname", "lastname", "phone", "postcode", "country", "countrycode", "adress", "birthday"))
