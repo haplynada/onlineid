@@ -116,6 +116,3 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
     else:
         return errors
         
- 
-# testing of create user below
-print(create_user("email", "password", "firstname", "lastname", "phone", "postcode", "country", "countrycode", "adress", "birthday"))
