@@ -40,4 +40,6 @@ class countrycode_error(Exception):
     error = "invalid country code"
     pass
 
-
+class birthday_error(Exception):
+    error = "invalid birthday"
+    pass

@@ -8,6 +8,8 @@ validchars_name = set('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ')
 countries = ["norway", "sweden", "denmark", "iceland", "united states", "england", "great britain", \
              "germany",]
 countrycodes = ["0047", "0046", "0045", "00354", "0111", "0044", "0049"]
+import datetime
+
 def check_password(password):
     password_length = len(password)
     if password_length >= 8  and (any(char.isdigit() for char in password)) and password_length <=15: 
@@ -72,4 +74,13 @@ def check_countrycode(countrycode):
         return True
     else: 
         return False
+
+def check_birthday(birthday):
+    try:
+        if birthday != datetime.datetime.strptime(birthday, "%Y-%m-%d").strftime('%Y-%m-%d'):
+            raise ValueError
+        return True
+    except ValueError:
+        return False
+        
     
