@@ -97,15 +97,17 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
     except countrycode_error:
         errors += str(countrycode_error.error)
         errors += "\n"
-'''  missing code, commented out for testing  
+
     if errors == "":
         try: 
             #store shit in database here
+            pass
         except storage_error:
             #error handling for database storage/user creation here
+            pass
     else:
         return errors
         
-'''   
+ 
 # testing of create user below
 create_user("email", "password", "firstname", "lastname", "phone", "postcode", "country", "countrycode", "adress")
