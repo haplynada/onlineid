@@ -11,7 +11,7 @@ class storage_error(Exception):
     pass
 
 
-def create_user(email, password, firstname, lastname, phone, postcode, country, countrycode, adress, birthday):
+def create_user(email, password, firstname, lastname, phone, postcode, country, countrycode, adress, birthday, gender):
     checker = False
     passwordsalt = generate_salt()
     hashedpassword =""
@@ -105,6 +105,15 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
     except birthday_error:
         errors += str(birthday_error.error)
         errors += "\n"
+    try:
+        if check_gender(gender) ==True:
+            pass
+        else:
+            raise gender_error()
+    except gender_error:
+        errors += str(gender_error.error)
+        errors += "\n"
+
 
     if errors == "":
         try: 

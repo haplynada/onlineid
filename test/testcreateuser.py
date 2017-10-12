@@ -6,6 +6,6 @@ Created on 12. okt. 2017
 from userhandling.newuser import create_user
 
 try: 
-    create_user("£", "password", "firstname", "lastname", "phone", "postcode", "country", "countrycode", "adress", "birthday")
+    print(create_user("email", "password", "firstname", "lastname", "phone", "postcode", "country", "countrycode", "adress", "birthday", "male"))
 except SyntaxError:
     print("yay")

@@ -43,3 +43,7 @@ class countrycode_error(Exception):
 class birthday_error(Exception):
     error = "invalid birthday"
     pass
+
+class gender_error(Exception):
+    error = "invalid gender"
+    pass

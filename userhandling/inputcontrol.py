@@ -5,6 +5,7 @@ Created on 5. okt. 2017
 '''
 validchars_email = set('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.-_ @')
 validchars_name = set('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ')
+genders = ["Male", "Female", "Other", "male", "female", "other"]
 countries = ["norway", "sweden", "denmark", "iceland", "united states", "england", "great britain", \
              "germany",]
 countrycodes = ["0047", "0046", "0045", "00354", "0111", "0044", "0049"]
@@ -81,6 +82,12 @@ def check_birthday(birthday):
             raise ValueError
         return True
     except ValueError:
+        return False
+
+def check_gender(gender):
+    if gender in genders:
+        return True
+    else:
         return False
         
     
