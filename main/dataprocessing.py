@@ -5,6 +5,7 @@ Created on 12. okt. 2017
 '''
 import threading
 import queue
+from userhandling.newuser import create_user
 
 #Queues for different actions
 newuserqueue = queue.Queue(25)
@@ -16,7 +17,16 @@ deleteuserqueue =queue.Queue(25)
 exitflag = False
 
 
-class process_data_thread(threading.Thread):
+class new_user_thread(threading.Thread):
+    def __init__(self, threadID, name, q):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+        self.q = q
+    def run(self):
+        create_user
+
+class edit_user_thread(threading.Thread):
     def __init__(self, threadID, name, q):
         threading.Thread.__init__(self)
         self.threadID = threadID
@@ -24,5 +34,23 @@ class process_data_thread(threading.Thread):
         self.q = q
     def run(self):
         
+
+class authenticate_user_thread(threading.Thread):
+    def __init__(self, threadID, name, q):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+        self.q = q
+    def run(self):
+           
+
+class delete_user_thread(threading.Thread):
+    def __init__(self, threadID, name, q):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+        self.q = q
+    def run(self):
         
+
 def handle_input
