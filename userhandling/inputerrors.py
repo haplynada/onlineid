@@ -28,6 +28,10 @@ class adress_error(Exception):
     error = "invalid adress"
     pass
 
+class adressnumber_error(Exception):
+    error = "Invalid adress number"
+    pass
+
 class postcode_error(Exception):
     error = "invalid postcode"
     pass

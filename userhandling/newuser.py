@@ -1,17 +1,19 @@
 '''
 Created on 5. okt. 2017
 
-@author: Tor Larssen Sekse
+@author: Tor Larssen Sekse, Bjarke
 '''
 from passwordhandling.passwordsecurity import generate_salt, hash_password
 from userhandling.inputcontrol import *
 from userhandling.inputerrors import *
+from Databasehandling.connect import *
+import pymysql
 
 class storage_error(Exception):
     pass
 
 
-def create_user(email, password, firstname, lastname, phone, postcode, country, countrycode, adress, birthday, gender):
+def create_user(email, password, firstname, lastname, phone, postcode, country, countrycode, adress, adressnumber, birthday, gender):
     checker = False
     passwordsalt = generate_salt()
     hashedpassword =""
@@ -72,6 +74,15 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
         errors += "\n"
         
     try:
+        if check_adressnumber(adressnumber) ==True:
+            pass
+        else:
+            raise adressnumber_error()
+    except adressnumber_error:
+        errors += str(adressnumber_error.error)
+        errors += "\n"
+        
+    try:
         if check_postcode(postcode) ==True:
             pass
         else:
@@ -117,8 +128,19 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
 
     if errors == "":
         try: 
-            #store shit in database here
-            pass
+            db = pymysql.connect(host="127.0.0.1",  # your host 
+                     user="root",       # username
+                     passwd="root",     # password
+                     db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+                     )   
+ 
+# Create a Cursor object to execute queries.
+            cur = db.cursor()
+
+            user = [firstname, lastname, adress, adressnumber, postcode, country, birthday, countrycode, phone, email, gender]
+
+            cur.execute("""INSERT INTO information VALUES (user)""".format(*))
+
         except storage_error:
             #error handling for database storage/user creation here
             pass

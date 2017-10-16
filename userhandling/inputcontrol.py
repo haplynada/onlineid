@@ -56,6 +56,12 @@ def check_adress(adress):
     else:
         return False
     
+def check_adressnumber(adressnumber):
+    if adressnumber.isdigit():
+        return True
+    else:
+        return False
+    
 def check_postcode(postcode):
     postcode_length = len(postcode)
     if postcode_length == 4 and postcode.isdigit():
