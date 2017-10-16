@@ -139,10 +139,10 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
             cur = db.cursor()
 
             add_user = ("INSERT INTO information "
-               "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email, email_validation, hashed_Passwords, salt) "
-               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
+               "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email, hashed_Passwords, salt) "
+               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-            data_user = (firstname, lastname, adress, adressnumber, postcode, country, birthday, gender, countrycode, phone, email, 'true', 'hashedpassword', 'saltandpepper')
+            data_user = (firstname, lastname, adress, adressnumber, postcode, country, birthday, gender, countrycode, phone, email, hashedpassword, passwordsalt)
             
             cur.execute(add_user, data_user)
 

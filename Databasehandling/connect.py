@@ -18,43 +18,48 @@ query = """CREATE DATABASE IF NOT EXISTS OnlineId;
 USE OnlineId;
 
 CREATE TABLE IF NOT EXISTS information (
-                                    id int(11) NOT NULL AUTO_INCREMENT,
-                                    first_name varchar(50) NOT NULL,
+                    first_name varchar(50) NOT NULL,
                     last_name varchar(50) NOT NULL,
                     adress varchar(50) NOT NULL,
-                    adress_number varchar(50) NOT NULL,
+                    adress_number int(20) NOT NULL,
                     zip_code int(11) NOT NULL,
                     country varchar(50) NOT NULL,
                     birthday date NOT NULL,
+                    sex ENUM( 'male', 'female', 'other') NOT NULL,
                     phone_Countrycode int(11) NOT NULL,
                     phonenumber int(11) NOT NULL,
                     email varchar(50) NOT NULL,
-                    email_validation varchar(50) NOT NULL,
-                    hashed_Passwords varchar(50) NOT NULL,
+                    hashed_Passwords varchar(70) NOT NULL,
                     salt varchar(50) NOT NULL,
-                    PRIMARY KEY(id)
+                    user_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
                                     );
 
 CREATE TABLE IF NOT EXISTS sites (
-                                site_ID int(11) NOT NULL AUTO_INCREMENT,
                                 site_Adress VARCHAR(50) NOT NULL,
-                                PRIMARY KEY(site_ID)
+                                site_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY                                
                                                     );
                                                     
-CREATE TABLE IF NOT EXISTS connecter (
-                                site_ID int(11) NOT NULL,
-                                id int(11) NOT NULL,
-                                date_reg datetime NOT NULL,
-                                PRIMARY KEY(site_ID)
+CREATE TABLE IF NOT EXISTS firstlogon (
+                                site_id INT UNSIGNED NOT NULL,
+                                user_id INT UNSIGNED NOT NULL,
+                                date_reg TIMESTAMP,
+                                PRIMARY KEY(site_id, user_id)
                                                     );
                                                     
 CREATE TABLE IF NOT EXISTS log (
-                                site_ID int(11) NOT NULL,
-                                id int(11) NOT NULL,
-                                date_login DATETIME NOT NULL,
-                                ip_adress int unsigned NOT NULL,
-                                PRIMARY KEY(site_ID)
+                                site_id INT UNSIGNED NOT NULL,
+                                user_id INT UNSIGNED NOT NULL,
+                                date_login TIMESTAMP,
+                                ip_adress INT UNSIGNED NOT NULL,
+                                PRIMARY KEY(site_id, user_id, date_login)
                                                     );
+
+CREATE TABLE IF NOT EXISTS emailValid (
+                                user_id INT UNSIGNED NOT NULL,
+                                email_valid ENUM ('true', 'false') NOT NULL,
+                                PRIMARY KEY (user_id, email_valid)
+                                );
+                                
                                                     
 
 

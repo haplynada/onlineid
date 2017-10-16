@@ -17,7 +17,7 @@ def getId(email): #enter email get unique ID
 
     db = pymysql.connect(host="127.0.0.1",  # your host 
         user="root",       # username
-        passwd="Alexander12#",     # password
+        passwd="root#",     # password
         db="OnlineID")   # name of the database
  
 # Create a Cursor object to execute queries.
