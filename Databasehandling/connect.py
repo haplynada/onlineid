@@ -7,7 +7,7 @@ import pymysql
  
 db = pymysql.connect(host="127.0.0.1",  # your host 
                      user="root",       # username
-                     passwd="Alexander12#",     # password
+                     passwd="root",     # password
                      #db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
                      )   
  
@@ -57,21 +57,8 @@ CREATE TABLE IF NOT EXISTS log (
                                                     );
                                                     
 
-INSERT INTO information (first_name, last_name, adress, adress_number, zip_code, country, birthday, phone_Countrycode, phonenumber, email, email_validation, hashed_Passwords, salt)
-                                VALUES ('Ola', 'Nordmann', 'Kongensgate', 1, 1337, 'Norway', '1995-10-12', 47, 12345678, 'ola.nordmann@kakeland.no', 'false', 'hashedpassword', 'saltandpepper');
 
-INSERT INTO sites (site_adress)
-    VALUES ('Google.com'),
-           ('Komplett.no');
-
-INSERT INTO connecter (site_ID, id, date_reg)
-    VALUES (1,1,'2017-10-05 15:32:31'),
-           (2,1,'2017-10-05 15:35:15'); 
  """
 # Select data from table using SQL query.
 cur.execute(query)
 
-cur.execute("SELECT * FROM information")
- 
-# print the result    
-print(cur.fetchall())

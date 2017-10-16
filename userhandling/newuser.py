@@ -128,17 +128,27 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
 
     if errors == "":
         try: 
+            
             db = pymysql.connect(host="127.0.0.1",  # your host 
                      user="root",       # username
                      passwd="root",     # password
                      db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
                      )   
  
-# Create a Cursor object to execute queries.
+            # Create a Cursor object to execute queries.
             cur = db.cursor()
 
+            add_user = ("INSERT INTO information "
+               "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email, email_validation, hashed_Passwords, salt) "
+               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-            cur.execute("INSERT INTO information VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (raw_input("firstname: "), raw_input("lastname: "), raw_input("adress: "), raw_input("adressnumber: "), raw_input("postcode: "), raw_input("country: "), raw_input("birthday: "), raw_input("gender: "),raw_input("countrycode: "), raw_input("phone: "), raw_input("email: "), 'false', 'hashedpassword', 'saltandpepper')
+            data_user = ('Bjarke', 'Hansen', 'Trumpstreet', 9, 0001, 'USA', '1945-06-04', 'female', 1, 00000001, 'mr.president@usa.com', 'true', 'hashedpassword', 'saltandpepper')
+
+            cur.execute(add_user, data_user)
+
+            db.commit()
+
+            db.close()
 
         except storage_error:
             #error handling for database storage/user creation here
