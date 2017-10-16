@@ -142,8 +142,8 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
                "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email, email_validation, hashed_Passwords, salt) "
                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-            data_user = ('Bjarke', 'Hansen', 'Trumpstreet', 9, 0001, 'USA', '1945-06-04', 'female', 1, 00000001, 'mr.president@usa.com', 'true', 'hashedpassword', 'saltandpepper')
-
+            data_user = (firstname, lastname, adress, adressnumber, postcode, country, birthday, gender, countrycode, phone, email, 'true', 'hashedpassword', 'saltandpepper')
+            
             cur.execute(add_user, data_user)
 
             db.commit()
