@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS information (
                     email varchar(50) NOT NULL,
                     email_validation varchar(50) NOT NULL,
                     sex ENUM( 'male', 'female', 'other') NOT NULL,
-                    hashed_Passwords varchar(50) NOT NULL,
+                    hashed_Passwords varchar(64) NOT NULL,
                     salt varchar(50) NOT NULL,
                     user_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
                                     );
