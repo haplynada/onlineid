@@ -6,6 +6,6 @@ Created on 12. okt. 2017
 from userhandling.newuser import create_user
 
 try: 
-    print(create_user("Hans@hansen.dk", "K234Jdfhen", "Bjarke", "Larsen", "12345678", "1234", "denmark", "0045", "hansveien", "19", "1988-12-12", "female"))
+    print(create_user("Hans@hansen.dk", "K234Jdfhen", "Peter", "Larsen", "12345678", "1234", "denmark", "0045", "hansveien", "19", "1988-12-12", "female"))
 except SyntaxError:
     print("yay")
