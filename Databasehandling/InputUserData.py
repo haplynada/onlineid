@@ -32,4 +32,4 @@ sex = create_user(gender)
 
 user = ['first_name', 'last_name', 'adress', adress_number, zip_code, 'country', 'birthday', phone_Countrycode, phonenuber, 'email', 'sex']
 
-cur.execute("""INSERT INTO information VALUES (user)""".format(*))
+cur.execute("INSERT INTO information VALUES (%s)",(raw_input(create_user(firstname, lastname, adress, adressnumber????, postcode, country, birthday, countrycode, phone, email, gender)))
