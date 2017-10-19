@@ -28,4 +28,4 @@ def getId(email): #enter email get unique ID
     result = str(cur.fetchone()[0])
     return(result)
 
-print(getId('ola.nordmann@kakeland.no'))
+print(getId('Hans@hansen.dk'))
