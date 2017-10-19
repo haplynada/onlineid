@@ -5,6 +5,8 @@ Created on 5. okt. 2017
 ''' 
 import pymysql
 
+
+
 def get_firstname(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -14,12 +16,12 @@ def get_firstname(user_id):
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
+    
     query = "SELECT first_name from information WHERE user_id =%s;"
     cur.execute(query, (user_id))
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)
 
 def get_lastname(user_id):
     
@@ -35,8 +37,7 @@ def get_lastname(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)    
-
+       
 def get_adress(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -51,8 +52,7 @@ def get_adress(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)
-
+   
 def get_adress_number(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -67,8 +67,7 @@ def get_adress_number(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)
-
+  
 def get_zip_code(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -83,8 +82,7 @@ def get_zip_code(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)
-
+   
 def get_country(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -99,8 +97,7 @@ def get_country(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)
-
+ 
 def get_birthday(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -115,8 +112,7 @@ def get_birthday(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)
-
+ 
 def get_sex(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -131,8 +127,7 @@ def get_sex(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)
-
+  
 def get_phone_Country(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -147,8 +142,7 @@ def get_phone_Country(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result) 
-
+  
 def get_phonenumber(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -163,8 +157,7 @@ def get_phonenumber(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)
-
+  
 def get_email(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -179,8 +172,7 @@ def get_email(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)
-
+ 
 def get_hashed_Passwords(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -195,8 +187,7 @@ def get_hashed_Passwords(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)
-
+   
 def get_salt(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
@@ -211,4 +202,4 @@ def get_salt(user_id):
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-    print(result)                                  
+                                   
