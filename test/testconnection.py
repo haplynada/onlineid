@@ -9,5 +9,5 @@ sender = socket.socket()
 host = socket.gethostname()
 
 sender.connect((host, 22025))
-print(sender.recv(1024))
+
 sender.close()

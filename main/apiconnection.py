@@ -15,7 +15,6 @@ def listen_connection():
     while True:
         c, addr = listener.accept()
         print(addr)
-        c.send("thank you for connecting")
         c.close
         
 listen_connection()
