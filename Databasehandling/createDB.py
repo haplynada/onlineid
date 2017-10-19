@@ -5,9 +5,9 @@ Created on 12. okt. 2017
 '''
 import pymysql
 
-dbc = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
+dbc = pymysql.connect(host="88.88.170.2",  # your host 
+        user="server",       # username
+        passwd="sudoonlineid",     # password
 )
 
 cur = dbc.cursor()
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS information (
                     phone_Countrycode int(11) NOT NULL,
                     phonenumber int(11) NOT NULL,
                     email varchar(50) NOT NULL,
-                    email_validation varchar(50) NOT NULL,
+                    email_validation varchar(50) DEFAULT "false",
                     sex ENUM( 'male', 'female', 'other') NOT NULL,
                     hashed_Passwords varchar(64) NOT NULL,
                     salt varchar(50) NOT NULL,
