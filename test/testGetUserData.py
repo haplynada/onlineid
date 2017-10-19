@@ -10,7 +10,7 @@ from userhandling.getuserdata import get_firstname, get_lastname, get_adress,\
     get_phone_Country, get_phonenumber, get_email, get_hashed_Passwords,\
     get_salt
 
-user_id = 2
+user_id = 1
 
 
 
