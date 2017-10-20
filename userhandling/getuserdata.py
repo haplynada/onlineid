@@ -5,8 +5,6 @@ Created on 5. okt. 2017
 ''' 
 import pymysql
 
-
-
 def get_firstname(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
