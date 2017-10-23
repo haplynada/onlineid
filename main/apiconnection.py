@@ -5,7 +5,6 @@ Created on 19. okt. 2017
 '''
 import socket
 import ssl
-from ssl import wrap_socket
 from _socket import SOL_SOCKET, SO_REUSEADDR
 
 def listen_connection():
