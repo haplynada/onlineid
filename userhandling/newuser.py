@@ -149,10 +149,13 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
             db.commit()
 
             db.close()
-
+            
+            checker = True
+            return checker
+        
         except storage_error:
             #error handling for database storage/user creation here
             pass
     else:
-        return errors
+        return checker, errors
         
