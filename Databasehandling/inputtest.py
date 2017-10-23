@@ -5,9 +5,9 @@ Created on Oct 16, 2017
 '''
 import pymysql
 
-db = pymysql.connect(host="127.0.0.1",  # your host 
-                     user="root",       # username
-                     passwd="root",     # password
+db = pymysql.connect(host="88.88.170.2",  # your host 
+                     user="server",       # username
+                     passwd="sudoonlineid",     # password
                      db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
                      )   
  
