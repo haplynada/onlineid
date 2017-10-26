@@ -12,7 +12,7 @@ from Databasehandling.connect import * #Import connect function
 
 #edits
 
-def getId(email): #enter email get unique ID
+def getuser(email): #enter email get unique ID
     import pymysql
 
     db = pymysql.connect(host="88.88.170.2",  # your host 
@@ -28,5 +28,3 @@ def getId(email): #enter email get unique ID
 # filter and return result  
     result = str(cur.fetchone()[0])
     return(result)
-
-print(getId('Hans@hansen.dk'))

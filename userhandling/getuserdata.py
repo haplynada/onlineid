@@ -171,7 +171,7 @@ def get_email(user_id):
     result = str(cur.fetchone()[0])
     return(result)
  
-def get_hashed_Passwords(user_id):
+def get_hashed_Password(user_id):
     
     db = pymysql.connect(host="127.0.0.1",  # your host 
         user="root",       # username

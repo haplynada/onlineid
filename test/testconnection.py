@@ -14,7 +14,7 @@ sender_ssl.connect((host, 22025))
 print(sender_ssl.getpeername())
 
 
-sender_ssl.write("boo!".encode(encoding='utf_8', errors='strict'))
+sender_ssl.write("login|Hans@hansen.dk|K234Jdfhen".encode(encoding='utf_8'))
 
 sender_ssl.close()
 

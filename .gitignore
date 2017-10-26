@@ -5,3 +5,6 @@ passwordhandling/__pycache__/passwordsecurity.cpython-36.pyc
 passwordhandling/__pycache__/__init__.cpython-36.pyc
 userhandling/__pycache__/newuser.cpython-36.pyc
 Databasehandling/__pycache__/connect.cpython-36.pyc
+userhandling/__pycache__/authenticateusername.cpython-36.pyc
+Databasehandling/__pycache__/queries.cpython-36.pyc
+userhandling/__pycache__/authenticateuser.cpython-36.pyc
