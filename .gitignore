@@ -8,3 +8,4 @@ Databasehandling/__pycache__/connect.cpython-36.pyc
 userhandling/__pycache__/authenticateusername.cpython-36.pyc
 Databasehandling/__pycache__/queries.cpython-36.pyc
 userhandling/__pycache__/authenticateuser.cpython-36.pyc
+userhandling/__pycache__/getuserdata.cpython-36.pyc

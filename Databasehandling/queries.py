@@ -23,7 +23,7 @@ def getuser(email): #enter email get unique ID
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
-    query = "SELECT id from information WHERE email =%s;"
+    query = "SELECT user_id from information WHERE email =%s;"
     cur.execute(query, (email))
 # filter and return result  
     result = str(cur.fetchone()[0])
