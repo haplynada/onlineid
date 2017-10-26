@@ -7,10 +7,11 @@ import pymysql
 
 def get_firstname(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -23,10 +24,11 @@ def get_firstname(user_id):
 
 def get_lastname(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -38,10 +40,11 @@ def get_lastname(user_id):
        
 def get_adress(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -53,10 +56,11 @@ def get_adress(user_id):
    
 def get_adress_number(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -68,10 +72,11 @@ def get_adress_number(user_id):
   
 def get_zip_code(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -83,10 +88,11 @@ def get_zip_code(user_id):
    
 def get_country(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -98,10 +104,11 @@ def get_country(user_id):
  
 def get_birthday(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -113,10 +120,11 @@ def get_birthday(user_id):
  
 def get_sex(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -128,10 +136,11 @@ def get_sex(user_id):
   
 def get_phone_Country(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -143,10 +152,11 @@ def get_phone_Country(user_id):
   
 def get_phonenumber(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -158,10 +168,11 @@ def get_phonenumber(user_id):
   
 def get_email(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -173,10 +184,11 @@ def get_email(user_id):
  
 def get_hashed_Password(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
@@ -188,10 +200,11 @@ def get_hashed_Password(user_id):
    
 def get_salt(user_id):
     
-    db = pymysql.connect(host="127.0.0.1",  # your host 
-        user="root",       # username
-        passwd="root",     # password
-        db="OnlineID")   # name of the database
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
  
 # Create a Cursor object to execute queries.
     cur = db.cursor()
