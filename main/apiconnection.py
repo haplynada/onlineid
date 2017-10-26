@@ -14,12 +14,12 @@ def listen_connection():
     port = 22025
     listener.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
     listener.bind((host, port))
-    ssl.wrap_socket(listener)
+    
     
     listener.listen(10)
     while True:
+        ssl.wrap_socket(listener)
         c, addr = listener.accept()
         print(addr)
         c.close
         
-listen_connection()
