@@ -29,7 +29,7 @@ def listen_connection():
     listener.listen(10)
     while True:
         newsocket, fromaddr =listener.accept()
-        connstream =ssl.wrap_socket(newsocket, server_side=True, certfile="server.crt", keyfile="privkey.pem")
+        connstream =ssl.wrap_socket(newsocket, server_side=True, certfile="server.pem")
         
         try: 
             do_stuff(connstream)
