@@ -7,6 +7,9 @@ import socket
 import ssl
 from _socket import SOL_SOCKET, SO_REUSEADDR
 from userhandling.authenticateuser import authenticate_user
+import userhandling.getuserdata
+from userhandling.getuserdata import get_email
+from Databasehandling.queries import getuser
 
 def handle_data(connstream, data):
     decoded_data =data.decode()
@@ -16,7 +19,22 @@ def handle_data(connstream, data):
         print(datalist)
     elif datalist[0] == "login":
         del datalist[0]
+        if authenticate_user(datalist[0], datalist[1]) == True:
+            return_data = "login|True"
+            return_data.encode(encoding='utf_8')
+            connstream.send(return_data)
+            return True
+        else:
+            return False
         print(authenticate_user(datalist[0], datalist[1]))
+    elif datalist[0] == "edituser":
+        del datalist[0]
+    elif datalist[0] == "getdata":
+        del datalist[0]
+        if datalist[0] == "getfirstname":
+            del datalist[0]
+            getuser(datalist[0])
+            
     else:
         print("fuck")
         print(datalist)
