@@ -18,6 +18,3 @@ def deleteuser(user_id):
    
     query = "delete FROM information where user_id =%s;"
     cur.execute(query, (user_id))
-# filter and return result  
-    result = str(cur.fetchone()[0])
-    return(result)
