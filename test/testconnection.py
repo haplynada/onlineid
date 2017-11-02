@@ -13,8 +13,8 @@ sender_ssl.connect((host, 22025))
 
 print(sender_ssl.getpeername())
 
+sender_ssl.send(b"login|Hans@hansen.dk|K234Jdfhen")
 
-sender_ssl.write("login|Hans@hansen.dk|K234Jdfhen".encode(encoding='utf_8'))
 
 sender_ssl.close()
 

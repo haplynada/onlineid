@@ -10,23 +10,34 @@ from userhandling.authenticateuser import authenticate_user
 import userhandling.getuserdata
 from userhandling.getuserdata import get_email, get_firstname, get_lastname
 from Databasehandling.queries import getuser
+from userhandling.newuser import create_user
 
 def handle_data(connstream, data):
     decoded_data =data.decode()
     datalist = decoded_data.split("|")
-    if datalist[0] == "newuser":
+    
+    if datalist[0] == "newuser": #Parses the new user from client and add the new user to the database
         del datalist[0]
-        print(datalist)
-    elif datalist[0] == "login":
+        if create_user(datalist[0], datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7], datalist[8], datalist[9], datalist[10], datalist[11]) ==True:
+            return_data="newuser|True"
+            return_data.encode(encoding='utf_8')
+            connstream.send(return_data)
+        else:
+            return_data="newuser|False"
+            return_data.encode(encoding='utf_8')
+            connstream.send(return_data)
+        
+    elif datalist[0] == "login": # 
         del datalist[0]
         if authenticate_user(datalist[0], datalist[1]) == True:
-            return_data = "login|True"
-            return_data.encode(encoding='utf_8')
+            return_data = b"login|True"
+            
             connstream.send(return_data)
             return True
         else:
             return False
         print(authenticate_user(datalist[0], datalist[1]))
+    
     elif datalist[0] == "edituser":
         del datalist[0]
         
@@ -49,7 +60,8 @@ def handle_data(connstream, data):
             return_data.encode(encoding='utf_8')
             connstream.send(return_data)
             return True
-        elif datalist[0] == ""
+        elif datalist[0] == "":
+            pass
     else:
         print("fuck")
         print(datalist)
