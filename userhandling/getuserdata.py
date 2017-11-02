@@ -70,7 +70,7 @@ def get_adress_number(user_id):
     result = str(cur.fetchone()[0])
     return(result)
   
-def get_zip_code(user_id):
+def get_post_code(user_id):
     
     db = pymysql.connect(host="88.88.170.2",  # your host 
          user="server",       # username

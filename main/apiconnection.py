@@ -7,8 +7,9 @@ import socket
 import ssl
 from _socket import SOL_SOCKET, SO_REUSEADDR
 from userhandling.authenticateuser import authenticate_user
-import userhandling.getuserdata
-from userhandling.getuserdata import get_email, get_firstname, get_lastname
+from userhandling.getuserdata import get_email, get_firstname, get_lastname,\
+    get_phonenumber, get_post_code, get_country, get_phone_Country, get_adress,\
+    get_adress_number, get_birthday, get_sex
 from Databasehandling.queries import getuser
 from userhandling.newuser import create_user
 
@@ -19,12 +20,11 @@ def handle_data(connstream, data):
     if datalist[0] == "newuser": #Parses the new user from client and add the new user to the database
         del datalist[0]
         if create_user(datalist[0], datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7], datalist[8], datalist[9], datalist[10], datalist[11]) ==True:
-            return_data="newuser|True"
-            return_data.encode(encoding='utf_8')
+            return_data=b"newuser|True"
             connstream.send(return_data)
         else:
-            return_data="newuser|False"
-            return_data.encode(encoding='utf_8')
+            errors = create_user(datalist[0], datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7], datalist[8], datalist[9], datalist[10], datalist[11])
+            return_data= b"newuser|false|" + str(errors).encode()
             connstream.send(return_data)
         
     elif datalist[0] == "login": # 
@@ -33,35 +33,69 @@ def handle_data(connstream, data):
             return_data = b"login|True"
             
             connstream.send(return_data)
-            return True
+            
         else:
-            return False
-        print(authenticate_user(datalist[0], datalist[1]))
+            connstream.send(b"login|False")
     
     elif datalist[0] == "edituser":
         del datalist[0]
         
     elif datalist[0] == "getdata":
         del datalist[0]
-        
-        if datalist[0] == "getfirstname":
-            del datalist[0]
+        if authenticate_user(datalist[0], datalist[1]): 
             user= getuser(datalist[0])
-            return_data = "getdata|firstname|" + str(get_firstname(user))
-            return_data.encode(encoding='utf_8')
-            connstream.send(return_data)
-            return True
+            if datalist[2] == "getfirstname":
+                return_data = b"getdata|getfirstname|" + str(get_firstname(user)).encode()
+                connstream.send(return_data)
+                
+            elif datalist[2] == "getlastname": 
+                return_data = b"getdata|getlastname|" + str(get_lastname(user)).encode()
+                connstream.send(return_data)
+                
+            elif datalist[2] == "getphone": 
+                return_data = b"getdata|getphone|" + str(get_phonenumber(user)).encode()
+                connstream.send(return_data)
+                
+            elif datalist[2] == "getpostcode": 
+                return_data = b"getdata|getpostcode|" + str(get_post_code(user)).encode()
+                connstream.send(return_data)
+                
+            elif datalist[2] == "getcountry": 
+                return_data = b"getdata|getcouintry|" + str(get_country(user)).encode()
+                connstream.send(return_data)
+                
+            elif datalist[2] == "getcountrycode": 
+                return_data = b"getdata|getcountrycode|" + str(get_phone_Country(user)).encode()
+                connstream.send(return_data)
+                
+            elif datalist[2] == "getadress": 
+                return_data = b"getdata|getadress|" + str(get_adress(user)).encode()
+                connstream.send(return_data)
+                
+            elif datalist[2] == "getadressnumber": 
+                return_data = b"getdata|getadressnumber|" + str(get_adress_number(user)).encode()
+                connstream.send(return_data)
+                
+            elif datalist[2] == "getbirthday": 
+                return_data = b"getdata|getbirthday|" + str(get_birthday(user)).encode()
+                connstream.send(return_data)
+                
+            elif datalist[2] == "getgender": 
+                return_data = b"getdata|getgender|" + str(get_sex(user)).encode()
+                connstream.send(return_data)
         
-        elif datalist[0] == "getlastname": 
-            del datalist[0]
-            user = getuser(datalist[0])
-            user = get_lastname(user)
-            return_data = "getdata|lastname|" + str(get_lastname(user))
-            return_data.encode(encoding='utf_8')
-            connstream.send(return_data)
-            return True
-        elif datalist[0] == "":
+            else:
+                return_data = b"getdata|False|invalidquery"
+                connstream.send(return_data)
+        else:
+            connstream.send(b"getdata|False|invaliduser")
+    elif datalist[0] == "getalldata":
+        del datalist[0]
+        if authenticate_user(datalist[0], datalist[1]) == True:
             pass
+        else: 
+            return_data = b"getalldata|False|invaliduser"
+            connstream.send(return_data)
     else:
         print("fuck")
         print(datalist)
