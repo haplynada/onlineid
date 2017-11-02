@@ -5,6 +5,23 @@ Created on 5. okt. 2017
 ''' 
 import pymysql
 
+def get_all(user_id):
+    
+    db = pymysql.connect(host="88.88.170.2",  # your host 
+         user="server",       # username
+         passwd="sudoonlineid",     # password
+         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
+         )  
+ 
+# Create a Cursor object to execute queries.
+    cur = db.cursor()
+    
+    query = "SELECT * from information WHERE user_id =%s;"
+    cur.execute(query, (user_id))
+# filter and return result  
+    result = str(cur.fetchall()[0])
+    return(result)
+
 def get_firstname(user_id):
     
     db = pymysql.connect(host="88.88.170.2",  # your host 
