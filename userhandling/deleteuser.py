@@ -13,8 +13,18 @@ def deleteuser(user_id):
          db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
          )  
  
-# Create a Cursor object to execute queries.
+    # Create a Cursor object to execute queries.
     cur = db.cursor()
-   
-    query = "delete FROM information where user_id =%s;"
-    cur.execute(query, (user_id))
+    
+    # Create query
+    query = "DELETE FROM information WHERE user_id = %s;"
+    
+    #Execute query
+    cur.execute(query, (user_id,))
+    
+    #Accept changes
+    db.commit()
+    
+    #Close connection
+    cur.close()
+    db.close()

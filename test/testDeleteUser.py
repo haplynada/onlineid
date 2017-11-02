@@ -5,8 +5,7 @@ Created on Nov 2, 2017
 '''
 
 import pymysql
+from userhandling.deleteuser import deleteuser
 
-from userhandling import deleteUser
 
-user_id = 1
-
+deleteuser(3)
