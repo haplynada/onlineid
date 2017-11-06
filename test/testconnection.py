@@ -22,7 +22,7 @@ send_login =b"login|sau@sau.no|koktsau42"
 send_deleteuser =b"deleteuser|sau@sau.no|koktsau42"
 send_getall = b"getalldata|sau@sau.no|koktsau42"
 
-sender_ssl.send(send_getall)
+sender_ssl.send(send_login)
 print(sender_ssl.recv().decode())
 
 sender_ssl.close()
