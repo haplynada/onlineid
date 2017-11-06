@@ -36,6 +36,15 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
     except email_error:
         errors += str(email_error.error)
         errors += "\n"
+
+    try:
+        if check_email_database(email) == True:
+            pass
+        else:
+            raise email_database_error()
+    except email_database_error:
+        errors += str(email_database_error.error)
+        errors += "\n"
         
     try:
         if check_firstname(firstname) ==True:

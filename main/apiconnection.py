@@ -95,7 +95,12 @@ def handle_data(connstream, data):
         del datalist[0]
         if authenticate_user(datalist[0], datalist[1]) == True:
             user = getuser(datalist[0])
-            return_data = b"getalldata|True|" + get_all(user).encode()
+            return_data = b"getalldata|True|" + str(get_firstname(user)).encode() + b"|" \
+            + str(get_lastname(user)).encode() + b"|" + str(get_phonenumber(user)).encode() + b"|"\
+            + str(get_post_code(user)).encode() + b"|" + str(get_country(user)).encode() + b"|"\
+            + str(get_phone_Country(user)).encode() + b"|" + str(get_adress(user)).encode() + b"|"\
+            + str(get_adress_number(user)).encode() + b"|" + str(get_birthday(user)).encode() + b"|"\
+            + str(get_sex(user)).encode()
             connstream.send(return_data)
         else: 
             return_data = b"getalldata|False|invaliduser"

@@ -10,6 +10,7 @@ countries = ["norway", "sweden", "denmark", "iceland", "united states", "england
              "germany",]
 countrycodes = ["0047", "0046", "0045", "00354", "0111", "0044", "0049"]
 import datetime
+from Databasehandling.queries import getuser
 
 def check_password(password):
     password_length = len(password)
@@ -29,6 +30,14 @@ def check_email(email):
             return False
     else:
         return False
+def check_email_database(email): 
+    try:
+        if getuser(email) == True:
+            return False
+        else:
+            return False
+    except TypeError:
+        return True
     
 def check_firstname(name):
     if set(name).issubset(validchars_name):

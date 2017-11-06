@@ -11,6 +11,9 @@ class password_error(Exception):
 class email_error(Exception):
     error = "invalid email"
     pass
+class email_database_error(Exception):
+    error = "email already in database"
+    pass
 
 class firstname_error(Exception):
     error = "invalid first name"
