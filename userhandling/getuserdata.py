@@ -22,6 +22,7 @@ def get_all(user_id):
     result = str(cur.fetchall()[0])
     return(result)
 
+
 def get_firstname(user_id):
     
     db = pymysql.connect(host="88.88.170.2",  # your host 
