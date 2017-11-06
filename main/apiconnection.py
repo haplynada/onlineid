@@ -9,9 +9,10 @@ from _socket import SOL_SOCKET, SO_REUSEADDR
 from userhandling.authenticateuser import authenticate_user
 from userhandling.getuserdata import get_email, get_firstname, get_lastname,\
     get_phonenumber, get_post_code, get_country, get_phone_Country, get_adress,\
-    get_adress_number, get_birthday, get_sex
+    get_adress_number, get_birthday, get_sex, get_all
 from Databasehandling.queries import getuser
 from userhandling.newuser import create_user
+from userhandling.deleteuser import deleteuser
 
 def handle_data(connstream, data):
     decoded_data =data.decode()
@@ -89,13 +90,31 @@ def handle_data(connstream, data):
                 connstream.send(return_data)
         else:
             connstream.send(b"getdata|False|invaliduser")
+            
     elif datalist[0] == "getalldata":
         del datalist[0]
         if authenticate_user(datalist[0], datalist[1]) == True:
-            pass
+            user = getuser(datalist[0])
+            return_data = b"getalldata|True|" + get_all(user).encode()
+            connstream.send(return_data)
         else: 
             return_data = b"getalldata|False|invaliduser"
             connstream.send(return_data)
+            
+    elif datalist[0] == "deleteuser":
+        del datalist[0]
+        if authenticate_user(datalist[0], datalist[1]):
+            user = getuser(datalist[0])
+            if deleteuser(user) == True:
+                return_data = b"deleteuser|True"
+                connstream.send(return_data)
+            else:
+                return_data = b"deleteuser|False"
+                connstream.send(return_data)
+        else:
+            return_data = b"deleteuser|False|invaliduser"
+            connstream.send(return_data)
+
     else:
         print("fuck")
         print(datalist)

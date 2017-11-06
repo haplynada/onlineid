@@ -28,3 +28,4 @@ def deleteuser(user_id):
     #Close connection
     cur.close()
     db.close()
+    return True
