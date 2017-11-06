@@ -10,3 +10,5 @@ Databasehandling/__pycache__/queries.cpython-36.pyc
 userhandling/__pycache__/authenticateuser.cpython-36.pyc
 userhandling/__pycache__/getuserdata.cpython-36.pyc
 userhandling/__pycache__/deleteuser.cpython-36.pyc
+test/__pycache__/__init__.cpython-36.pyc
+test/__pycache__/testtimer.cpython-36.pyc
