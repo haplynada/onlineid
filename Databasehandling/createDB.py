@@ -1,7 +1,7 @@
 '''
 Created on 12. okt. 2017
 
-@author: Alexander Mackenzie-Low
+@author: Alexander Mackenzie-Low, Bjarke Larsen
 '''
 import pymysql
 
@@ -27,7 +27,6 @@ CREATE TABLE IF NOT EXISTS information (
                     phone_Countrycode int(11) NOT NULL,
                     phonenumber int(11) NOT NULL,
                     email varchar(50) NOT NULL,
-                    email_validation varchar(50) DEFAULT "false",
                     sex ENUM( 'male', 'female', 'other') NOT NULL,
                     hashed_Passwords varchar(64) NOT NULL,
                     salt varchar(50) NOT NULL,
@@ -53,6 +52,12 @@ CREATE TABLE IF NOT EXISTS log (
                                 ip_adress INT UNSIGNED NOT NULL,
                                 PRIMARY KEY(site_id, user_id, date_login)
                                                     ); 
+                                                    
+CREATE TABLE IF NOT EXISTS emailvalid (
+                                email_validation varchar(50) DEFAULT "false",
+                                user_id INT UNSIGNED NOT NULL,
+                                PRIMARY KEY(user_id, email_validation)
+                                                    );
  """
 # Select data from table using SQL query.
 cur.execute(query)
