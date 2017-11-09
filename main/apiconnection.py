@@ -62,7 +62,7 @@ def handle_data(connstream, data):
                 connstream.send(return_data)
                 
             elif datalist[2] == "getcountry": 
-                return_data = b"getdata|getcouintry|" + str(get_country(user)).encode()
+                return_data = b"getdata|getcountry|" + str(get_country(user)).encode()
                 connstream.send(return_data)
                 
             elif datalist[2] == "getcountrycode": 
