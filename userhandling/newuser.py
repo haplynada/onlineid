@@ -23,115 +23,125 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
             hashedpassword = hash_password(passwordsalt, password)
             pass
         else:
-            raise password_error()
-    except password_error:
-        errors += str(password_error.error)
+            raise PasswordError()
+    except PasswordError:
+        errors += str(PasswordError.error)
         errors += "\n"
         
     try:
         if check_email(email) == True:
             pass
         else:
-            raise email_error()
-    except email_error:
-        errors += str(email_error.error)
+            raise EmailError()
+    except EmailError:
+        errors += str(EmailError.error)
         errors += "\n"
 
     try:
         if check_email_database(email) == True:
             pass
         else:
-            raise email_database_error()
-    except email_database_error:
-        errors += str(email_database_error.error)
+            raise EmailDatabaseError()
+    except EmailDatabaseError:
+        errors += str(EmailDatabaseError.error)
         errors += "\n"
         
     try:
         if check_firstname(firstname) ==True:
             pass
         else:
-            raise firstname_error()
-    except firstname_error:
-        errors += str(firstname_error.error)
+            raise FirstnameError()
+    except FirstnameError:
+        errors += str(FirstnameError.error)
         errors += "\n"
         
     try:
         if check_lastname(lastname) ==True:
             pass
         else:
-            raise lastname_error()
-    except lastname_error:
-        errors += str(lastname_error.error)
+            raise LastnameError()
+    except LastnameError:
+        errors += str(LastnameError.error)
         errors += "\n"
         
     try:
         if check_phonenumber(phone) ==True:
             pass
         else:
-            raise phonenumber_error()
-    except phonenumber_error:
-        errors += str(phonenumber_error.error)
+            raise PhonenumberError()
+    except PhonenumberError:
+        errors += str(PhonenumberError.error)
         errors += "\n"
         
     try:
         if check_adress(adress) ==True:
             pass
         else:
-            raise adress_error()
-    except adress_error:
-        errors += str(adress_error.error)
+            raise AdressError()
+    except AdressError:
+        errors += str(AdressError.error)
         errors += "\n"
         
     try:
         if check_adressnumber(adressnumber) ==True:
             pass
         else:
-            raise adressnumber_error()
-    except adressnumber_error:
-        errors += str(adressnumber_error.error)
+            raise AdressnumberError()
+    except AdressnumberError:
+        errors += str(AdressnumberError.error)
         errors += "\n"
         
     try:
         if check_postcode(postcode) ==True:
             pass
         else:
-            raise postcode_error()
-    except postcode_error:
-        errors += str(postcode_error.error)
+            raise PostcodeError()
+    except PostcodeError:
+        errors += str(PostcodeError.error)
         errors += "\n"
         
     try:
         if check_country(country) ==True:
             pass
         else:
-            raise country_error()
-    except country_error:
-        errors += str(country_error.error)
+            raise CountryError()
+    except CountryError:
+        errors += str(CountryError.error)
         errors += "\n"
         
     try:
         if check_countrycode(countrycode) ==True:
             pass
         else:
-            raise countrycode_error()
-    except countrycode_error:
-        errors += str(countrycode_error.error)
+            raise CountrycodeError()
+    except CountrycodeError:
+        errors += str(CountrycodeError.error)
         errors += "\n"
+        
     try:
         if check_birthday(birthday) ==True:
             pass
         else:
-            raise birthday_error()
-    except birthday_error:
-        errors += str(birthday_error.error)
+            raise BirthdayError()
+    except BirthdayError:
+        errors += str(BirthdayError.error)
         errors += "\n"
+    try:
+        if check_age(birthday) ==True:
+            pass
+        else:
+            raise AgeError()
+    except AgeError:
+        errors += str(AgeError.error)
+        errors += "\n"
+        
     try:
         if check_gender(gender) ==True:
             pass
         else:
-            raise gender_error()
-    except gender_error:
-        errors += str(gender_error.error)
+            raise GenderError()
+    except GenderError:
+        errors += str(GenderError.error)
         errors += "\n"
 
 

@@ -4,53 +4,56 @@ Created on 9. okt. 2017
 @author: Tor Larssen Sekse
 '''
 
-class password_error(Exception):
+class PasswordError(Exception):
     error = "invalid password"
     pass
 
-class email_error(Exception):
+class EmailError(Exception):
     error = "invalid email"
     pass
-class email_database_error(Exception):
+class EmailDatabaseError(Exception):
     error = "email already in database"
     pass
 
-class firstname_error(Exception):
+class FirstnameError(Exception):
     error = "invalid first name"
     pass
 
-class lastname_error(Exception):
+class LastnameError(Exception):
     error = "invalid last name"
     pass
 
-class phonenumber_error(Exception):
+class PhonenumberError(Exception):
     error = "invalid phone number"
     pass
 
-class adress_error(Exception):
+class AdressError(Exception):
     error = "invalid adress"
     pass
 
-class adressnumber_error(Exception):
+class AdressnumberError(Exception):
     error = "Invalid adress number"
     pass
 
-class postcode_error(Exception):
+class PostcodeError(Exception):
     error = "invalid postcode"
     pass
 
-class country_error(Exception):
+class CountryError(Exception):
     error = "invalid country"
     pass
 
-class countrycode_error(Exception):
+class CountrycodeError(Exception):
     error = "invalid country code"
     pass
 
-class birthday_error(Exception):
+class BirthdayError(Exception):
     error = "invalid birthday"
     pass
 
-class gender_error(Exception):
+class AgeError(Exception):
+    error = "User not yet 13 years old"
+
+class GenderError(Exception):
     error = "invalid gender"
     pass

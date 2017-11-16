@@ -11,6 +11,8 @@ countries = ["norway", "sweden", "denmark", "iceland", "united states", "england
 countrycodes = ["0047", "0046", "0045", "00354", "0111", "0044", "0049"]
 import datetime
 from Databasehandling.queries import getuser
+from datetime import date
+
 
 def check_password(password):
     password_length = len(password)
@@ -97,6 +99,14 @@ def check_birthday(birthday):
             raise ValueError
         return True
     except ValueError:
+        return False
+    
+def check_age(birthday):
+    birthday_datetime = datetime.datetime.strptime(birthday, "%Y-%m-%d")
+    today = date.today()
+    if 13 <= (today.year - birthday_datetime.year -  ((today.month, today.day) < (birthday_datetime.month, birthday_datetime.day))):
+        return True
+    else:
         return False
 
 def check_gender(gender):
