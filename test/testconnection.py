@@ -11,7 +11,7 @@ import socket, ssl
 import timeit
 
 #testdata
-send_data =b"newuser|sausau@sau.no|koktsau42|Sau|Sausen|12398456|2520|Norway|0047|Faareveien|42|2004-01-01|female"
+send_data =b"newuser|sau@sau.no|koktsau42|Sau|Sausen|12398456|2520|Norway|0047|Faareveien|42|2004-01-01|female"
 send_data2 =b"getdata|sau@sau.no|koktsau42|getgender"
 send_login =b"login|sau@sau.no|koktsau42"
 send_deleteuser =b"deleteuser|sau@sau.no|koktsau42"
@@ -28,7 +28,7 @@ def connect():
     print(sender_ssl.getpeername())
 
 
-    sender_ssl.send(send_data)
+    sender_ssl.send(send_login)
     print(sender_ssl.recv().decode())
 
     sender_ssl.close()
