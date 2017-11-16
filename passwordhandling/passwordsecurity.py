@@ -4,22 +4,21 @@ Created on 18. sep. 2017
 @author: Tor Larssen Sekse
 '''
 
-import hashlib
-import uuid
+import bcrypt
+
 
 def generate_salt():
-    salt = uuid.uuid4().hex
+    salt = bcrypt.gensalt()
     return salt
 
-def authenticate_password(hashedpassword, salt, password):
+def authenticate_password(hashedpassword, password):
     checker = False
-    testpassword =hashlib.sha256(password.encode() + salt.encode()).hexdigest()
-    if testpassword == hashedpassword:
+    if bcrypt.checkpw(password.encode(), hashedpassword):
         checker = True
     else:
         checker = False
     return checker
 
 def hash_password(salt, password):
-    hashedpassword = hashlib.sha256(password.encode() + salt.encode()).hexdigest()
+    hashedpassword = bcrypt.hashpw(password.encode(), salt)
     return hashedpassword

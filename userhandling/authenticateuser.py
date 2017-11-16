@@ -11,5 +11,5 @@ def authenticate_user(email, password):
     user = getuser(email)
     hashedpassword = get_hashed_Password(user)
     passwordsalt = get_salt(user)
-    checker = authenticate_password(hashedpassword, passwordsalt, password)
+    checker = authenticate_password(hashedpassword, password)
     return checker
