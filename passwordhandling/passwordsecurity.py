@@ -13,7 +13,7 @@ def generate_salt():
 
 def authenticate_password(hashedpassword, password):
     checker = False
-    if bcrypt.checkpw(password.encode(), hashedpassword):
+    if bcrypt.checkpw(password.encode(), hashedpassword.encode()):
         checker = True
     else:
         checker = False
