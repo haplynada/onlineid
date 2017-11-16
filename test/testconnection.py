@@ -33,4 +33,4 @@ def connect():
 
     sender_ssl.close()
 
-print(timeit.timeit(connect, number = 1))
+print(timeit.timeit(connect, number = 100))
