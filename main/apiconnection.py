@@ -6,13 +6,13 @@ Created on 19. okt. 2017
 import socket
 import ssl
 from _socket import SOL_SOCKET, SO_REUSEADDR
-from userhandling.authenticateuser import authenticate_user
-from userhandling.getuserdata import get_email, get_firstname, get_lastname,\
+from user_handling.authenticate_user import authenticate_user
+from user_handling.get_user_data import get_email, get_firstname, get_lastname,\
     get_phonenumber, get_post_code, get_country, get_phone_Country, get_adress,\
     get_adress_number, get_birthday, get_sex
-from Databasehandling.queries import getuser
-from userhandling.newuser import create_user
-from userhandling.deleteuser import deleteuser
+from database_handling.queries import get_user
+from user_handling.new_user import create_user
+from user_handling.delete_user import delete_user
 
 def handle_data(connstream, data):
     decoded_data =data.decode()
@@ -44,7 +44,7 @@ def handle_data(connstream, data):
     elif datalist[0] == "getdata":
         del datalist[0]
         if authenticate_user(datalist[0], datalist[1]): 
-            user= getuser(datalist[0])
+            user= get_user(datalist[0])
             del datalist[0]
             del datalist[0]
             return_data = b"getdata"
@@ -89,7 +89,7 @@ def handle_data(connstream, data):
     elif datalist[0] == "getalldata":
         del datalist[0]
         if authenticate_user(datalist[0], datalist[1]) == True:
-            user = getuser(datalist[0])
+            user = get_user(datalist[0])
             return_data = b"getalldata|True|" + str(get_firstname(user)).encode() + b"|" \
             + str(get_lastname(user)).encode() + b"|" + str(get_phonenumber(user)).encode() + b"|"\
             + str(get_post_code(user)).encode() + b"|" + str(get_country(user)).encode() + b"|"\
@@ -104,8 +104,8 @@ def handle_data(connstream, data):
     elif datalist[0] == "deleteuser":
         del datalist[0]
         if authenticate_user(datalist[0], datalist[1]):
-            user = getuser(datalist[0])
-            if deleteuser(user) == True:
+            user = get_user(datalist[0])
+            if delete_user(user) == True:
                 return_data = b"deleteuser|True"
                 connstream.send(return_data)
             else:
