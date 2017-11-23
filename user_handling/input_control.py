@@ -10,7 +10,7 @@ countries = ["norway", "sweden", "denmark", "iceland", "united states", "england
              "germany",]
 countrycodes = ["0047", "0046", "0045", "00354", "0111", "0044", "0049"]
 import datetime
-from database_handling.queries import get_user
+from user_handling.get_user_data import get_user_id
 from datetime import date
 
 
@@ -34,7 +34,7 @@ def check_email(email):
         return False
 def check_email_database(email): 
     try:
-        if get_user(email) == True:
+        if get_user_id(email) == True:
             return False
         else:
             return False

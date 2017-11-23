@@ -6,8 +6,7 @@ and the functions involved with handling passwords
 '''
 
 
-from user_handling.get_user_data import get_hashed_Password
-from database_handling.queries import get_user
+from user_handling.get_user_data import get_hashed_Password, get_user_id
 import bcrypt
 
 
@@ -25,7 +24,7 @@ def authenticate_user(email, password):
         True/False depending on whether the user was authenticated or not
     
     """
-    user = get_user(email)
+    user = get_user_id(email)
     hashed_password = get_hashed_Password(user)
     checker = authenticate_password(hashed_password, password)
     return checker
