@@ -3,7 +3,7 @@ Created on 12. okt. 2017
 
 @author: Alexander Mackenzie-Low
 '''
-from Databasehandling.connect import * #Import connect function
+
 
 
 #print(connectGet('SELECT * FROM information'))
@@ -12,7 +12,7 @@ from Databasehandling.connect import * #Import connect function
 
 #edits
 
-def getuser(email): #enter email get unique ID
+def get_user(email): #enter email get unique ID
     import pymysql
 
     db = pymysql.connect(host="88.88.170.2",  # your host 

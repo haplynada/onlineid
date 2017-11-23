@@ -3,8 +3,8 @@ Created on 12. okt. 2017
 
 @author: Tor Larssen Sekse
 '''
-from userhandling.inputcontrol import *
-from userhandling.authenticateuser import authenticate_user
+from user_handling.input_control import *
+from user_handling.authenticate_user import authenticate_user
 
 def change_email(user, password, email):
     checker = False

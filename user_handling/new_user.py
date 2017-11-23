@@ -3,10 +3,10 @@ Created on 5. okt. 2017
 
 @author: Tor Larssen Sekse, Bjarke
 '''
-from passwordhandling.passwordsecurity import generate_salt, hash_password
-from userhandling.inputcontrol import *
-from userhandling.inputerrors import *
-from Databasehandling.connect import *
+from user_handling.authenticate_user import hash_password,generate_salt
+from user_handling.input_control import *
+from user_handling.input_errors import *
+from database_handling.connect import *
 import pymysql
 
 class storage_error(Exception):

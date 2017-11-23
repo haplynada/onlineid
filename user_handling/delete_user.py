@@ -5,7 +5,7 @@ Created on Nov 2, 2017
 '''
 import pymysql
  
-def deleteuser(user_id):
+def delete_user(user_id):
    
     db = pymysql.connect(host="88.88.170.2",  # your host
          user="server",       # username
