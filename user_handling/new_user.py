@@ -158,9 +158,9 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
             
             cur.execute(add_user, data_user)
 
-            db.commit()
+            cur.commit()
 
-            db.close()
+            cur.close()
             
             checker = True
             return checker

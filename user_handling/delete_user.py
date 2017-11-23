@@ -16,9 +16,9 @@ def delete_user(user_id):
     cur.execute(query, (user_id,))
     
     #Accept changes
-    db.commit()
+    cur.commit()
     
     #Close connection
     cur.close()
-    db.close()
+
     return True

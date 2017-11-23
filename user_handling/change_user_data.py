@@ -17,7 +17,7 @@ def change_email(user, email):
         query = "UPDATE information SET email=%s WHERE user_id=%s"
         cur.execute(query, (email, user))
         # filter and return result  
-        db.commit()
+        cur.commit()
         checker = True
         return checker
 
@@ -31,7 +31,7 @@ def change_firstname(user, first_name):
         query = "UPDATE information SET first_name=%s WHERE user_id=%s"
         cur.execute(query, (first_name, user))
         #filter and return result  
-        db.commit()
+        cur.commit()
         checker = True
         return checker
     else:
@@ -44,7 +44,7 @@ def change_lastname(user, last_name):
         query = "UPDATE information SET last_name=%s WHERE user_id=%s"
         cur.execute(query, (last_name, user))
         # filter and return result  
-        db.commit()
+        cur.commit()
         checker = True
         return checker
     else:
@@ -57,7 +57,7 @@ def change_phonenumber(user, phone_number):
         query = "UPDATE information SET phoneNumber=%s WHERE user_id=%s"
         cur.execute(query, (phone_number, user))
         # filter and return result  
-        db.commit()
+        cur.commit()
         checker = True
         return checker
     else:
@@ -70,7 +70,7 @@ def change_adress(user, adress):
         query = "UPDATE information SET adress=%s WHERE user_id=%s"
         cur.execute(query, (adress, user))
         # filter and return result  
-        db.commit()
+        cur.commit()
         checker = True
         return checker
     else:
@@ -84,7 +84,7 @@ def change_postcode(user, postcode):
     cur.execute(query, (postcode, user_id))
     print("Changed postcode of user_id", user_id, "to", postcode)
 # filter and return result  
-    db.commit()
+    cur.commit()
     
 def change_country(user_id, country):
     cur = connect()
@@ -92,7 +92,7 @@ def change_country(user_id, country):
     cur.execute(query, (country, user_id))
     print("Changed country of user_id", user_id, "to", country)
 # filter and return result  
-    db.commit()
+    cur.commit()
     
 def change_countrycode(user_id, countrycode):
     cur = connect()
@@ -100,13 +100,12 @@ def change_countrycode(user_id, countrycode):
     cur.execute(query, (countrycode, user_id))
     print("Changed country of user_id", user_id, "to", countrycode)
 # filter and return result  
-    db.commit()
-    
-    
+    cur.commit()
+
 def change_birthday(user_id, birthday):
     cur = connect()
     query = "UPDATE information SET birthday=%s WHERE user_id=%s"
     cur.execute(query, (birthday, user_id))
     print("Changed country of user_id", user_id, "to", birthday)
 # filter and return result  
-    db.commit()
+    cur.commit()
