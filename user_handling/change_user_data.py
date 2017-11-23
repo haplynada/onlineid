@@ -76,6 +76,19 @@ def change_adress(user, adress):
     else:
         return checker
     
+def change_adress_number(user, adress_number):
+    checker = False
+    if check_adressnumber(adress_number) == True:
+        cur = connect()
+        query = "UPDATE information SET adress_number=%s WHERE user_id=%s"
+        cur.execute(query, (adress_number, user))
+        # filter and return result  
+        cur.commit()
+        checker = True
+        return checker
+    else:
+        return checker
+    
 def change_postcode(user, postcode):
     checker = False
 

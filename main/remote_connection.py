@@ -46,7 +46,7 @@ from user_handling.delete_user import delete_user
 from user_handling.get_user_data import get_email, get_firstname, get_lastname,\
     get_phonenumber, get_post_code, get_country, get_phone_Country, get_adress,\
     get_adress_number, get_birthday, get_sex, get_user_id
-
+from main.data_handling import edit_user
 
 def handle_data(connstream, data):
     decoded_data =data.decode()
@@ -74,6 +74,7 @@ def handle_data(connstream, data):
     
     elif datalist[0] == "edituser":
         del datalist[0]
+        return_data = edit_user(datalist)
         
     elif datalist[0] == "getdata":
         del datalist[0]
@@ -101,8 +102,8 @@ def handle_data(connstream, data):
                 elif datalist[0] == "getcountrycode": 
                     return_data += b"|getcountrycode|" + str(get_phone_Country(user)).encode()
                 
-                elif datalist[0] == "getadress": 
-                    return_data += b"|getadress|" + str(get_adress(user)).encode()
+                elif datalist[0] == "getaddress": 
+                    return_data += b"|getaddress|" + str(get_adress(user)).encode()
                 
                 elif datalist[0] == "getadressnumber": 
                     return_data += b"getadressnumber|" + str(get_adress_number(user)).encode()

@@ -45,7 +45,7 @@ def generate_salt():
 
 
 def authenticate_password(hashed_password, password):
-    """authenticates provided password against provided hashed_passowrd
+    """authenticates provided password against provided hashed_password
     
     Args: 
         hashed_password: a string containing a hashed password retrieved from the database
