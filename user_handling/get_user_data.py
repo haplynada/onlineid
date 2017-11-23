@@ -31,7 +31,6 @@ def get_all(user_id):
 
 def get_firstname(user_id):
     cur = connect()
-    
     query = "SELECT first_name from information WHERE user_id =%s;"
     cur.execute(query, (user_id))
     result = str(cur.fetchone()[0])
@@ -120,7 +119,6 @@ def get_salt(user_id):
     cur.execute(query, (user_id))
     result = str(cur.fetchone()[0])
     return(result)
-
 
 def get_user_id(email):
     cur = connect()
