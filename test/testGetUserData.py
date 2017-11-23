@@ -3,14 +3,12 @@ Created on Oct 19, 2017
 
 @author: Bjarke Larsen
 '''
-import pymysql
-from userhandling import getuserdata
-from userhandling.getuserdata import get_all, get_firstname, get_lastname, get_adress,\
+from user_handling.get_user_data import get_all, get_firstname, get_lastname, get_adress,\
     get_adress_number, get_post_code, get_country, get_birthday, get_sex,\
     get_phone_Country, get_phonenumber, get_email, get_hashed_Password,\
     get_salt
 
-user_id = 17
+user_id = 1
 
 
 

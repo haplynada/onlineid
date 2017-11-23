@@ -6,7 +6,7 @@ Created on 5. okt. 2017
 from user_handling.authenticate_user import hash_password,generate_salt
 from user_handling.input_control import *
 from user_handling.input_errors import *
-from database_handling.connect import *
+from database_handling.connect import connect
 import pymysql
 
 class storage_error(Exception):
@@ -148,14 +148,7 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
     if errors == "":
         try: 
             
-            db = pymysql.connect(host="88.88.170.2",  # your host 
-                     user="server",       # username
-                     passwd="sudoonlineid",     # password
-                     db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
-                     )   
- 
-            # Create a Cursor object to execute queries.
-            cur = db.cursor()
+            cur = connect()
 
             add_user = ("INSERT INTO information "
                "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email, hashed_Passwords, salt) "

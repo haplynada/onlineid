@@ -4,13 +4,9 @@ Created on 12. okt. 2017
 @author: Alexander Mackenzie-Low, Bjarke Larsen
 '''
 import pymysql
+from database_handling.connect import connect
 
-dbc = pymysql.connect(host="88.88.170.2",  # your host 
-        user="server",       # username
-        passwd="sudoonlineid",     # password
-)
-
-cur = dbc.cursor()
+cur = connect()
 
 query = """CREATE DATABASE IF NOT EXISTS OnlineId;
  
