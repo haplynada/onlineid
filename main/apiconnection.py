@@ -142,7 +142,14 @@ def listen_connection():
         
         try: 
             receive_data(connstream)
+            #Prints the IP and port when a connection is established
+            print(str(connstream.getpeername()) + " Connected")
+            print(str(connstream.getpeercert()))
+            print(connstream.cipher())
+            #end of print block for testing
         finally: 
+            #prints the IP and port when a connection is closed
+            print(str(connstream.getpeername()) + "Disconnected")
             connstream.shutdown(socket.SHUT_RDWR)
             connstream.close()
 listen_connection()
