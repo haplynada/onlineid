@@ -4,6 +4,8 @@ Created on 5. okt. 2017
 @author: Tor Larssen Sekse/Alexander Mackenzie-Low/Bjarke Larsen
 '''
 from database_handling.connect import connect
+import pymysql
+
 
 def get_all(user_id):
     """Fetches all user-data from the database, based on the user_id.
@@ -121,8 +123,19 @@ def get_salt(user_id):
     return(result)
 
 def get_user_id(email):
-    cur = connect()
+    """Gets a user_id based on the email of the user.
+
+    Works as the above mentioned functions.
+    """
+    db = pymysql.connect(host="88.88.170.2",  # your host
+                         user="server",  # username
+                         passwd="sudoonlineid",  # password
+                         db="OnlineID"
+                         # name of the database, commented out since I am creating the DB in the string below
+                         )
+    cur = db.cursor()
     query = "SELECT user_id from information WHERE email =%s;"
-    cur.execute(query, (email))
+    cur.execute(query, email)
+
     result = str(cur.fetchone()[0])
-    return (result)
+    return result

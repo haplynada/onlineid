@@ -1,7 +1,7 @@
 '''
 Created on 5. okt. 2017
 
-@author: Tor Larssen Sekse, Bjarke
+@author: Tor Larssen Sekse, Bjarke Larsen
 '''
 from user_handling.authenticate_user import hash_password,generate_salt
 from user_handling.input_control import *
@@ -12,8 +12,16 @@ import pymysql
 class storage_error(Exception):
     pass
 
-
 def create_user(email, password, firstname, lastname, phone, postcode, country, countrycode, adress, adressnumber, birthday, gender):
+    """Creates a new user in the database.
+
+    Receives the users input from the webpage, checks if the input is valid, and stores it in the database.
+
+    Args:
+        Input: User information like email, first_name etc.
+            Information is either integers or strings, depending
+
+    """
     checker = False
     passwordsalt = generate_salt()
     hashedpassword =""
@@ -147,27 +155,18 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
 
     if errors == "":
         try: 
-            
             cur = connect()
-
             add_user = ("INSERT INTO information "
                "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email, hashed_Passwords, salt) "
                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
-
             data_user = (firstname, lastname, adress, adressnumber, postcode, country, birthday, gender, countrycode, phone, email, hashedpassword, passwordsalt)
-            
             cur.execute(add_user, data_user)
-
             cur.commit()
-
             cur.close()
-            
             checker = True
             return checker
-        
         except storage_error:
             #error handling for database storage/user creation here
             pass
     else:
         return checker, errors
-        
