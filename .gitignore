@@ -13,3 +13,8 @@ userhandling/__pycache__/deleteuser.cpython-36.pyc
 test/__pycache__/__init__.cpython-36.pyc
 test/__pycache__/testtimer.cpython-36.pyc
 Databasehandling/__pycache__/__init__.cpython-36.pyc
+user_handling/__pycache__/new_user.cpython-36.pyc
+user_handling/__pycache__/input_errors.cpython-36.pyc
+user_handling/__pycache__/input_control.cpython-36.pyc
+user_handling/__pycache__/delete_user.cpython-36.pyc
+user_handling/__pycache__/authenticate_user.cpython-36.pyc
