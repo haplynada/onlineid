@@ -12,5 +12,5 @@ def connect():
          )    
      
     # Create a Cursor object to execute queries.
-    cur = db.cursor()
-    return cur
+    #cur = db.cursor()
+    return db

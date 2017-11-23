@@ -16,6 +16,7 @@ send_data2 =b"getdata|sau@sau.no|koktsau42|getgender|getfirstname"
 send_login =b"login|sau@sau.no|koktsau42"
 send_deleteuser =b"deleteuser|sau@sau.no|koktsau42"
 send_getall = b"getalldata|sau@sau.no|koktsau42"
+send_edituser= b"edituser|sau@sau.no|koktsau42|editfirstname|Leif"
 #testdata end
 
 def connect():
@@ -28,7 +29,7 @@ def connect():
     print(sender_ssl.getpeername())
 
 
-    sender_ssl.send(send_data2)
+    sender_ssl.send(send_edituser)
     print(sender_ssl.recv().decode())
 
     sender_ssl.close()
