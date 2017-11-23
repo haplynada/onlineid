@@ -46,7 +46,7 @@ from user_handling.delete_user import delete_user
 from user_handling.get_user_data import get_email, get_firstname, get_lastname,\
     get_phonenumber, get_post_code, get_country, get_phone_Country, get_adress,\
     get_adress_number, get_birthday, get_sex, get_user_id
-from main.data_handling import edit_user
+from connection_handling.data_handling import edit_user
 
 def handle_data(connstream, data):
     decoded_data =data.decode()
