@@ -7,7 +7,7 @@ import pymysql
 from database_handling.connect import connect
  
 def delete_user(user_id):
-   cur = connect()
+    cur = connect()
     
     # Create query
     query = "DELETE FROM information WHERE user_id = %s;"

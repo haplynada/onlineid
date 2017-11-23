@@ -18,3 +18,8 @@ user_handling/__pycache__/input_errors.cpython-36.pyc
 user_handling/__pycache__/input_control.cpython-36.pyc
 user_handling/__pycache__/delete_user.cpython-36.pyc
 user_handling/__pycache__/authenticate_user.cpython-36.pyc
+user_handling/__pycache__/get_user_data.cpython-36.pyc
+user_handling/__pycache__/__init__.cpython-36.pyc
+database_handling/__pycache__/queries.cpython-36.pyc
+database_handling/__pycache__/connect.cpython-36.pyc
+database_handling/__pycache__/__init__.cpython-36.pyc
