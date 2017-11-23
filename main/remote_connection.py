@@ -78,7 +78,7 @@ def handle_data(connstream, data):
         
     elif datalist[0] == "getdata":
         del datalist[0]
-        if authenticate_user(datalist[0], datalist[1]): 
+        if authenticate_user(datalist[0], datalist[1])== True: 
             user= get_user(datalist[0])
             del datalist[0]
             del datalist[0]
@@ -138,7 +138,7 @@ def handle_data(connstream, data):
             
     elif datalist[0] == "deleteuser":
         del datalist[0]
-        if authenticate_user(datalist[0], datalist[1]):
+        if authenticate_user(datalist[0], datalist[1]) == True:
             user = get_user(datalist[0])
             if delete_user(user) == True:
                 return_data = b"deleteuser|True"

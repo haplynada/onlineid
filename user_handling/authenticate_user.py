@@ -4,30 +4,58 @@ authenticate user contains all functions involved in authenticating the user on 
 and the functions involved with handling passwords
 @author: Tor Larssen Sekse
 '''
-#imports functions to get needed data and bcrypt for the password handling
+
+
 from user_handling.get_user_data import get_hashed_Password
 from database_handling.queries import get_user
 import bcrypt
 
-#authenticate_user takes in an email adress and a password, then gets the userid and hashedpassword
-# from the database, and authenticates the user. 
+
 def authenticate_user(email, password):
-    #gathers data from the database
+    """Authenticates the provided email and password with the database
+    
+    uses the email address to get the userid from the database, then get the hashed password
+    from the database and sends those to the authenticate_password function
+    
+    Args: 
+        email: a string containing the users email address
+        password: plain text password as a string, as submitted by the user
+        
+    Returns: 
+        True/False depending on whether the user was authenticated or not
+    
+    """
     user = get_user(email)
     hashed_password = get_hashed_Password(user)
-    #authenticates the password against the hashed one stored in the database
     checker = authenticate_password(hashed_password, password)
-    #returns True/False depending on if the user was authenticated or not
     return checker
 
-#Generates a random salt for use in hashing the password
 def generate_salt():
+    """ generates a random salt
+    
+    Calls bcrypt to generate a random salt for use in hashing the password
+    
+    Args: 
+        None
+        
+    Returns: 
+        random salt as a string
+    """
     salt = bcrypt.gensalt()
     return salt
 
-#takes in hashed_password and password and runs bcrypt.checkpw function to determine if they
-#match. returns True/False
+
 def authenticate_password(hashed_password, password):
+    """authenticates provided password against provided hashed_passowrd
+    
+    Args: 
+        hashed_password: a string containing a hashed password retrieved from the database
+        password: string containing submitted password
+        
+    Returns: 
+        True/False depending on whether the user was authenticated or not
+    
+    """
     checker = False
     if bcrypt.checkpw(password.encode(), hashed_password.encode()):
         checker = True
@@ -35,7 +63,21 @@ def authenticate_password(hashed_password, password):
         checker = False
     return checker
 
-#Takes in a salt and password and run bcrypt.hashpw and returns the hashed password
 def hash_password(salt, password):
+    """hashes passwords
+    
+    uses bcrypt to call hashpw to hash password and salt for storage in database 
+    
+    Args: 
+        salt: random generated salt as a string used for making brute 
+            forcing the hashed_password harder
+        password:a string containing a password as entered by the user
+        
+    Returns: 
+        string containing a hashed_password ready to be stored in the database
+    
+    """
     hashed_password = bcrypt.hashpw(password.encode(), salt)
     return hashed_password
+
+
