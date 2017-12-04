@@ -81,7 +81,7 @@ def get_birthday(user_id):
         result = str(db.cur.fetchone()[0])
         return(result)
  
-def get_sex(user_id):
+def get_gender(user_id):
     with Connect() as db: 
         query = "SELECT sex from information WHERE user_id =%s;"
         db.cur.execute(query, (user_id))

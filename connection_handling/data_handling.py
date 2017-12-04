@@ -6,8 +6,8 @@ These functions contain data parsing and function calls.
 @author: Tor Larssen Sekse
 '''
 from user_handling.change_user_data import change_firstname, change_lastname,\
-    change_phonenumber, change_postcode, change_country, change_countrycode,\
-    change_adress, change_adress_number, change_birthday
+    change_phonenumber, change_post_code, change_country, change_countrycode,\
+    change_adress, change_adress_number, change_birthday, change_gender, change_password
 from user_handling.get_user_data import get_user_id
 from user_handling.authenticate_user import authenticate_user
 
@@ -32,6 +32,7 @@ def edit_user(datalist):
         del datalist[0]
         return_data = b"edituser"
         while len(datalist) != 0:
+            
             if datalist[0] == "editfirstname":
                 if change_firstname(user_id, datalist[1]) == True:
                     return_data += b"|editfirstname|True"
@@ -51,7 +52,7 @@ def edit_user(datalist):
                     return_data += b"|editphone|False"
                 
             elif datalist[0] == "editpostcode": 
-                if change_postcode(user_id, datalist[1]) == True:
+                if change_post_code(user_id, datalist[1]) == True:
                     return_data += b"|editpostcode|True" 
                 else: 
                     return_data += b"|editpostcode|False" 
@@ -87,7 +88,16 @@ def edit_user(datalist):
                     return_data += b"|editbirthday|False"
                 
             elif datalist[0] == "editgender": 
-                return_data += b"|editgender|doesnotcompute"
+                if change_gender(user_id, datalist[1]) == True:
+                    return_data += b"|editgender|True"
+                else: 
+                    return_data += b"|editgender|False"
+                    
+            elif datalist[0] == "editpassword":
+                if change_password(user_id, datalist[1]) == True:
+                    return_data += b"|editpassword|True"
+                else: 
+                    return_data += b"editpassword|False"
         
             else:
                 return_data += b"editdata|False|invalidquery"

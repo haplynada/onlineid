@@ -45,7 +45,7 @@ from user_handling.new_user import create_user
 from user_handling.delete_user import delete_user
 from user_handling.get_user_data import get_email, get_firstname, get_lastname,\
     get_phonenumber, get_post_code, get_country, get_phone_Country, get_adress,\
-    get_adress_number, get_birthday, get_sex, get_user_id
+    get_adress_number, get_birthday, get_gender, get_user_id
 from connection_handling.data_handling import edit_user
 
 def handle_data(connstream, data):
@@ -112,7 +112,7 @@ def handle_data(connstream, data):
                     return_data += b"|getbirthday|" + str(get_birthday(user)).encode()
                 
                 elif datalist[0] == "getgender": 
-                    return_data += b"|getgender|" + str(get_sex(user)).encode()
+                    return_data += b"|getgender|" + str(get_gender(user)).encode()
         
                 else:
                     return_data += b"getdata|False|invalidquery"
@@ -130,7 +130,7 @@ def handle_data(connstream, data):
             + str(get_post_code(user)).encode() + b"|" + str(get_country(user)).encode() + b"|"\
             + str(get_phone_Country(user)).encode() + b"|" + str(get_adress(user)).encode() + b"|"\
             + str(get_adress_number(user)).encode() + b"|" + str(get_birthday(user)).encode() + b"|"\
-            + str(get_sex(user)).encode()
+            + str(get_gender(user)).encode()
             connstream.send(return_data)
         else: 
             return_data = b"getalldata|False|invaliduser"
