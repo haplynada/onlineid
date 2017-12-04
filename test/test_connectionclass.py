@@ -3,16 +3,32 @@ Created on 23. nov. 2017
 
 @author: Tor Larssen Sekse
 '''
-from test.ConnectClass import Connect
+from test.ConnectClass import Connect 
+from user_handling.input_control import check_firstname
 
-cur = Connect
+
 user_id = "1"
 birthday = "2017-01-01"
+user = "1"
+first_name = "Sau"
 
-def change_birthday(user_id, birthday):
-    query = "UPDATE information SET birthday=%s WHERE user_id=%s"
-    Connect.query(query, birthday)
-    print("Changed country of user_id", user_id, "to", birthday)
+with Connect() as db:
+    query = "SELECT first_name from information WHERE user_id =%s;"
+    db.cur.execute(query, (user_id))
+    result = str(db.cur.fetchone()[0])
+    print(result)
+
+def change_firstname(user, first_name):
+    checker = False
+    if check_firstname(first_name) == True:
+        with Connect() as db:
+            query = "UPDATE information SET first_name=%s WHERE user_id=%s"
+            db.cur.execute(query, (first_name, user))
+            #filter and return result  
+            db.conn.commit()
+            checker = True
+            return checker
+    else:
+        return checker
     
-
-change_birthday(user_id, birthday)
+print(change_firstname(user, first_name))

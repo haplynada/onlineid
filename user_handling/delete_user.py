@@ -3,7 +3,7 @@ Created on Nov 2, 2017
  
 @author: Bjarke Larsen
 '''
-from database_handling.connect import connect
+from database_handling.connect import Connect
  
 def delete_user(user_id):
     """Deletes all data stored about a user in the database.
@@ -18,9 +18,8 @@ def delete_user(user_id):
         Returns:
             None
         """
-    cur = connect()
-    query = "DELETE FROM information WHERE user_id = %s;"
-    cur.execute(query, (user_id,))
-    cur.commit()
-    cur.close()
-    return True
+    with Connect() as db: 
+        query = "DELETE FROM information WHERE user_id = %s;"
+        db.cur.execute(query, (user_id,))
+        db.conn.commit()
+        return True

@@ -3,8 +3,8 @@ Created on 5. okt. 2017
 
 @author: Tor Larssen Sekse/Alexander Mackenzie-Low/Bjarke Larsen
 '''
-from database_handling.connect import connect
-import pymysql
+from database_handling.connect import Connect
+
 
 
 def get_all(user_id):
@@ -24,118 +24,112 @@ def get_all(user_id):
 
     This aproach goes for every function below, but they only return one value based on the user_id.
     """
-    cur = connect()
-    query = "SELECT * from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchall()[0])
-    return(result)
+    
+    with Connect as db: 
+        query = "SELECT * from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchall()[0])
+        return(result)
 
 
 def get_firstname(user_id):
-    cur = connect()
-    query = "SELECT first_name from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db:
+        query = "SELECT first_name from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
 
 def get_lastname(user_id):
-    cur = connect()
-    query = "SELECT last_name from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db:
+        query = "SELECT last_name from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
        
 def get_adress(user_id):
-    cur = connect()
-    query = "SELECT adress from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db:
+        query = "SELECT adress from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
    
 def get_adress_number(user_id):
-    cur = connect()
-    query = "SELECT adress_number from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db:
+        query = "SELECT adress_number from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
   
 def get_post_code(user_id):
-    cur = connect()
-    query = "SELECT zip_code from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db:
+        query = "SELECT zip_code from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
    
 def get_country(user_id):
-    cur = connect()
-    query = "SELECT country from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db: 
+        query = "SELECT country from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
  
 def get_birthday(user_id):
-    cur = connect()
-    query = "SELECT birthday from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db:
+        query = "SELECT birthday from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
  
 def get_sex(user_id):
-    cur = connect()
-    query = "SELECT sex from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db: 
+        query = "SELECT sex from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
   
 def get_phone_Country(user_id):
-    cur = connect()
-    query = "SELECT phone_Countrycode from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db:
+        query = "SELECT phone_Countrycode from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
   
 def get_phonenumber(user_id):
-    cur = connect()
-    query = "SELECT phonenumber from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db: 
+        query = "SELECT phonenumber from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
   
 def get_email(user_id):
-    cur = connect()
-    query = "SELECT email from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db: 
+        query = "SELECT email from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
  
 def get_hashed_Password(user_id):
-    cur = connect()
-    query = "SELECT hashed_Passwords from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db: 
+        query = "SELECT hashed_Passwords from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
    
 def get_salt(user_id):
-    cur = connect()
-    query = "SELECT salt from information WHERE user_id =%s;"
-    cur.execute(query, (user_id))
-    result = str(cur.fetchone()[0])
-    return(result)
+    with Connect() as db: 
+        query = "SELECT salt from information WHERE user_id =%s;"
+        db.cur.execute(query, (user_id))
+        result = str(db.cur.fetchone()[0])
+        return(result)
 
 def get_user_id(email):
     """Gets a user_id based on the email of the user.
 
     Works as the above mentioned functions.
     """
-    db = pymysql.connect(host="88.88.170.2",  # your host
-                         user="server",  # username
-                         passwd="sudoonlineid",  # password
-                         db="OnlineID"
-                         # name of the database, commented out since I am creating the DB in the string below
-                         )
-    cur = db.cursor()
-    query = "SELECT user_id from information WHERE email =%s;"
-    cur.execute(query, email)
-
-    result = str(cur.fetchone()[0])
-    return result
+    with Connect() as db: 
+        query = "SELECT user_id from information WHERE email =%s;"
+        db.cur.execute(query, email)
+        result = str(db.cur.fetchone()[0])
+        return result
