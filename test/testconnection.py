@@ -11,12 +11,13 @@ import socket, ssl
 import timeit
 
 # testdata
-send_data = b"newuser|sau@sauene.no|koktsau42|Sau|Sausen|12398456|2520|Norway|0047|Faareveien|42|2004-01-01|female"
+send_data = b"newuser|sau@sau.no|koktsau42|Sau|Sausen|12398456|2520|Norway|0047|Faareveien|42|2004-01-01|female"
 send_data2 = b"getdata|sau@sau.no|koktsau42|getfirstname"
 send_login = b"login|sau@sau.no|koktsau42"
 send_deleteuser = b"deleteuser|sau@sauene.no|koktsau42"
 send_getall = b"getalldata|sau@sau.no|koktsau42"
-send_edituser = b"edituser|sau@sau.no|koktsau42|editfirstname|Leif"
+send_edituser = b"edituser|sau@sau.no|koktsau42|editfirstname|Sau"
+send_changepassword = b"edituser|sau@sau.no|koktsau42|editpassword|newpassword"
 
 
 # testdata end
