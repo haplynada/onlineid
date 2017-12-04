@@ -7,7 +7,7 @@ the user before posting their data
 '''
 from user_handling.input_control import *
 import pymysql
-from database_handling.connect import connect
+from database_handling.connect import Connect
 
 
 def change_email(user, email):
