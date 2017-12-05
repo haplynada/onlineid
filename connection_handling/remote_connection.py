@@ -75,6 +75,7 @@ def handle_data(connstream, data):
     elif datalist[0] == "edituser":
         del datalist[0]
         return_data = edit_user(datalist)
+        connstream.send(return_data)
         
     elif datalist[0] == "getdata":
         del datalist[0]
