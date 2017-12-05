@@ -17,27 +17,13 @@ class Connect(object):
         
     def __enter__(self):
         return Connect()
-    """
+    
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.conn:
             self.conn.close()
-            """
+            
     def close(self):
         if self.conn:
             self.conn.close()
 
 
-"""
-Not in use/broken commented for "keeping"
-
-def connect():
-    db = pymysql.connect(host="88.88.170.2",  # your host 
-         user="server",       # username
-         passwd="sudoonlineid",     # password
-         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
-         )    
-     
-    # Create a Cursor object to execute queries.
-    #cur = db.cursor()
-    return db
-"""
