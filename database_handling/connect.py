@@ -17,11 +17,11 @@ class Connect(object):
         
     def __enter__(self):
         return Connect()
-    
+    """
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.conn:
             self.conn.close()
-            
+            """
     def close(self):
         if self.conn:
             self.conn.close()
