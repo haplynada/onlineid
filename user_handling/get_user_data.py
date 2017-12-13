@@ -25,7 +25,7 @@ def get_all(user_id):
     This aproach goes for every function below, but they only return one value based on the user_id.
     """
     
-    with Connect as db: 
+    with Connect() as db: 
         query = "SELECT * from information WHERE user_id =%s;"
         db.cur.execute(query, (user_id))
         result = str(db.cur.fetchall()[0])
