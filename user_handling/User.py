@@ -16,7 +16,6 @@ Created on 13. des. 2017
 '''
 from database_handling.connect import Connect
 from user_handling.input_control import *
-from user_handling.get_user_data import get_user_id, get_all
 import bcrypt
 from user_handling import authenticate_user
 
@@ -28,13 +27,30 @@ class User(object):
     
     def __init__(self, email, password):
         """
-         
+        __init__ takes in the users email and password, tries to match the email
+        and email in the database, if the email is present in the database it will
+        then grab all data related to that user and add it to internal variables
+        
+        it also contains the housekeeping variables 
+        __is_authenticated which is there to make sure that the user is only
+            authenticated once, this is to avoid bcrypt slowing down operations
+        __change which is there to track whether changes have been made to data
+            so we can avoid unneeded commits to the database
+        Args: 
+            email: a string containing the users email
+            password: a string containing the users password
+        Returns: 
+            will return None if the email is invalid, in cases the is_user variable
+            can be used to verify that the user is not present in the database
         """
+        #setting variables using input
         self.__email = email
         self.__password = password
+        #housekeeping variables
         self.__is_authenticated = None
         self.__change = False
-        with Connect() as db: 
+        
+        with Connect() as db: #connecting to database
             #uses email to get user_id
             try: 
                 query = "SELECT user_id from information WHERE email =%s;"
@@ -64,6 +80,9 @@ class User(object):
         
         
     def print_data(self):
+        """
+        testmethod to determine correct operation of the init method
+        """
         print(type(self.__data))
         print(self.__email)
         print(self.__password)
@@ -114,6 +133,10 @@ class User(object):
     
     def authenticate(self):
         """Authenticates the active instance of user
+        
+        also sets the private is_authenticated variable so that the authentication
+        olny needs to run once, this is to keep bcrypt from slowing down the program
+        with repeated authenticate calls. 
     
         Args: 
             self
@@ -231,23 +254,34 @@ class User(object):
             return False
     
     def commit_changes(self):
-        if self.__change == True:
-            if self.authenticate() == True:
-                pass
-                with Connect() as db:
+        """
+        This method only executes if any changes have been done to self by the
+        user. If changes have been made it will authenticate the user, 
+        if the user is authenticated. All variables will be committed to the 
+        database as they are. Changes will then be committed. 
+        
+        Args: 
+            None
+        Returns: 
+            True/False depending on whether data was commited or not
+        """
+        
+        if self.__change == True: #checks for changes
+            if self.authenticate() == True: #authenticates user
+                with Connect() as db: #connects to the database
                     query = ("UPDATE information SET"
                             " email=%s"
-                            " first_name=%s"
-                            " last_name=%s"
-                            " phoneNumber=%s"
-                            " adress=%s"
-                            " adress_number=%s"
-                            " zip_code=%s"
-                            " country=%s"
-                            " phone_Countrycode=%s"
-                            " birthday=%s"
-                            " sex=%s"
-                            " hashed_passwords=%s" 
+                            ", first_name=%s"
+                            ", last_name=%s"
+                            ", phoneNumber=%s"
+                            ", adress=%s"
+                            ", adress_number=%s"
+                            ", zip_code=%s"
+                            ", country=%s"
+                            ", phone_Countrycode=%s"
+                            ", birthday=%s"
+                            ", sex=%s"
+                            ", hashed_passwords=%s" 
                             " WHERE user_id=%s")
                     db.cur.execute(query, (self.__email, self.__first_name, self.__last_name, 
                                            self.__phone_number, self.__adress, self.__adress_number, 
