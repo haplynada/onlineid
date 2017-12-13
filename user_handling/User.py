@@ -15,8 +15,10 @@ Created on 13. des. 2017
 @author: Tor Larssen Sekse
 '''
 from database_handling.connect import Connect
+from user_handling.input_control import *
 from user_handling.get_user_data import get_user_id, get_all
 import bcrypt
+from user_handling import authenticate_user
 
 class User(object):
     """
@@ -31,6 +33,7 @@ class User(object):
         self.__email = email
         self.__password = password
         self.__is_authenticated = None
+        self.__change = False
         with Connect() as db: 
             #uses email to get user_id
             try: 
@@ -122,14 +125,140 @@ class User(object):
         if self.__is_authenticated != None:
             return self.__is_authenticated
         else: 
-            checker = False
             if bcrypt.checkpw(self.__password.encode(), self.__hashed_password.encode()):
                 self.__is_authenticated = True
             else:
                 self.__is_authenticated = False
             return self.__is_authenticated
+        
+    def set_email(self, email):
+        if check_email(email) == True:
+            self.__email = email
+            self.__change = True
+            return True
+        else:
+            return False
     
+    def set_firstname(self, firstname):
+        if check_firstname(firstname) == True:
+            self.__first_name = firstname
+            self.__change = True
+            return True
+        else:
+            return False
+        
+    def set_lastname(self, lastname):
+        if check_lastname(lastname) == True:
+            self.__last_name = lastname
+            self.__change = True
+            return True
+        else: 
+            return False
+        
+    def set_phonenumber(self, phonenumber):
+        if check_phonenumber(phonenumber) == True:
+            self.__phone_number = phonenumber
+            self.__change = True
+            return True
+        else:
+            return False
+        
+    def set_adress(self, adress):
+        if check_adress(adress) == True:
+            self.__adress = adress
+            self.__change = True
+            return True
+        else: 
+            return False
+        
+    def set_adress_number(self, adress_number):
+        if check_adressnumber(adress_number) == True:
+            self.__adress_number = adress_number
+            self.__change = True
+            return True
+        else: 
+            return False
+        
+    def set_postcode(self, postcode):
+        if check_postcode(postcode) == True:
+            self.__post_code = postcode
+            self.__change = True
+            return True
+        else: 
+            return False
+        
+    def set_country(self, country):
+        if check_country(country) == True:
+            self.__country = country
+            self.__change = True
+            return True
+        else: 
+            return False
+        
+    def set_country_code(self, country_code):
+        if check_countrycode(country_code) == True:
+            self.__country_code = country_code
+            self.__change = True
+            return True
+        else: 
+            return False
+        
+    def set_birthday(self, birthday):
+        if check_birthday(birthday) == True:
+            self.__birthday = birthday
+            self.__change = True
+            return True
+        else: 
+            return False
+        
+    def set_gender(self, gender):
+        if check_gender(gender) == True:
+            self.__gender = gender
+            self.__change = True
+            return True
+        else: 
+            return False
+        
+    def set_password(self, password):
+        if self.authenticate() == True:
+            if check_password(password) == True:
+                password_salt = authenticate_user.generate_salt()
+                hashed_password = authenticate_user.hash_password(password_salt, password)
+                self.__hashed_password = hashed_password
+                self.__change = True
+                return True
+        else:
+            return False
     
+    def commit_changes(self):
+        if self.__change == True:
+            if self.authenticate() == True:
+                pass
+                with Connect() as db:
+                    query = ("UPDATE information SET"
+                            " email=%s"
+                            " first_name=%s"
+                            " last_name=%s"
+                            " phoneNumber=%s"
+                            " adress=%s"
+                            " adress_number=%s"
+                            " zip_code=%s"
+                            " country=%s"
+                            " phone_Countrycode=%s"
+                            " birthday=%s"
+                            " sex=%s"
+                            " hashed_passwords=%s" 
+                            " WHERE user_id=%s")
+                    db.cur.execute(query, (self.__email, self.__first_name, self.__last_name, 
+                                           self.__phone_number, self.__adress, self.__adress_number, 
+                                           self.__post_code, self.__country, self.__country_code,
+                                           self.__birthday, self.__gender, self.__hashed_password,
+                                           self.__user_id))
+                    db.conn.commit()
+                    return True
+        else:
+            return False
+            
     
     
 

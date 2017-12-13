@@ -9,7 +9,7 @@ from user_handling.User import User
 import timeit
 
 
-user = User("sau@sau.no", "koktsau4")
+user = User("sau@sau.no", "koktsau42")
 
 if user.is_user():
     user.print_data()
@@ -20,6 +20,8 @@ if user.is_user():
     print(user.authenticate())
     print(timeit.timeit(user.authenticate, number=1))
     print(timeit.timeit(user.authenticate, number=1))
+    user.set_adress_number("43")
+    user.commit_changes() 
 else:
     print("user not registered")
 
