@@ -6,6 +6,20 @@ Created on 13. des. 2017
 
 from user_handling.get_user_data import get_all, get_firstname
 from user_handling.User import User
+import timeit
 
-user = User("sau@sau.no", "koktsau42")
-user.print_data()
+
+user = User("sau@sau.no", "koktsau4")
+
+if user.is_user():
+    user.print_data()
+    print(timeit.timeit(user.authenticate, number=1))
+    if user.authenticate():
+        print("yay")
+    print(timeit.timeit(user.authenticate, number=1))
+    print(user.authenticate())
+    print(timeit.timeit(user.authenticate, number=1))
+    print(timeit.timeit(user.authenticate, number=1))
+else:
+    print("user not registered")
+
