@@ -106,5 +106,3 @@ def edit_user(datalist):
         return return_data
     else:
         return b"editdata|False|invaliduser"
-
-        

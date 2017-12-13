@@ -6,6 +6,9 @@ Created on 5. okt. 2017
 import pymysql
 
 class Connect(object):
+    """ Establish a connection to the database.
+    ?
+    """
     
     def __init__(self):
         self.conn = pymysql.connect(host="88.88.170.2",  # your host 
