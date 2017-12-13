@@ -12,9 +12,7 @@ def create_database():
     """
     with Connect() as db:
 
-        query = """CREATE DATABASE IF NOT EXISTS OnlineId;
-         
-        USE OnlineId;
+        query = """CREATE DATABASE IF NOT EXISTS onlineId;
          
         CREATE TABLE IF NOT EXISTS information (
                             first_name varchar(50) NOT NULL,
@@ -61,6 +59,7 @@ def create_database():
          """
         # Select data from table using SQL query.
         db.cur.execute(query)
+
 
         db.cur.execute("SELECT * FROM information")
 
