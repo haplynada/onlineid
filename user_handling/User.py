@@ -93,6 +93,14 @@ class User(object):
         print(self.__birthday)
         
     def is_user(self):
+        """is_user returns True if the user is registered, False if not
+        
+        Args: 
+            None
+        Returns: 
+            True/False depending on whether the user is registered or not
+        
+        """
         return self.__is_user
         
     def get_firstname(self):
@@ -263,7 +271,7 @@ class User(object):
         Args: 
             None
         Returns: 
-            True/False depending on whether data was commited or not
+            True/False depending on whether data was committed or not
         """
         
         if self.__change == True: #checks for changes
@@ -293,6 +301,21 @@ class User(object):
         else:
             return False
             
+    def delete(self):
+        """Deletes the active instance of user from the database. 
+            THIS IS NOT REVERSIBLE!
+            THE DATA WILL BE GONE FROM THE DATABASE!
+        
+        Args: 
+            None
+        Returns: 
+            True when the user is deleted
+        """
+        with Connect() as db: #Connects of the database
+            query = "DELETE FROM information WHERE user_id = %s;"
+            db.cur.execute(query, (self.__user_id,))
+            db.conn.commit()
+            return True
     
     
 
