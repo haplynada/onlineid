@@ -30,3 +30,4 @@ connection_handling/__pycache__/__init__.cpython-36.pyc
 test/__pycache__/ConnectClass.cpython-36.pyc
 test/__pycache__/test_connectionclass.cpython-36.pyc
 user_handling/__pycache__/User.cpython-36.pyc
+connection_handling/__pycache__/data_handling_userclass.cpython-36.pyc
