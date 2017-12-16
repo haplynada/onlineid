@@ -15,7 +15,7 @@ def create_object():
     user = User("sau@sau.no", "koktsau43")
     if user.is_user():
         user.print_data()
-        print("time: " + str(timeit.timeit(user.authenticate, number=1)))
+        print("time: " + str(timeit.timeit(user.authenticate, number=10)))
     if user.authenticate():
         print("yay")
         print(timeit.timeit(user.authenticate, number=1))

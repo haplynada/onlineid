@@ -1,5 +1,33 @@
 '''
 Created on 14. des. 2017
+Dataformats: 
+    all data sendt to the server over the secure socket should be in the following formats
+Login: 
+    To server: login|email|password
+    From server: login|boolean
+
+Getdata
+    To server: getdata|email|password|(getdatatype ex:getfirstname)|additionaldatatype|...
+    From server: getdata|(getdatatype ex:getfirstname)|data|additionalreturndata|...
+    Error: getdata|False|reason
+
+Getalldata
+    To server: getalldata|email|password
+    From server: getalldata|True|firstname|lastname|phone|postcode|country|countrycode|adress|adressnumber|birthday|gender
+    Error: 
+    getalldata|False|reason
+
+Newuser
+    To server: newuser|email|password|firstname|lastname|phone|postcode|country|countrycode|adress|adressnumber|birthday|gender
+    From server: newuser|boolean|reason
+
+Edituser
+    To server: edituser|email|password|(editdatatype ex:editfirstname)|newdata|additionaleditdatatype|additionalnewdata|...
+    From server: edituser|boolean|reason
+
+Deleteuser:
+    To server: deleteuser|email|password
+    From server: deleteuser|boolean|reason
 
 @author: Tor Larssen Sekse
 '''
@@ -10,37 +38,55 @@ from user_handling.new_user import create_user
 from user_handling.User import User
 
 def handle_data(connstream, data):
+    """
+    Handle data receives a string sent from the client over secure sockets, parses
+    the string into keyqords, and calls methods from the User class and other 
+    functions, to process the requests from the client. 
+    
+    Args: 
+        Connstream:a secure sockets connection to the client 
+        data: a string containing the data received from the client
+    Returns: 
+        False when done, handle_data sends the result from the data processing 
+        back to the client before it returns False. 
+    
+    """
+    #
     decoded_data =data.decode()
     datalist = decoded_data.split("|")
-    user = User(datalist[1], datalist[2])
+    
+    user = User(datalist[1], datalist[2]) #setting up the user object
     
     if datalist[0] == "newuser": #Parses the new user from client and add the new user to the database
         del datalist[0]
+        #creates a new user with the provided data
         if create_user(datalist[0], datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7], datalist[8], datalist[9], datalist[10], datalist[11]) ==True:
             return_data=b"newuser|True"
             connstream.send(return_data)
-        else:
+        else: #returns errors if user creation failed
             errors = create_user(datalist[0], datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7], datalist[8], datalist[9], datalist[10], datalist[11])
             return_data= b"newuser|false|" + str(errors).encode()
             connstream.send(return_data)
         
-    elif datalist[0] == "login": # 
-        if user.authenticate() == True:
+    elif datalist[0] == "login": # parses a login request from the client 
+        if user.authenticate() == True: #authenticates the user
             return_data = b"login|True"
             connstream.send(return_data)
             
         else:
             connstream.send(b"login|False")
     
-    elif datalist[0] == "edituser":
+    elif datalist[0] == "edituser":#parses an edituser request from the client
         return_data = edit_user(user, datalist)
         connstream.send(return_data)
         
-    elif datalist[0] == "getdata":
+    elif datalist[0] == "getdata":#parses a get request from the client
         return_data = get_data(user, datalist)
         connstream.send(return_data) 
             
-    elif datalist[0] == "getalldata":
+    elif datalist[0] == "getalldata":#parses a getall request from client
+        #authenticates the user and returns all available data to the client
+        #if the user is authenticated
         if user.authenticate() == True:
             return_data = b"getalldata|True|" + str(user.get_firstname()).encode() + b"|" \
             + str(user.get_lastname()).encode() + b"|" + str(user.get_phonenumber()).encode() + b"|"\
@@ -49,13 +95,13 @@ def handle_data(connstream, data):
             + str(user.get_adress_number()).encode() + b"|" + str(user.get_birthday()).encode() + b"|"\
             + str(user.get_gender()).encode()
             connstream.send(return_data)
-        else: 
+        else: #returns a error message if the user is not authenticated
             return_data = b"getalldata|False|invaliduser"
             connstream.send(return_data)
             
-    elif datalist[0] == "deleteuser":
-        if user.authenticate() == True:
-            if user.delete() == True:
+    elif datalist[0] == "deleteuser":#parses a deleteuser request from client
+        if user.authenticate() == True:#authenticates the user
+            if user.delete() == True:#deletes all data about the active user from the databse
                 return_data = b"deleteuser|True"
                 connstream.send(return_data)
             else:
@@ -146,7 +192,7 @@ def edit_user(user, datalist):
     if user.authenticate() == True: 
         
         return_data = b"edituser"
-        while len(datalist) != 0:
+        while len(datalist) != 0:#while there is data to process, processes data
             
             if datalist[0] == "editfirstname":
                 if user.set_firstname(datalist[1]) == True:

@@ -17,7 +17,7 @@ send_login = b"login|sau@sau.no|koktsau42"
 send_deleteuser = b"deleteuser|sau@sauene.no|koktsau42"
 send_getall = b"getalldata|sau@sau.no|koktsau42"
 send_edituser = b"edituser|sau@sau.no|koktsau42|editfirstname|Sau"
-send_changepassword = b"edituser|sau@sau.no|koktsau42|editpassword|newpassword42"
+send_changepassword = b"edituser|sau@sau.no|koktsau42|editpassword|koktsau42"
 
 
 # testdata end
@@ -37,4 +37,4 @@ def connect():
     sender_ssl.close()
 
 
-print(timeit.timeit(connect, number=1))
+print(timeit.timeit(connect, number=1000))
