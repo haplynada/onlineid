@@ -20,7 +20,11 @@ import bcrypt
 from user_handling import authenticate_user
 
 class User(object):
-    """
+    """The user object gathers all data related to the email and password and
+    allows it to be returned or manipulated by the data handling functions. 
+    
+    commit_changes() needs to be called after edits have been done to ensure
+    that changes are committed to the database.
     
     """
     
