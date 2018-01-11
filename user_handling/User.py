@@ -166,7 +166,20 @@ class User(object):
                 self.__is_authenticated = False
             return self.__is_authenticated
         
+        
     def set_email(self, email):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            email: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_email(email) == True:
             self.__email = email
             self.__change = True
@@ -175,6 +188,18 @@ class User(object):
             return False
     
     def set_firstname(self, firstname):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            firstname: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_firstname(firstname) == True:
             self.__first_name = firstname
             self.__change = True
@@ -183,6 +208,18 @@ class User(object):
             return False
         
     def set_lastname(self, lastname):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            lastname: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_lastname(lastname) == True:
             self.__last_name = lastname
             self.__change = True
@@ -191,6 +228,18 @@ class User(object):
             return False
         
     def set_phonenumber(self, phonenumber):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            phonenumber: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_phonenumber(phonenumber) == True:
             self.__phone_number = phonenumber
             self.__change = True
@@ -199,6 +248,18 @@ class User(object):
             return False
         
     def set_adress(self, adress):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            adress: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_adress(adress) == True:
             self.__adress = adress
             self.__change = True
@@ -207,6 +268,18 @@ class User(object):
             return False
         
     def set_adress_number(self, adress_number):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            adress_number: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_adressnumber(adress_number) == True:
             self.__adress_number = adress_number
             self.__change = True
@@ -215,6 +288,18 @@ class User(object):
             return False
         
     def set_postcode(self, postcode):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            postcode: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_postcode(postcode) == True:
             self.__post_code = postcode
             self.__change = True
@@ -223,6 +308,18 @@ class User(object):
             return False
         
     def set_country(self, country):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            country: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_country(country) == True:
             self.__country = country
             self.__change = True
@@ -231,6 +328,18 @@ class User(object):
             return False
         
     def set_country_code(self, country_code):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            country_code: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_countrycode(country_code) == True:
             self.__country_code = country_code
             self.__change = True
@@ -239,6 +348,18 @@ class User(object):
             return False
         
     def set_birthday(self, birthday):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            birthday: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_birthday(birthday) == True:
             self.__birthday = birthday
             self.__change = True
@@ -247,6 +368,18 @@ class User(object):
             return False
         
     def set_gender(self, gender):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        
+        Args: 
+            self: 
+            gender: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if check_gender(gender) == True:
             self.__gender = gender
             self.__change = True
@@ -255,6 +388,19 @@ class User(object):
             return False
         
     def set_password(self, password):
+        """
+        The set data methods calls the input_control functions corresponding 
+        to the data type to be changes and then edits that variable in the 
+        active instance of the User class, user.commit_changes needs to be 
+        called to save any changes to the database!
+        When the password is changed, a new salt is also generated for the user
+        
+        Args: 
+            self: 
+            email: new data
+        Returns: 
+            True/False depending on whether the changes was successful or not
+        """
         if self.authenticate() == True:
             if check_password(password) == True:
                 password_salt = authenticate_user.generate_salt()

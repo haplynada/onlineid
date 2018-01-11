@@ -268,15 +268,39 @@ def edit_user(user, datalist):
     else:
         return b"editdata|False|invaliduser"
 
-def receive_data(connstream):   
+
+def receive_data(connstream): 
+    """
+    receive data taks inn a connection, and reads data from
+    the connection until there is data present. When it detects data it will
+    start the data processing. 
+    
+    Args: 
+        connstream: connection object
+    Returns: 
+        None
+    """  
     data=connstream.read()
     while data:
         if not handle_data(connstream, data):
             break
         data=connstream.read()
 
+
 def listen_connection():
+    """
+    listen_connection, listen on the set port for incoming connections, and
+    then uses the set certfile to add an SSL layer to the socket. It will then 
+    try to recieve data from the established connection. 
     
+    listen connection temporarily prints out information on incoming connections
+    to the console. 
+    
+    Args: 
+        none
+    Returns: 
+        none
+    """
     listener = socket.socket()
     host = socket.gethostname()
     port = 22025
