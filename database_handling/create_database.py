@@ -63,7 +63,7 @@ def create_database():
                      """
         # Execute the query
         db.cur.execute(query)
-        db.commit()
+        db.conn.commit()
 
 if __name__ == "__main__":
     create_database()
