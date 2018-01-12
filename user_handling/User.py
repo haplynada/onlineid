@@ -18,6 +18,8 @@ from database_handling.connect import Connect
 from user_handling.input_control import *
 import bcrypt
 from user_handling import authenticate_user
+from user_handling import otp_handling
+from test.test_OTP import check_otp
 
 class User(object):
     """The user object gathers all data related to the email and password and
@@ -29,7 +31,7 @@ class User(object):
     """
     
     
-    def __init__(self, email, password):
+    def __init__(self, email, password, otp=None):
         """
         __init__ takes in the users email and password, tries to match the email
         and email in the database, if the email is present in the database it will
@@ -50,6 +52,7 @@ class User(object):
         #setting variables using input
         self.__email = email
         self.__password = password
+        self.__otp = otp
         #housekeeping variables
         self.__is_authenticated = None
         self.__change = False
@@ -81,6 +84,8 @@ class User(object):
         self.__phone_number = self.__data[8]
         self.__gender = self.__data[10]
         self.__hashed_password = self.__data[11]
+        self.__has_2fa = self.__data[12]
+        self.__2fa_secret = self.__data[13]
         
         
     def print_data(self):
@@ -143,6 +148,9 @@ class User(object):
     def get_email(self):
         return self.__email
     
+    def get_has_2fa(self):
+        return self.__has_2fa
+    
     def authenticate(self):
         """Authenticates the active instance of user
         
@@ -161,7 +169,9 @@ class User(object):
             return self.__is_authenticated
         else: 
             if bcrypt.checkpw(self.__password.encode(), self.__hashed_password.encode()):
-                self.__is_authenticated = True
+                if self.__has_2fa == True: 
+                    if check_otp(self.__2fa_secret, self.__otp) == True:
+                        self.__is_authenticated = True
             else:
                 self.__is_authenticated = False
             return self.__is_authenticated
