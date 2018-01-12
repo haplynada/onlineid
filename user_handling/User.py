@@ -71,6 +71,7 @@ class User(object):
             query = "SELECT * from information WHERE user_id =%s;"
             db.cur.execute(query, (self.__user_id))
             self.__data = db.cur.fetchall()[0]
+
             
         #setting variables to data from query
         self.__first_name = self.__data[0]
@@ -100,7 +101,8 @@ class User(object):
         print(self.__gender)
         print(self.__hashed_password)
         print(self.__birthday)
-        
+
+
     def is_user(self):
         """is_user returns True if the user is registered, False if not
         
@@ -111,46 +113,60 @@ class User(object):
         
         """
         return self.__is_user
-        
+
+
     def get_firstname(self):
         return self.__first_name
-    
+
+
     def get_lastname(self):
         return self.__last_name
-    
+
+
     def get_adress(self):
         return self.__adress
-    
+
+
     def get_adress_number(self):
         return self.__adress_number
-    
+
+
     def get_post_code(self):
         return self.__post_code
-    
+
+
     def get_country(self):
         return self.__country
-    
+
+
     def get_birthday(self):
         return self.__birthday
-    
+
+
     def get_gender(self):
         return self.__gender
-    
+
+
     def get_phone_country(self):
         return self.__country_code
-    
+
+
     def get_phonenumber(self):
         return self.__phone_number
-    
+
+
     def get_hashed_password(self):
         return self.__hashed_password
-    
+
+
     def get_email(self):
         return self.__email
-    
+
+
     def get_has_2fa(self):
         return self.__has_2fa
-    
+
+
     def authenticate(self):
         """Authenticates the active instance of user
         
@@ -196,7 +212,8 @@ class User(object):
             return True
         else:
             return False
-    
+
+
     def set_firstname(self, firstname):
         """
         The set data methods calls the input_control functions corresponding 
@@ -216,7 +233,8 @@ class User(object):
             return True
         else:
             return False
-        
+
+
     def set_lastname(self, lastname):
         """
         The set data methods calls the input_control functions corresponding 
@@ -236,7 +254,8 @@ class User(object):
             return True
         else: 
             return False
-        
+
+
     def set_phonenumber(self, phonenumber):
         """
         The set data methods calls the input_control functions corresponding 
@@ -256,7 +275,8 @@ class User(object):
             return True
         else:
             return False
-        
+
+
     def set_adress(self, adress):
         """
         The set data methods calls the input_control functions corresponding 
@@ -276,7 +296,8 @@ class User(object):
             return True
         else: 
             return False
-        
+
+
     def set_adress_number(self, adress_number):
         """
         The set data methods calls the input_control functions corresponding 
@@ -296,7 +317,8 @@ class User(object):
             return True
         else: 
             return False
-        
+
+
     def set_postcode(self, postcode):
         """
         The set data methods calls the input_control functions corresponding 
@@ -316,7 +338,8 @@ class User(object):
             return True
         else: 
             return False
-        
+
+
     def set_country(self, country):
         """
         The set data methods calls the input_control functions corresponding 
@@ -336,7 +359,8 @@ class User(object):
             return True
         else: 
             return False
-        
+
+
     def set_country_code(self, country_code):
         """
         The set data methods calls the input_control functions corresponding 
@@ -356,7 +380,8 @@ class User(object):
             return True
         else: 
             return False
-        
+
+
     def set_birthday(self, birthday):
         """
         The set data methods calls the input_control functions corresponding 
@@ -376,7 +401,8 @@ class User(object):
             return True
         else: 
             return False
-        
+
+
     def set_gender(self, gender):
         """
         The set data methods calls the input_control functions corresponding 
@@ -396,7 +422,8 @@ class User(object):
             return True
         else: 
             return False
-        
+
+
     def set_password(self, password):
         """
         The set data methods calls the input_control functions corresponding 
@@ -420,7 +447,8 @@ class User(object):
                 return True
         else:
             return False
-    
+
+
     def commit_changes(self):
         """
         This method only executes if any changes have been done to self by the
@@ -460,7 +488,8 @@ class User(object):
                     return True
         else:
             return False
-            
+
+
     def delete(self):
         """Deletes the active instance of user from the database. 
             THIS IS NOT REVERSIBLE!

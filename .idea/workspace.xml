@@ -4,6 +4,10 @@
     <list default="true" id="cc777378-46fa-4128-998a-2b6e08536a39" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/database_handling/create_database.py" afterPath="$PROJECT_DIR$/database_handling/create_database.py" />
+      <change beforePath="$PROJECT_DIR$/test/testGetUserData.py" afterPath="$PROJECT_DIR$/test/testGetUserData.py" />
+      <change beforePath="$PROJECT_DIR$/test/test_OTP.py" afterPath="$PROJECT_DIR$/test/test_OTP.py" />
+      <change beforePath="$PROJECT_DIR$/user_handling/User.py" afterPath="$PROJECT_DIR$/user_handling/User.py" />
+      <change beforePath="$PROJECT_DIR$/user_handling/otp_handling.py" afterPath="$PROJECT_DIR$/user_handling/otp_handling.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,12 +17,22 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="new_user.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user_handling/new_user.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+            <state relative-caret-position="285">
+              <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_OTP.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/test_OTP.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -27,46 +41,138 @@
       <file leaf-file-name="connect.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database_handling/connect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="9" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="17" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_database.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database_handling/create_database.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+            <state relative-caret-position="174">
+              <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
               <folding>
-                <element signature="e#125#3428#0" expanded="false" />
+                <marker date="1515751210577" expanded="true" signature="124:154" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testcreateuser.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/testcreateuser.py">
+      <file leaf-file-name="User.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_handling/User.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="270">
+              <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#266#1" expanded="false" />
+                <element signature="e#267#312#0" expanded="true" />
+                <element signature="e#876#3404#0" expanded="false" />
+                <element signature="e#876#1808#1" expanded="false" />
+                <element signature="e#3457#3796#0" expanded="false" />
+                <element signature="e#3457#3541#1" expanded="false" />
+                <element signature="e#3830#4077#0" expanded="false" />
+                <element signature="e#3830#4047#1" expanded="false" />
+                <element signature="e#4117#4141#0" expanded="false" />
+                <element signature="e#4180#4203#0" expanded="false" />
+                <element signature="e#4240#4260#0" expanded="false" />
+                <element signature="e#4304#4331#0" expanded="false" />
+                <element signature="e#4371#4394#0" expanded="false" />
+                <element signature="e#4432#4453#0" expanded="false" />
+                <element signature="e#4492#4514#0" expanded="false" />
+                <element signature="e#4551#4571#0" expanded="false" />
+                <element signature="e#4615#4641#0" expanded="false" />
+                <element signature="e#4683#4709#0" expanded="false" />
+                <element signature="e#4755#4784#0" expanded="false" />
+                <element signature="e#4820#4839#0" expanded="false" />
+                <element signature="e#4937#5829#0" expanded="false" />
+                <element signature="e#4937#5356#1" expanded="false" />
+                <element signature="e#5471#5829#0" expanded="false" />
+                <element signature="e#5565#5720#0" expanded="false" />
+                <element signature="e#5613#5720#0" expanded="false" />
+                <element signature="e#5888#6520#0" expanded="false" />
+                <element signature="e#5888#6352#1" expanded="false" />
+                <element signature="e#6404#6481#0" expanded="false" />
+                <element signature="e#6571#7039#1" expanded="false" />
+                <element signature="e#7099#7185#0" expanded="false" />
+                <element signature="e#7273#7740#1" expanded="false" />
+                <element signature="e#7798#7882#0" expanded="false" />
+                <element signature="e#7977#8640#0" expanded="false" />
+                <element signature="e#7977#8447#1" expanded="false" />
+                <element signature="e#8511#8601#0" expanded="false" />
+                <element signature="e#8685#9323#0" expanded="false" />
+                <element signature="e#8685#9150#1" expanded="false" />
+                <element signature="e#9204#9283#0" expanded="false" />
+                <element signature="e#9382#10054#0" expanded="false" />
+                <element signature="e#9382#9854#1" expanded="false" />
+                <element signature="e#9921#10014#0" expanded="false" />
+                <element signature="e#10103#10752#0" expanded="false" />
+                <element signature="e#10103#10570#1" expanded="false" />
+                <element signature="e#10628#10712#0" expanded="false" />
+                <element signature="e#10799#11442#0" expanded="false" />
+                <element signature="e#10799#11265#1" expanded="false" />
+                <element signature="e#11321#11402#0" expanded="false" />
+                <element signature="e#11499#12166#0" expanded="false" />
+                <element signature="e#11499#11970#1" expanded="false" />
+                <element signature="e#12035#12126#0" expanded="false" />
+                <element signature="e#12215#12863#0" expanded="false" />
+                <element signature="e#12215#12682#1" expanded="false" />
+                <element signature="e#12740#12823#0" expanded="false" />
+                <element signature="e#12908#13546#0" expanded="false" />
+                <element signature="e#12908#13373#1" expanded="false" />
+                <element signature="e#13427#13506#0" expanded="false" />
+                <element signature="e#13595#14546#0" expanded="false" />
+                <element signature="e#13595#14139#1" expanded="false" />
+                <element signature="e#14192#14507#0" expanded="false" />
+                <element signature="e#14245#14507#0" expanded="false" />
+                <element signature="e#14587#16424#0" expanded="false" />
+                <element signature="e#14587#15023#1" expanded="false" />
+                <element signature="e#15099#16385#0" expanded="false" />
+                <element signature="e#15167#16385#0" expanded="false" />
+                <element signature="e#15235#16385#0" expanded="false" />
+                <element signature="e#15244#15861#0" expanded="false" />
+                <element signature="e#15906#16314#0" expanded="false" />
+                <element signature="e#16457#16945#0" expanded="false" />
+                <element signature="e#16457#16717#1" expanded="false" />
+                <element signature="e#16786#16945#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testGetUserData.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/testGetUserData.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="get_user_data.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user_handling/get_user_data.py">
+      <file leaf-file-name="otp_handling.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_handling/otp_handling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="45" />
-              <folding />
+            <state relative-caret-position="233">
+              <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+              <folding>
+                <element signature="e#77#89#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_database.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database_handling/create_database.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="24" column="66" lean-forward="false" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+              <folding>
+                <element signature="e#82#96#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,15 +182,20 @@
       <list>
         <option value="$PROJECT_DIR$/connection_handling/data_handling.py" />
         <option value="$PROJECT_DIR$/database_handling/connect.py" />
+        <option value="$PROJECT_DIR$/user_handling/2fa.py" />
         <option value="$PROJECT_DIR$/database_handling/create_database.py" />
+        <option value="$PROJECT_DIR$/user_handling/otp_handling.py" />
+        <option value="$PROJECT_DIR$/user_handling/User.py" />
+        <option value="$PROJECT_DIR$/test/test_OTP.py" />
+        <option value="$PROJECT_DIR$/test/testGetUserData.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="600" />
+    <option name="x" value="19" />
     <option name="y" value="23" />
     <option name="width" value="1271" />
-    <option name="height" value="984" />
+    <option name="height" value="981" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -101,8 +212,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -151,7 +262,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.testcreateuser">
+  <component name="RunManager" selected="Python.testGetUserData">
     <configuration name="create_database" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -165,6 +276,60 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Sourcetree" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/database_handling/create_database.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="otp_handling" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/user_handling" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Sourcetree" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/user_handling/otp_handling.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="testGetUserData" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Sourcetree" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testGetUserData.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="test_OTP" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Sourcetree" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/test_OTP.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -188,14 +353,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="2">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.create_database" />
       <item index="1" class="java.lang.String" itemvalue="Python.testcreateuser" />
+      <item index="2" class="java.lang.String" itemvalue="Python.test_OTP" />
+      <item index="3" class="java.lang.String" itemvalue="Python.otp_handling" />
+      <item index="4" class="java.lang.String" itemvalue="Python.testGetUserData" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.testcreateuser" />
-        <item index="1" class="java.lang.String" itemvalue="Python.create_database" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.testGetUserData" />
+        <item index="1" class="java.lang.String" itemvalue="Python.otp_handling" />
+        <item index="2" class="java.lang.String" itemvalue="Python.create_database" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test_OTP" />
+        <item index="4" class="java.lang.String" itemvalue="Python.testcreateuser" />
       </list>
     </recent_temporary>
   </component>
@@ -216,25 +387,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="600" y="23" width="1271" height="984" extended-state="0" />
+    <frame x="19" y="23" width="1271" height="981" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2496" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290993" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32908458" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -243,48 +414,56 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/connection_handling/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connection_handling/data_handling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1545">
-          <caret line="107" column="44" lean-forward="false" selection-start-line="107" selection-start-column="44" selection-end-line="107" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connection_handling/remote_connection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connection_handling/privkey.pem">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user_handling/new_user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        <state relative-caret-position="285">
+          <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding>
+            <element signature="e#75#146#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/authenticate_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="e#203#275#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_handling/create_database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_handling/connect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="9" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="17" selection-end-column="9" />
+          <folding>
+            <marker date="1515751210577" expanded="true" signature="124:154" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/flask/get_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#48#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -296,11 +475,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/testcreateuser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/new_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding>
+            <element signature="e#75#146#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database_handling/connect.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="9" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="17" selection-end-column="9" />
-          <folding />
+          <caret line="17" column="9" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="17" selection-end-column="9" />
+          <folding>
+            <marker date="1515751210577" expanded="true" signature="124:154" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -308,9 +507,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-          <folding>
-            <element signature="e#125#3428#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -319,6 +516,293 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/flask/get_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#48#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/get_user_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/authenticate_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="e#203#275#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/new_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding>
+            <element signature="e#75#146#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_handling/connect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="9" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="17" selection-end-column="9" />
+          <folding>
+            <marker date="1515751210577" expanded="true" signature="124:154" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_handling/create_database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/flask/get_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#48#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/get_user_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testcreateuser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connection_handling/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connection_handling/data_handling.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1545">
+          <caret line="107" column="44" lean-forward="false" selection-start-line="107" selection-start-column="44" selection-end-line="107" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connection_handling/remote_connection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connection_handling/privkey.pem">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/get_user_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/flask/get_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#48#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/authenticate_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="e#203#275#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testcreateuser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/new_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/2fa.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_handling/connect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+          <folding>
+            <marker date="1515751210577" expanded="true" signature="124:154" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/User.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#266#1" expanded="false" />
+            <element signature="e#267#312#0" expanded="true" />
+            <element signature="e#876#3404#0" expanded="false" />
+            <element signature="e#876#1808#1" expanded="false" />
+            <element signature="e#3457#3796#0" expanded="false" />
+            <element signature="e#3457#3541#1" expanded="false" />
+            <element signature="e#3830#4077#0" expanded="false" />
+            <element signature="e#3830#4047#1" expanded="false" />
+            <element signature="e#4117#4141#0" expanded="false" />
+            <element signature="e#4180#4203#0" expanded="false" />
+            <element signature="e#4240#4260#0" expanded="false" />
+            <element signature="e#4304#4331#0" expanded="false" />
+            <element signature="e#4371#4394#0" expanded="false" />
+            <element signature="e#4432#4453#0" expanded="false" />
+            <element signature="e#4492#4514#0" expanded="false" />
+            <element signature="e#4551#4571#0" expanded="false" />
+            <element signature="e#4615#4641#0" expanded="false" />
+            <element signature="e#4683#4709#0" expanded="false" />
+            <element signature="e#4755#4784#0" expanded="false" />
+            <element signature="e#4820#4839#0" expanded="false" />
+            <element signature="e#4937#5829#0" expanded="false" />
+            <element signature="e#4937#5356#1" expanded="false" />
+            <element signature="e#5471#5829#0" expanded="false" />
+            <element signature="e#5565#5720#0" expanded="false" />
+            <element signature="e#5613#5720#0" expanded="false" />
+            <element signature="e#5888#6520#0" expanded="false" />
+            <element signature="e#5888#6352#1" expanded="false" />
+            <element signature="e#6404#6481#0" expanded="false" />
+            <element signature="e#6571#7039#1" expanded="false" />
+            <element signature="e#7099#7185#0" expanded="false" />
+            <element signature="e#7273#7740#1" expanded="false" />
+            <element signature="e#7798#7882#0" expanded="false" />
+            <element signature="e#7977#8640#0" expanded="false" />
+            <element signature="e#7977#8447#1" expanded="false" />
+            <element signature="e#8511#8601#0" expanded="false" />
+            <element signature="e#8685#9323#0" expanded="false" />
+            <element signature="e#8685#9150#1" expanded="false" />
+            <element signature="e#9204#9283#0" expanded="false" />
+            <element signature="e#9382#10054#0" expanded="false" />
+            <element signature="e#9382#9854#1" expanded="false" />
+            <element signature="e#9921#10014#0" expanded="false" />
+            <element signature="e#10103#10752#0" expanded="false" />
+            <element signature="e#10103#10570#1" expanded="false" />
+            <element signature="e#10628#10712#0" expanded="false" />
+            <element signature="e#10799#11442#0" expanded="false" />
+            <element signature="e#10799#11265#1" expanded="false" />
+            <element signature="e#11321#11402#0" expanded="false" />
+            <element signature="e#11499#12166#0" expanded="false" />
+            <element signature="e#11499#11970#1" expanded="false" />
+            <element signature="e#12035#12126#0" expanded="false" />
+            <element signature="e#12215#12863#0" expanded="false" />
+            <element signature="e#12215#12682#1" expanded="false" />
+            <element signature="e#12740#12823#0" expanded="false" />
+            <element signature="e#12908#13546#0" expanded="false" />
+            <element signature="e#12908#13373#1" expanded="false" />
+            <element signature="e#13427#13506#0" expanded="false" />
+            <element signature="e#13595#14546#0" expanded="false" />
+            <element signature="e#13595#14139#1" expanded="false" />
+            <element signature="e#14192#14507#0" expanded="false" />
+            <element signature="e#14245#14507#0" expanded="false" />
+            <element signature="e#14587#16424#0" expanded="false" />
+            <element signature="e#14587#15023#1" expanded="false" />
+            <element signature="e#15099#16385#0" expanded="false" />
+            <element signature="e#15167#16385#0" expanded="false" />
+            <element signature="e#15235#16385#0" expanded="false" />
+            <element signature="e#15244#15861#0" expanded="false" />
+            <element signature="e#15906#16314#0" expanded="false" />
+            <element signature="e#16457#16945#0" expanded="false" />
+            <element signature="e#16457#16717#1" expanded="false" />
+            <element signature="e#16786#16945#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_OTP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testGetUserData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_handling/otp_handling.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <folding>
+            <element signature="e#77#89#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_handling/create_database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="24" column="66" lean-forward="false" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+          <folding>
+            <element signature="e#82#96#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
