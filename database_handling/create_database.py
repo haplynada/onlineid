@@ -31,6 +31,7 @@ def create_database():
                                         sex ENUM( 'male', 'female', 'other') NOT NULL,
                                         hashed_Passwords varchar(64) NOT NULL,
                                         has_2fa varchar(5) NOT NULL,
+                                        2fa_secret varchar(32),
                                         salt varchar(50) NOT NULL,
                                         user_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
                                                         );
