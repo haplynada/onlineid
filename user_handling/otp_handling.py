@@ -29,4 +29,3 @@ def check_otp(secret, onetimecode):
     else:
         return False
 
-setup_otp("sau@sau.no")

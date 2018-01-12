@@ -150,15 +150,16 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
     except GenderError:
         errors += str(GenderError.error)
         errors += "\n"
-
+    
+    has_2fa = "False"
 
     if errors == "":
         try: 
             with Connect() as db: 
                 add_user = ("INSERT INTO information "
-                    "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email, hashed_Passwords, salt) "
-                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
-                data_user = (firstname, lastname, adress, adressnumber, postcode, country, birthday, gender, countrycode, phone, email, hashedpassword, passwordsalt)
+                    "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email, hashed_Passwords, has_2fa , salt) "
+                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,  %s)")
+                data_user = (firstname, lastname, adress, adressnumber, postcode, country, birthday, gender, countrycode, phone, email, hashedpassword, has_2fa,  passwordsalt)
                 db.cur.execute(add_user, data_user)
                 db.conn.commit()
                 checker = True
