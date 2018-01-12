@@ -31,7 +31,7 @@ def connect():
 
     print(sender_ssl.getpeername())
 
-    sender_ssl.send(send_login)
+    sender_ssl.send(send_data)
     print(sender_ssl.recv().decode())
 
     sender_ssl.close()
