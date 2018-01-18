@@ -36,7 +36,7 @@ class Connect(object):
         
     def __enter__(self):
         """
-        Returns an active connection to the databse. 
+        Returns an active connection to the database.
         """
         return Connect()
     

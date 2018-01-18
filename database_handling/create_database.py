@@ -36,7 +36,7 @@ def create_database():
                                         hashed_Passwords varchar(64) NOT NULL,
                                         has_2fa varchar(5) NOT NULL,
                                         2fa_secret varchar(32),
-                                        user_id INT UNSIGNED NOT NULL
+                                        user_id INT UNSIGNED NOT NULL,
                                         PRIMARY KEY(user_id)
                                                         );
                                                         
