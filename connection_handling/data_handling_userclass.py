@@ -69,6 +69,7 @@ def handle_data(connstream, data):
             connstream.send(return_data)
         
     elif datalist[0] == "login": # parses a login request from the client 
+        user.print_data()
         if user.authenticate() == True: #authenticates the user
             return_data = b"login|True"
             connstream.send(return_data)
