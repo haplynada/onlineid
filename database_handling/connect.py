@@ -31,7 +31,7 @@ class Connect(object):
         user="server",       # username
         passwd="sudoonlineid",     # password
         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below
-        )    
+        )
         self.cur = self.conn.cursor() #creates a cursor in the databse
         
     def __enter__(self):
