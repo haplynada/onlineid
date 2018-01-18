@@ -31,10 +31,10 @@ def connect():
 
     print(sender_ssl.getpeername())
 
-    sender_ssl.send(send_data)
+    sender_ssl.send(send_login)
     print(sender_ssl.recv().decode())
 
     sender_ssl.close()
 
 
-print(timeit.timeit(connect, number=1000))
+print(timeit.timeit(connect, number=1))
