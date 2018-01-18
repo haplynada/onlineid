@@ -8,13 +8,14 @@ import pyotp
 from database_handling.connect import *
 
 
-def setup_otp(db_email: str):
+def setup_otp(self, user_id: str):
     secret = pyotp.random_base32()
 
     with Connect() as db:  # connecting to database
         try:
-            query = "UPDATE information SET has_2fa='True' WHERE email =%s;"
-            db.cur.execute(query, db_email)
+            query = "UPDATE authentication SET has_2fa='True', 2fa_secret =%s WHERE user_id =%s;" \
+
+            db.cur.execute(query, secret, self.__user_id)
         except:
             pass
     print(secret)
@@ -22,7 +23,7 @@ def setup_otp(db_email: str):
 
 
 
-def check_otp(secret, onetimecode):
+def check_otp(self, secret: str, onetimecode: str):
     active = pyotp.TOTP(secret)
     if active.verify(onetimecode) == True:
         return True
