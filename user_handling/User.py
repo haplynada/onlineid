@@ -193,6 +193,9 @@ class User(object):
                 if self.__has_2fa == True: 
                     if check_otp(self.__2fa_secret, self.__otp) == True:
                         self.__is_authenticated = True
+                elif self.__has_2fa == False:
+                    self.__is_authenticated = True 
+                    
             else:
                 self.__is_authenticated = False
             return self.__is_authenticated
