@@ -157,11 +157,23 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
         try: 
             with Connect() as db: 
                 add_user = ("INSERT INTO information "
-                    "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email, hashed_Passwords, has_2fa , salt) "
-                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,  %s)")
-                data_user = (firstname, lastname, adress, adressnumber, postcode, country, birthday, gender, countrycode, phone, email, hashedpassword, has_2fa,  passwordsalt)
+                    "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email) "
+                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
+                data_user = (firstname, lastname, adress, adressnumber, postcode, country, birthday, gender, countrycode, phone, email)
                 db.cur.execute(add_user, data_user)
                 db.conn.commit()
+                
+                query = "SELECT user_id from information WHERE email =%s;"
+                db.cur.execute(query, email)
+                user_id = str(db.cur.fetchone()[0])
+                
+                add_hashedpassword = ("INSERT INTO authentication "
+                    "(hashed_passwords, has_2fa, user_id) "
+                    "VALUES (%s, %s, %s)")
+                add_hashedpassword_data = (hashedpassword, has_2fa, user_id)
+                db.cur.execute(add_hashedpassword, add_hashedpassword_data)
+                db.conn.commit()
+                
                 checker = True
                 return checker
         except StorageError:

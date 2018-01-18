@@ -67,13 +67,16 @@ class User(object):
             except TypeError: #if this executes there is no user with email in the database
                 self.__is_user = False
                 return None
-            #uses user_id to get all user data
+            #uses user_id to get all user data from information
             query = "SELECT * from information WHERE user_id =%s;"
             db.cur.execute(query, (self.__user_id))
             self.__data = db.cur.fetchall()[0]
+            #uses user_id to get all information from authentication
+            query = "SELECT * from authentication WHERE user_id =%s;"
+            db.cur.execute(query, (self.__user_id))
+            self.__authentication_data = db.cur.fetchall()[0]
 
-            
-        #setting variables to data from query
+        #setting variables to data from information query
         self.__first_name = self.__data[0]
         self.__last_name = self.__data[1]
         self.__adress = self.__data[2]
@@ -84,9 +87,11 @@ class User(object):
         self.__country_code = self.__data[7]
         self.__phone_number = self.__data[8]
         self.__gender = self.__data[10]
-        self.__hashed_password = self.__data[11]
-        self.__has_2fa = self.__data[12]
-        self.__2fa_secret = self.__data[13]
+        
+        #setting variables to data from authentication query
+        self.__hashed_password = self.__authentication_data[0]
+        self.__has_2fa = self.__authentication_data[1]
+        self.__2fa_secret = self.__authentication_data[2]
         
         
     def print_data(self):
@@ -477,14 +482,22 @@ class User(object):
                             ", phone_Countrycode=%s"
                             ", birthday=%s"
                             ", sex=%s"
-                            ", hashed_passwords=%s" 
                             " WHERE user_id=%s")
                     db.cur.execute(query, (self.__email, self.__first_name, self.__last_name, 
                                            self.__phone_number, self.__adress, self.__adress_number, 
                                            self.__post_code, self.__country, self.__country_code,
-                                           self.__birthday, self.__gender, self.__hashed_password,
+                                           self.__birthday, self.__gender, self.__user_id))
+                    db.conn.commit()
+                    
+                    query = ("UPDATE authentication SET"
+                            ", hashed_passwords=%s"
+                            ", has_2fa=%s" 
+                            ", 2fa_secret=%s"
+                            " WHERE user_id=%s")
+                    db.cur.execute(query, (self.__hashed_password, self.__has_2fa, self.__2fa_secret,
                                            self.__user_id))
                     db.conn.commit()
+                    
                     return True
         else:
             return False
@@ -502,6 +515,10 @@ class User(object):
         """
         with Connect() as db: #Connects of the database
             query = "DELETE FROM information WHERE user_id = %s;"
+            db.cur.execute(query, (self.__user_id,))
+            db.conn.commit()
+            
+            query = "DELETE FROM authentication WHERE user_id = %s;"
             db.cur.execute(query, (self.__user_id,))
             db.conn.commit()
             return True
