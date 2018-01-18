@@ -192,12 +192,12 @@ class User(object):
             return self.__is_authenticated
         else: 
             if bcrypt.checkpw(self.__password.encode(), self.__hashed_password.encode()) == True:
-                if self.__has_2fa == True: 
+                if self.__has_2fa == "True": 
                     if check_otp(self.__2fa_secret, self.__otp) == True:
                         self.__is_authenticated = True
                     else: 
                         self.__is_authenticated = False
-                elif self.__has_2fa == False:
+                elif self.__has_2fa == "False":
                     self.__is_authenticated = True 
                     
             else:
