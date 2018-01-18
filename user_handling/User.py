@@ -106,6 +106,8 @@ class User(object):
         print(self.__gender)
         print(self.__hashed_password)
         print(self.__birthday)
+        print(self.__has_2fa)
+        print(self.__2fa_secret)
 
 
     def is_user(self):
