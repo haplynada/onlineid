@@ -29,13 +29,23 @@ def create_database():
                                         phonenumber int(11) NOT NULL,
                                         email varchar(50) NOT NULL,
                                         sex ENUM( 'male', 'female', 'other') NOT NULL,
+                                        user_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
+                                                        );
+                    
+                    CREATE TABLE IF NOT EXISTS authentication (
                                         hashed_Passwords varchar(64) NOT NULL,
                                         has_2fa varchar(5) NOT NULL,
                                         2fa_secret varchar(32),
-                                        salt varchar(50) NOT NULL,
-                                        user_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
+                                        user_id INT UNSIGNED NOT NULL
+                                        PRIMARY KEY(user_id)
                                                         );
-    
+                                                        
+                    CREATE TABLE IF NOT EXISTS emailvalid (
+                                                    email_validation varchar(50) DEFAULT "false",
+                                                    user_id INT UNSIGNED NOT NULL,
+                                                    PRIMARY KEY(user_id, email_validation)
+                                                                        );
+                                        
                     CREATE TABLE IF NOT EXISTS sites (
                                                     site_Adress VARCHAR(50) NOT NULL,
                                                     site_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY                                
@@ -54,14 +64,9 @@ def create_database():
                                                     date_login TIMESTAMP,
                                                     ip_adress INT UNSIGNED NOT NULL,
                                                     PRIMARY KEY(site_id, user_id, date_login)
-                                                                        ); 
-    
-                    CREATE TABLE IF NOT EXISTS emailvalid (
-                                                    email_validation varchar(50) DEFAULT "false",
-                                                    user_id INT UNSIGNED NOT NULL,
-                                                    PRIMARY KEY(user_id, email_validation)
-                                                                        );
+                                                                        );                    
                      """
+
         # Execute the query
         db.cur.execute(query)
         db.conn.commit()
