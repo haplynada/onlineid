@@ -19,8 +19,8 @@ from user_handling.input_control import *
 import bcrypt
 import pyotp
 from user_handling import authenticate_user
-from user_handling import otp_handling
-from test.test_OTP import check_otp
+
+
 
 class User(object):
     """The user object gathers all data related to the email and password and
@@ -179,7 +179,7 @@ class User(object):
         """Authenticates the active instance of user
         
         also sets the private is_authenticated variable so that the authentication
-        olny needs to run once, this is to keep bcrypt from slowing down the program
+        only needs to run once, this is to keep bcrypt from slowing down the program
         with repeated authenticate calls. 
     
         Args: 
@@ -194,7 +194,7 @@ class User(object):
         else: 
             if bcrypt.checkpw(self.__password.encode(), self.__hashed_password.encode()) == True:
                 if self.__has_2fa == "True": 
-                    if self.check_otp(self.__otp) == True:
+                    if self.check_otp() == True:
                         self.__is_authenticated = True
                     else: 
                         self.__is_authenticated = False
@@ -463,7 +463,21 @@ class User(object):
 
 
     def setup_otp(self):
-        if self.authenticate() == True:
+        """ Setup the One Time Password(OTP)/2 factor authentication.
+
+        It check that the user is authenticated.
+        Creates a unique OTP, that is stored on the database, and changes a boolean in the database used to verify if
+        the user has activated OTP.
+        The OTP is time-based, and is valid for about 30 sec.
+
+        
+        Returns:
+              True if the setup is completed, together with the unique secret.
+              The secret is returned to the user through the API, so the user can set up the app.
+              False if the user was not authenticated to begin with.
+
+        """
+        if self.authenticate() is True:
             secret = pyotp.random_base32()
             self.__2fa_secret = secret
             self.__has_2fa = "True"
@@ -473,11 +487,21 @@ class User(object):
             return False
 
 
-    def check_otp(self, otp):
+    def check_otp(self):
+        """ Checks the One Time Password(OTP) from the user, matches the one generated from the server.
+
+        Gets the unique secret for the given user from the database.
+        Creates the OTP based on time and the secret.
+        The created OTP os verified against the one given from the user through the API.
+
+        Returns:
+              True if the OTP generated matched the one provided from the user.
+              False if the OTP does not match.
+        """
         secret = self.__2fa_secret
         active = pyotp.TOTP(secret)
-        if active.verify(otp) == True:
-           return True
+        if active.verify(self.__otp) is True:
+            return True
         else:
             return False
 
