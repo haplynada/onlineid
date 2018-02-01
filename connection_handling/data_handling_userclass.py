@@ -103,8 +103,12 @@ def handle_data(connstream, data):
     
     elif datalist[0] == "setupotp":
         secret = user.setup_otp()
-        return_data = b"setupotp|True" + str(secret)
-        connstream.send(return_data)
+        if secret[0] == True:
+            return_data = b"setupotp|True" + str(secret[1]).encode()
+            connstream.send(return_data)
+        else:
+            return_data = b"setupotp|False"
+            connstream.send(return_data)
             
     elif datalist[0] == "deleteuser":#parses a deleteuser request from client
         if user.authenticate() == True:#authenticates the user

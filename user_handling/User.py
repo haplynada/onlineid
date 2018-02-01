@@ -194,7 +194,7 @@ class User(object):
         else: 
             if bcrypt.checkpw(self.__password.encode(), self.__hashed_password.encode()) == True:
                 if self.__has_2fa == "True": 
-                    if check_otp(self.__2fa_secret, self.__otp) == True:
+                    if self.check_otp(self.__otp) == True:
                         self.__is_authenticated = True
                     else: 
                         self.__is_authenticated = False
@@ -462,27 +462,25 @@ class User(object):
             return False
 
 
-    def set_2fa(self):
+    def setup_otp(self):
         if self.authenticate() == True:
             secret = pyotp.random_base32()
             self.__2fa_secret = secret
             self.__has_2fa = "True"
             self.__change = True
-            return True
+            return True, secret
         else:
             return False
 
 
     def check_otp(self, otp):
-        if self.authenticate() == True:
-            secret = self.__2fa_secret
-            active = pyotp.TOTP(secret)
-            if active.verify(otp) == True:
-                return True
-            else:
-                return False
+        secret = self.__2fa_secret
+        active = pyotp.TOTP(secret)
+        if active.verify(otp) == True:
+           return True
         else:
             return False
+
 
     def commit_changes(self):
         """
