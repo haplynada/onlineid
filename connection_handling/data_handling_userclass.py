@@ -99,6 +99,11 @@ def handle_data(connstream, data):
         else: #returns a error message if the user is not authenticated
             return_data = b"getalldata|False|invaliduser"
             connstream.send(return_data)
+    
+    elif datalist[0] == "setupotp":
+        secret = user.setup_otp()
+        return_data = b"setupotp|True" + str(secret)
+        connstream.send(return_data)
             
     elif datalist[0] == "deleteuser":#parses a deleteuser request from client
         if user.authenticate() == True:#authenticates the user
