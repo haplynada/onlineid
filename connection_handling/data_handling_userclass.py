@@ -265,6 +265,7 @@ def edit_user(user, datalist):
                 return_data += b"editdata|False|invalidquery"
             del datalist[0]
             del datalist[0]
+            user.commit_changes()
         return return_data
     else:
         return b"editdata|False|invaliduser"
@@ -325,4 +326,6 @@ def listen_connection():
             print(str(connstream.getpeername()) + "Disconnected")
             connstream.shutdown(socket.SHUT_RDWR)
             connstream.close()
-listen_connection()
+
+if __name__ == "__main__":
+    listen_connection()
