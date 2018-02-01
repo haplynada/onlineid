@@ -10,7 +10,6 @@ countries = ["norway", "sweden", "denmark", "iceland", "united states", "england
              "germany",]
 countrycodes = ["0047", "0046", "0045", "00354", "0111", "0044", "0049"]
 import datetime
-from user_handling.get_user_data import get_user_id
 from datetime import date
 
 
@@ -32,14 +31,7 @@ def check_email(email):
             return False
     else:
         return False
-def check_email_database(email): 
-    try:
-        if get_user_id(email) == True:
-            return False
-        else:
-            return False
-    except TypeError:
-        return True
+
     
 def check_firstname(name):
     if set(name).issubset(validchars_name):
