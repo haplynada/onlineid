@@ -17,6 +17,7 @@ Created on 13. des. 2017
 from database_handling.connect import Connect
 from user_handling.input_control import *
 import bcrypt
+import pyotp
 from user_handling import authenticate_user
 from user_handling import otp_handling
 from test.test_OTP import check_otp
@@ -446,7 +447,7 @@ class User(object):
         
         Args: 
             self: 
-            email: new data
+            password: new data
         Returns: 
             True/False depending on whether the changes was successful or not
         """
@@ -460,6 +461,28 @@ class User(object):
         else:
             return False
 
+
+    def set_2fa(self):
+        if self.authenticate() == True:
+            secret = pyotp.random_base32()
+            self.__2fa_secret = secret
+            self.__has_2fa = "True"
+            self.__change = True
+            return True
+        else:
+            return False
+
+
+    def check_otp(self, otp):
+        if self.authenticate() == True:
+            secret = self.__2fa_secret
+            active = pyotp.TOTP(secret)
+            if active.verify(otp) == True:
+                return True
+            else:
+                return False
+        else:
+            return False
 
     def commit_changes(self):
         """

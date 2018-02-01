@@ -37,10 +37,11 @@ from _socket import SOL_SOCKET, SO_REUSEADDR
 from user_handling.new_user import create_user
 from user_handling.User import User
 
+
 def handle_data(connstream, data):
     """
     Handle data receives a string sent from the client over secure sockets, parses
-    the string into keyqords, and calls methods from the User class and other 
+    the string into keywords, and calls methods from the User class and other
     functions, to process the requests from the client. 
     
     Args: 
@@ -119,6 +120,7 @@ def handle_data(connstream, data):
 
     return False
 
+
 def get_data(user, datalist):
     """parses client input for a get data call
     
@@ -175,7 +177,8 @@ def get_data(user, datalist):
         return return_data
     else:
         return b"getdata|False|invaliduser"
-            
+
+
 def edit_user(user, datalist):
     """parses client input for a edit user call
     
@@ -331,6 +334,7 @@ def listen_connection():
             print(str(connstream.getpeername()) + "Disconnected")
             connstream.shutdown(socket.SHUT_RDWR)
             connstream.close()
+
 
 if __name__ == "__main__":
     listen_connection()
