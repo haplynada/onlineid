@@ -6,9 +6,28 @@ and the functions involved with handling passwords
 '''
 
 
-
+from user_handling.get_user_data import get_hashed_Password, get_user_id
 import bcrypt
 
+
+def authenticate_user(email, password):
+    """Authenticates the provided email and password with the database
+    
+    uses the email address to get the userid from the database, then get the hashed password
+    from the database and sends those to the authenticate_password function
+    
+    Args: 
+        email: a string containing the users email address
+        password: plain text password as a string, as submitted by the user
+        
+    Returns: 
+        True/False depending on whether the user was authenticated or not
+    
+    """
+    user = get_user_id(email)
+    hashed_password = get_hashed_Password(user)
+    checker = authenticate_password(hashed_password, password)
+    return checker
 
 def generate_salt():
     """ generates a random salt
