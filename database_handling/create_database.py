@@ -1,7 +1,7 @@
 '''
 Created on 12. okt. 2017
 
-@author: Alexander Mackenzie-Low, Bjarke Larsen
+@author: Alexander Mackenzie-Low, Bjarke Larsen, Tor Larssen Sekse
 '''
 import pymysql
 from database_handling.connect import *
@@ -58,13 +58,17 @@ def create_database():
                                                     PRIMARY KEY(site_id, user_id)
                                                                         );
     
-                    CREATE TABLE IF NOT EXISTS log (
-                                                    site_id INT UNSIGNED NOT NULL,
-                                                    user_id INT UNSIGNED NOT NULL,
-                                                    date_login TIMESTAMP,
-                                                    ip_adress INT UNSIGNED NOT NULL,
-                                                    PRIMARY KEY(site_id, user_id, date_login)
-                                                                        );                    
+                    CREATE TABLE IF NOT EXISTS activelog (
+                                                    user_id INT UNSIGNED NOT NULL PRIMARY KEY,
+                                                    date DATE NOT NULL,
+                                                    time TIME NOT NULL, 
+                                                    ip_adress varchar(16)  NOT NULL
+                                                                        );    
+                    CREATE TABLE IF NOT EXISTS activesitelog (
+                                                    site varchar(50) NOT NULL PRIMARY KEY, 
+                                                    date DATE NOT NULL,
+                                                    time TIME NOT NULL
+                                                                        );
                      """
 
         # Execute the query

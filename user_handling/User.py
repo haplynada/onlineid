@@ -173,6 +173,9 @@ class User(object):
 
     def get_has_2fa(self):
         return self.__has_2fa
+    
+    def get_user_id(self):
+        return self.__user_id
 
 
     def authenticate(self):

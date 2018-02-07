@@ -6,7 +6,7 @@ and the functions involved with handling passwords
 '''
 
 
-from user_handling.get_user_data import get_hashed_Password, get_user_id
+
 import bcrypt
 
 

@@ -36,6 +36,7 @@ import ssl
 from _socket import SOL_SOCKET, SO_REUSEADDR
 from user_handling.new_user import create_user
 from user_handling.User import User
+from log.Log import Log
 
 
 def handle_data(connstream, data):
@@ -52,6 +53,7 @@ def handle_data(connstream, data):
         back to the client before it returns False. 
     
     """
+    client_ip = (connstream.getpeername())[0]
     #
     decoded_data =data.decode()
     datalist = decoded_data.split("|")
