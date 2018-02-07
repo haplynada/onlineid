@@ -53,8 +53,13 @@ def handle_data(connstream, data):
         back to the client before it returns False. 
     
     """
+    #Getting IP adress from the connection
     client_ip = (connstream.getpeername())[0]
-    #
+    
+    #setting up logging
+    log = Log
+    
+    #decoding and splitting data according to convention
     decoded_data =data.decode()
     datalist = decoded_data.split("|")
     
@@ -72,7 +77,7 @@ def handle_data(connstream, data):
             connstream.send(return_data)
         
     elif datalist[0] == "login": # parses a login request from the client 
-        user.print_data()
+        log.login_attempt(user.get_user_id(), client_ip)
         if user.authenticate() == True: #authenticates the user
             return_data = b"login|True"
             connstream.send(return_data)
@@ -123,7 +128,8 @@ def handle_data(connstream, data):
         else:
             return_data = b"deleteuser|False|invaliduser"
             connstream.send(return_data)
-
+    
+    log.store_in_database()
     return False
 
 
