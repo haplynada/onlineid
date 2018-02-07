@@ -69,6 +69,8 @@ def handle_data(connstream, data):
         del datalist[0]
         #creates a new user with the provided data
         if create_user(datalist[0], datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7], datalist[8], datalist[9], datalist[10], datalist[11]) ==True:
+            #logs the new user
+            log.new_user(datalist[0], client_ip)
             return_data=b"newuser|True"
             connstream.send(return_data)
         else: #returns errors if user creation failed
@@ -77,6 +79,7 @@ def handle_data(connstream, data):
             connstream.send(return_data)
         
     elif datalist[0] == "login": # parses a login request from the client 
+        #logs the login attempt
         log.login_attempt(user.get_user_id(), client_ip)
         if user.authenticate() == True: #authenticates the user
             return_data = b"login|True"
@@ -129,7 +132,7 @@ def handle_data(connstream, data):
             return_data = b"deleteuser|False|invaliduser"
             connstream.send(return_data)
     
-    log.store_in_database()
+    log.store_in_database()#stores all loged items in the database
     return False
 
 

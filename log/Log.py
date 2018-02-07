@@ -26,13 +26,17 @@ class Log(object):
         self.__user_id = None
         self.__ip_adress = None
         self.__site = None
+        self.__email = None
         
         #Settings date and time
         self.__temp = (str(datetime.datetime.now())).split(".")
         self.__temp2 = self.__temp[0].split(" ")
         self.__date = self.__temp2[0]
         self.__time = self.__temp2[1]
-
+        
+        #Housekeeping variables for determining what has been logged and is to be stored in database
+        self.__login = False
+        self.__new_user = False
 
     def login_attempt(self, user_id, ip_adress):
         """
@@ -47,6 +51,7 @@ class Log(object):
         """
         self.__user_id = user_id
         self.__ip_adress = ip_adress
+        self.login = True
         
         
             
@@ -61,13 +66,41 @@ class Log(object):
         """
         self.__site = site
         
+    def new_user(self, email, ip_adress):
+        """
+        Logs the creations of a new user in the database, uses the email provided
+        to get the user id out of the database and links that to the email
+        in the log
+        
+        Args: 
+            email: string containing email adress
+            ip_adress: string containing ip adress
+        Returns: 
+            None
+        """
+        self.__email = email
+        self.__ip_adress = ip_adress
+        
+        with Connect() as db: #connecting to database
+            #uses email to get user_id
+            query = "SELECT user_id from information WHERE email =%s;"
+            db.cur.execute(query, self.__email)
+            self.__user_id = str(db.cur.fetchone()[0])
+        
+            
+
     
     def store_in_database(self):
         """
         Stores all loginfo in the active class instacne to the database. 
+        
+        Args:
+            None
+        Returns: 
+            None
         """
         with Connect() as db: 
-            if self.__user_id != None: #stores login attempt if one has been attempted
+            if self.__login == True: #stores login attempt if one has been attempted
                 self.__query = (" INSERT INTO activelog"
                             "(user_id, date, time, ip_adress)"
                             "VALUES (%s, %s, %s, %s)")
@@ -83,6 +116,13 @@ class Log(object):
                 db.cur.execute(self.__query, self.__data)
                 db.conn.commit()
             
+            if self.__new_user == True: #stores new user creation log in database
+                self.__query = (" INSERT INTO usercreationlog"
+                            "(user_id, email, ip_adress, date, time)"
+                            "VALUES (%s, %s, %s, %s, %s)")
+                self.__data = (self.__user_id, self.__email, self.__ip_adress,self.__date, self.__time)
+                db.cur.execute(self.__query, self.__data)
+                db.conn.commit()
 
             
             
