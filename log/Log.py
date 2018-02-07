@@ -31,8 +31,8 @@ class Log(object):
         #Settings date and time
         self.__temp = (str(datetime.datetime.now())).split(".")
         self.__temp2 = self.__temp[0].split(" ")
-        self.__date = self.__temp2[0]
-        self.__time = self.__temp2[1]
+        self.__date = str(self.__temp2[0])
+        self.__time = str(self.__temp2[1])
         
         #Housekeeping variables for determining what has been logged and is to be stored in database
         self.__login = False

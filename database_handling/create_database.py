@@ -60,21 +60,21 @@ def create_database():
     
                     CREATE TABLE IF NOT EXISTS activelog (
                                                     user_id INT UNSIGNED NOT NULL,
-                                                    date DATE NOT NULL,
-                                                    time TIME NOT NULL, 
+                                                    date varchar(50) NOT NULL,
+                                                    time varchar(50) NOT NULL, 
                                                     ip_adress varchar(16)  NOT NULL
                                                                         );    
                     CREATE TABLE IF NOT EXISTS activesitelog (
                                                     site varchar(50) NOT NULL, 
-                                                    date DATE NOT NULL,
-                                                    time TIME NOT NULL
+                                                    date varchar(50) NOT NULL,
+                                                    time varchar(50) NOT NULL
                                                                         );
                     CREATE TABLE IF NOT EXISTS usercreationlog (
                                                     user_id varchar(50) NOT NULL, 
                                                     email varchar(50) NOT NULL,
                                                     ip_adress varchar(16) NOT NULL,
-                                                    date DATE NOT NULL,
-                                                    time TIME NOT NULL
+                                                    date varchar(50) NOT NULL,
+                                                    time varchar(50) NOT NULL
                                                                         );
                      """
 
