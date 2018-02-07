@@ -51,7 +51,8 @@ class Log(object):
         """
         self.__user_id = user_id
         self.__ip_adress = ip_adress
-        self.login = True
+        
+        self.login = True # sets housekeeping
         
         
             
@@ -86,6 +87,8 @@ class Log(object):
             query = "SELECT user_id from information WHERE email =%s;"
             db.cur.execute(query, self.__email)
             self.__user_id = str(db.cur.fetchone()[0])
+            
+        self.__new_user = True #sets housekeeping 
         
             
 
