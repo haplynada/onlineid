@@ -57,7 +57,7 @@ def handle_data(connstream, data):
     client_ip = (connstream.getpeername())[0]
     
     #setting up logging
-    log = Log
+    log = Log()
     
     #decoding and splitting data according to convention
     decoded_data =data.decode()

@@ -57,6 +57,7 @@ class User(object):
         #housekeeping variables
         self.__is_authenticated = None
         self.__change = False
+        self.__user_id = None
         
         with Connect() as db: #connecting to database
             #uses email to get user_id

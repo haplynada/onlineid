@@ -66,7 +66,7 @@ class Log(object):
         """
         Stores all loginfo in the active class instacne to the database. 
         """
-        with Connect as db: 
+        with Connect() as db: 
             if self.__user_id != None: #stores login attempt if one has been attempted
                 self.__query = (" INSERT INTO activelog"
                             "(user_id, date, time, ip_adress)"

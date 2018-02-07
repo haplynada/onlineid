@@ -11,6 +11,7 @@ countries = ["norway", "sweden", "denmark", "iceland", "united states", "england
 countrycodes = ["0047", "0046", "0045", "00354", "0111", "0044", "0049"]
 import datetime
 from datetime import date
+from database_handling.connect import Connect
 
 
 def check_password(password):
@@ -107,4 +108,16 @@ def check_gender(gender):
     else:
         return False
         
+def check_email_database(email):
+    try: 
+        with Connect() as db:
+            query = "SELECT user_id from information WHERE email =%s;"
+            db.cur.execute(query, email)
+            result = str(db.cur.fetchone()[0])
+            
+            return False
+    except TypeError:
+        return True
+        
+    
     
