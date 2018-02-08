@@ -36,7 +36,6 @@ def menu():
             token = input("Enter OTP: ")
             print(check_otp(secret, token))
 
-    
 
 if __name__ == "__main__":
     menu()
