@@ -3,7 +3,7 @@ Created on 14. des. 2017
 Dataformats: 
     all data sendt to the server over the secure socket should be in the following formats
 Login: 
-To server: login|email|password|otp|sitename
+To server: login|email|password|otp|siteid
 From server: login|boolean|firstname|lastname|phone|postcode|country|countrycode|adress|adressnumber|birthday|gender
 
 Newuser
@@ -27,6 +27,7 @@ from _socket import SOL_SOCKET, SO_REUSEADDR
 from user_handling.new_user import create_user
 from user_handling.User import User
 from log.Log import Log
+from user_handling.Company import Company
 
 
 def handle_data(connstream, data):
@@ -53,8 +54,6 @@ def handle_data(connstream, data):
     decoded_data =data.decode()
     datalist = decoded_data.split("|")
     
-    user = User(datalist[1], datalist[2]) #setting up the user object
-    
     if datalist[0] == "newuser": #Parses the new user from client and add the new user to the database
         del datalist[0]
         #creates a new user with the provided data
@@ -67,21 +66,30 @@ def handle_data(connstream, data):
             errors = create_user(datalist[0], datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7], datalist[8], datalist[9], datalist[10], datalist[11])
             return_data= b"newuser|false|" + str(errors).encode()
             connstream.send(return_data)
+     
+    if datalist[3] == " ":#checking if otp was provided
+        user = User(datalist[1], datalist[2]) #setting up the user object without otp
+    else: 
+        user =User(datalist[1], datalist[2], datalist[3]) #seeting up the user with otp
+     
         
-    elif datalist[0] == "login": # parses a login request from the client 
+    if datalist[0] == "login": # parses a login request from the client 
         #logs the login attempt
         log.login_attempt(user.get_user_id(), client_ip)
-        if user.authenticate() == True: #authenticates the user
-            return_data = b"login|True|"+ str(user.get_firstname()).encode() + b"|" \
-            + str(user.get_lastname()).encode() + b"|" + str(user.get_phonenumber()).encode() + b"|"\
-            + str(user.get_post_code()).encode() + b"|" + str(user.get_country()).encode() + b"|"\
-            + str(user.get_phone_country()).encode() + b"|" + str(user.get_adress()).encode() + b"|"\
-            + str(user.get_adress_number()).encode() + b"|" + str(user.get_birthday()).encode() + b"|"\
-            + str(user.get_gender()).encode()
-            connstream.send(return_data)
-            
+        company = Company(datalist[4])
+        if company.get_approved() == "True": 
+            if user.authenticate() == True: #authenticates the user
+                return_data = b"login|True|"+ str(user.get_firstname()).encode() + b"|" \
+                + str(user.get_lastname()).encode() + b"|" + str(user.get_phonenumber()).encode() + b"|"\
+                + str(user.get_post_code()).encode() + b"|" + str(user.get_country()).encode() + b"|"\
+                + str(user.get_phone_country()).encode() + b"|" + str(user.get_adress()).encode() + b"|"\
+                + str(user.get_adress_number()).encode() + b"|" + str(user.get_birthday()).encode() + b"|"\
+                + str(user.get_gender()).encode()
+                connstream.send(return_data)
+            else:
+                connstream.send(b"login|False")
         else:
-            connstream.send(b"login|False")
+            connstream.send(b"login|False|invalidsite")
     
     elif datalist[0] == "edituser":#parses an edituser request from the client
         return_data = edit_user(user, datalist)
