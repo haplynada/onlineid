@@ -38,6 +38,9 @@ class Company(object):
             except TypeError:#exception to handle if the company id is not in the database
                 self.__is_company = False
                 return None
+            except IndexError:#exception to handle if the company id is not in the database
+                self.__is_company = False
+                return None
             #sets class variables according to data fomr the database
             self.__approved = self.__data[1]
             self.__company_name = self.__data[2]
