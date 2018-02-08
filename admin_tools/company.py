@@ -22,7 +22,6 @@ def create_company():
     new_company.create(company_name, email, contact_person, phone, country, adress, adress_number)
     
 
-    
 def approve_company(company):
     company.approve()
 

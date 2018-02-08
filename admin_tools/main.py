@@ -15,13 +15,6 @@ Search for any given user information
 from admin_tools.company import admin_company
 from admin_tools.user import admin_user
 
-
-
-
-
-
-
-
 if __name__ == "__main__":
     while True:
         print("Welcome to the admin menu")
@@ -34,3 +27,5 @@ if __name__ == "__main__":
             admin_user()
         elif user == "2":
             admin_company()
+        elif user == "q" or user == "Q":
+            break
