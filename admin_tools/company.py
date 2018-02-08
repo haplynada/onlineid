@@ -25,19 +25,23 @@ def create_company():
 def approve_company(company):
     company.approve()
 
+
 def disapprove_company(company):
     company.disapprove()
+
+
+def delete_company(company):
+    company.delete()
 
 def admin_company():
     while True:
 
-        print("\nCompany management:")
-        print("1. Create a company")
-        print("2. Display all unapproved companies")
-        print("3. Display all companies")
-        print("4. Perform action on company id")
-        print("Q. Go back")
-
+        print("\nCompany management:"
+              "\n1. Create a company"
+              "\n2. Display all unapproved companies"
+              "\n3. Display all companies"
+              "\n4. Perform action on company id"
+              "\nQ. Go back")
         selection = input("")
 
         if selection == "1":
