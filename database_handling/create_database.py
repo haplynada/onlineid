@@ -76,6 +76,18 @@ def create_database():
                                                     date varchar(50) NOT NULL,
                                                     time varchar(50) NOT NULL
                                                                         );
+                                                                        
+                    CREATE TABLE IF NOT EXISTS company (
+                                                    company_id varchar(50),
+                                                    approved varchar(8),
+                                                    company_name varchar(50) NOT NULL, 
+                                                    email varchar(50) NOT NULL,
+                                                    contact_person varchar(50) NOT NULL,
+                                                    phone varchar(16) NOT NULL, 
+                                                    country varchar(50) NOT NULL,
+                                                    adress varchar(50) NOT NULL, 
+                                                    adress_number varchar(50) NOT NULL
+                                                                        );
                      """
 
         # Execute the query

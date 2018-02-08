@@ -3,31 +3,21 @@ Created on 14. des. 2017
 Dataformats: 
     all data sendt to the server over the secure socket should be in the following formats
 Login: 
-    To server: login|email|password
-    From server: login|boolean
-
-Getdata
-    To server: getdata|email|password|(getdatatype ex:getfirstname)|additionaldatatype|...
-    From server: getdata|(getdatatype ex:getfirstname)|data|additionalreturndata|...
-    Error: getdata|False|reason
-
-Getalldata
-    To server: getalldata|email|password
-    From server: getalldata|True|firstname|lastname|phone|postcode|country|countrycode|adress|adressnumber|birthday|gender
-    Error: 
-    getalldata|False|reason
+To server: login|email|password|otp|sitename
+From server: login|boolean|firstname|lastname|phone|postcode|country|countrycode|adress|adressnumber|birthday|gender
 
 Newuser
-    To server: newuser|email|password|firstname|lastname|phone|postcode|country|countrycode|adress|adressnumber|birthday|gender
-    From server: newuser|boolean|reason
+To server: newuser|email|password|firstname|lastname|phone|postcode|country|countrycode|adress|adressnumber|birthday|gender
+From server: newuser|boolean|reason
 
 Edituser
-    To server: edituser|email|password|(editdatatype ex:editfirstname)|newdata|additionaleditdatatype|additionalnewdata|...
-    From server: edituser|boolean|reason
+To server: edituser|email|password|otp|(editdatatype ex:editfirstname)|newdata|additionaleditdatatype|additionalnewdata|...
+From server: edituser|boolean|reason
 
 Deleteuser:
-    To server: deleteuser|email|password
-    From server: deleteuser|boolean|reason
+To server: deleteuser|email|password|otp
+From server: deleteuser|boolean|reason
+
 
 @author: Tor Larssen Sekse
 '''
@@ -82,7 +72,12 @@ def handle_data(connstream, data):
         #logs the login attempt
         log.login_attempt(user.get_user_id(), client_ip)
         if user.authenticate() == True: #authenticates the user
-            return_data = b"login|True"
+            return_data = b"login|True|"+ str(user.get_firstname()).encode() + b"|" \
+            + str(user.get_lastname()).encode() + b"|" + str(user.get_phonenumber()).encode() + b"|"\
+            + str(user.get_post_code()).encode() + b"|" + str(user.get_country()).encode() + b"|"\
+            + str(user.get_phone_country()).encode() + b"|" + str(user.get_adress()).encode() + b"|"\
+            + str(user.get_adress_number()).encode() + b"|" + str(user.get_birthday()).encode() + b"|"\
+            + str(user.get_gender()).encode()
             connstream.send(return_data)
             
         else:
@@ -113,7 +108,7 @@ def handle_data(connstream, data):
     
     elif datalist[0] == "setupotp":
         secret = user.setup_otp()
-        if secret[0] is True:
+        if secret[0] == True:
             return_data = b"setupotp|True|" + str(secret[1]).encode()
             connstream.send(return_data)
         else:
@@ -293,6 +288,19 @@ def edit_user(user, datalist):
     else:
         return b"editdata|False|invaliduser"
 
+
+def company_check(company_id):
+    """
+    company check checks whether the site the login request comes from is whitelisted
+    if the site is whitelisted it will return True otherwise False
+    
+    Args: 
+        site_id: string containing a unique Id for a company site
+    Returns: 
+        True/False
+    """
+    
+    
 
 def receive_data(connstream): 
     """

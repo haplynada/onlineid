@@ -56,7 +56,7 @@ class Log(object):
         
         
             
-    def login_site(self, site):
+    def login_site(self, sitename):
         """
         The login_site method logs the site date and time of any actions. 
         
@@ -65,7 +65,7 @@ class Log(object):
         Returns: 
             None
         """
-        self.__site = site
+        self.__site = sitename
         
     def new_user(self, email, ip_adress):
         """

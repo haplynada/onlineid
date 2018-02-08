@@ -481,7 +481,7 @@ class User(object):
               False if the user was not authenticated to begin with.
 
         """
-        if self.authenticate() is True:
+        if self.authenticate() == True:
             secret = pyotp.random_base32()
             self.__2fa_secret = secret
             self.__has_2fa = "True"
@@ -504,7 +504,7 @@ class User(object):
         """
         secret = self.__2fa_secret
         active = pyotp.TOTP(secret)
-        if active.verify(self.__otp) is True:
+        if active.verify(self.__otp) == True:
             return True
         else:
             return False
