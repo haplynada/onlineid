@@ -74,7 +74,7 @@ def handle_data(connstream, data):
             user =User(datalist[1], datalist[2], datalist[3]) #seeting up the user with otp
             
     except IndexError: #handles a missing blank space where the otp should be. 
-        user =User(datalist[1], datalist[2], datalist[3]) #seting up the user with otp
+        user =User(datalist[1], datalist[2]) #seting up the user with otp
      
         
     if datalist[0] == "login": # parses a login request from the client 
