@@ -121,6 +121,7 @@ def handle_data(connstream, data):
     elif datalist[0] == "setupotp":
         secret = user.setup_otp()
         if secret[0] == True:
+            user.commit_changes()
             return_data = b"setupotp|True|" + str(secret[1]).encode()
             connstream.send(return_data)
         else:
