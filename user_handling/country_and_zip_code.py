@@ -29,5 +29,5 @@ def check_zip_code(country_provided: str, zip_code: int):
 
 
 if __name__ == "__main__":
-    print(check_country("DENMARK"))
-    print(check_zip_code("DENMARK", 9000))
+    print(check_country("DENMARK")) #You can change it to any country you want.
+    print(check_zip_code("DENMARK", 9000)) #Only use Denmark or Norway as country, but any zip-code you want.
