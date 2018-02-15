@@ -97,8 +97,9 @@ def handle_data(connstream, data):
         #logs the login attempt
         log.login_attempt(user.get_user_id(), client_ip)
         company = Company(datalist[4])
-        log.login_site(company.get_company_name())
+        
         if company.get_approved() == "True": 
+            log.login_site(company.get_company_name())
             if user.authenticate() == True: #authenticates the user
                 return_data = b"login|True|"+ str(user.get_firstname()).encode() + b"|" \
                 + str(user.get_lastname()).encode() + b"|" + str(user.get_phonenumber()).encode() + b"|"\
