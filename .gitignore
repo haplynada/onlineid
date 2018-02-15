@@ -39,3 +39,5 @@ user_handling/__pycache__/Company.cpython-36.pyc
 admin_tools/__pycache__/create_company.cpython-36.pyc
 admin_tools/__pycache__/__init__.cpython-36.pyc
 admin_tools/__pycache__/company.cpython-36.pyc
+admin_tools/__pycache__/user.cpython-36.pyc
+admin_tools/__pycache__/test_section.cpython-36.pyc
