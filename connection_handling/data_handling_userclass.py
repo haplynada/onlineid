@@ -81,10 +81,11 @@ def handle_data(connstream, data):
         return_data = b"login|False" 
         connstream.send(return_data)
         
-    if datalist[0] == "login": # parses a login request from the client 
+    elif datalist[0] == "login": # parses a login request from the client 
         #logs the login attempt
         log.login_attempt(user.get_user_id(), client_ip)
         company = Company(datalist[4])
+        log.login_site(company.get_company_name())
         if company.get_approved() == "True": 
             if user.authenticate() == True: #authenticates the user
                 return_data = b"login|True|"+ str(user.get_firstname()).encode() + b"|" \
@@ -143,6 +144,16 @@ def handle_data(connstream, data):
         else:
             return_data = b"deleteuser|False|invaliduser"
             connstream.send(return_data)
+    
+    elif datalist[0] == "newwebpage":
+        company = Company()
+        if company.create(datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7]) == True:
+            return_data = b"newwebpage|True"
+            
+        else: 
+            return_data = b"newwebpage|False" 
+            connstream.send(return_data)
+        
     
     log.store_in_database()#stores all loged items in the database
     return False
