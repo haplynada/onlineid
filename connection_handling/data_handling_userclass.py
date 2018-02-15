@@ -80,10 +80,12 @@ def handle_data(connstream, data):
         company = Company()
         if company.create(datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7]) == True:
             return_data = b"newwebpage|True"
+            return False
             
         else: 
             return_data = b"newwebpage|False" 
             connstream.send(return_data)
+            return False
     
     #sends login|False if the email adress provided is not in the database
     if user.is_user() == False: 
