@@ -546,7 +546,7 @@ class User(object):
                     db.conn.commit()
                     
                     query = ("UPDATE authentication SET"
-                            ", hashed_passwords=%s"
+                            " hashed_passwords=%s"
                             ", has_2fa=%s" 
                             ", 2fa_secret=%s"
                             " WHERE user_id=%s")
