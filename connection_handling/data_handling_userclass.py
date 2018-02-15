@@ -75,7 +75,11 @@ def handle_data(connstream, data):
             
     except IndexError: #handles a missing blank space where the otp should be. 
         user =User(datalist[1], datalist[2]) #seting up the user with otp
-     
+    
+    #sends login|False if the email adress provided is not in the database
+    if user.is_user() == False: 
+        return_data = b"login|False" 
+        connstream.send(return_data)
         
     if datalist[0] == "login": # parses a login request from the client 
         #logs the login attempt
