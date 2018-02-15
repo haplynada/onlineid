@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def check_country(country_provided: str):
-    file_path = "/Users/bjarke/Documents/Noroff/DF1/0. Studio/OnlineID/test/country_and_zip_code/country_codes.xlsx"
+    file_path = "/Users/bjarke/Documents/Noroff/DF1/0. Studio/OnlineID/user_handling/country_and_zip_code/country_codes.xlsx"
     df = pd.read_excel(file_path)
     country = country_provided.capitalize()
     guery_text = "country == ['"+country+"']"
@@ -15,7 +15,7 @@ def check_country(country_provided: str):
 
 def check_zip_code(country_provided: str, zip_code: int):
     country = country_provided.capitalize()
-    path = "/Users/bjarke/Documents/Noroff/DF1/0. Studio/OnlineID/test/country_and_zip_code/"+country+".xlsx"
+    path = "/Users/bjarke/Documents/Noroff/DF1/0. Studio/OnlineID/user_handling/country_and_zip_code/" + country + ".xlsx"
     df = pd.read_excel(str(path))
     city = df.loc[df["zip_code"] == zip_code]
     comparison = (((str(city.isin([zip_code]))).strip(" ")).split(" "))
