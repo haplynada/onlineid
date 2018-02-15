@@ -52,7 +52,7 @@ class Log(object):
         self.__user_id = user_id
         self.__ip_adress = ip_adress
         
-        self.login = True # sets housekeeping
+        self.__login = True # sets housekeeping
         
         
             
