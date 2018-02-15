@@ -76,6 +76,15 @@ def handle_data(connstream, data):
     except IndexError: #handles a missing blank space where the otp should be. 
         user =User(datalist[1], datalist[2]) #seting up the user with otp
     
+    if datalist[0] == "newwebpage":
+        company = Company()
+        if company.create(datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7]) == True:
+            return_data = b"newwebpage|True"
+            
+        else: 
+            return_data = b"newwebpage|False" 
+            connstream.send(return_data)
+    
     #sends login|False if the email adress provided is not in the database
     if user.is_user() == False: 
         return_data = b"login|False" 
@@ -145,14 +154,6 @@ def handle_data(connstream, data):
             return_data = b"deleteuser|False|invaliduser"
             connstream.send(return_data)
     
-    elif datalist[0] == "newwebpage":
-        company = Company()
-        if company.create(datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7]) == True:
-            return_data = b"newwebpage|True"
-            
-        else: 
-            return_data = b"newwebpage|False" 
-            connstream.send(return_data)
         
     
     log.store_in_database()#stores all loged items in the database
