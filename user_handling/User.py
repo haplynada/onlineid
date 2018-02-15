@@ -488,7 +488,7 @@ class User(object):
             self.__change = True
             return True, secret
         else:
-            return False
+            return False, "string"
 
 
     def check_otp(self):
