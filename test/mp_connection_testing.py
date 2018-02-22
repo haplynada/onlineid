@@ -1,12 +1,10 @@
 '''
-Created on 19. okt. 2017
+Created on 22. feb. 2018
 
 @author: Tor Larssen Sekse
 '''
-'''
-data used for testing purposes
-=b"newuser|sau@sau.no|koktsau42|Sau|Sausen|12398456|2520|Norway|0047|Faareveien|42|2017-01-01|female"
-'''
+
+import multiprocessing as mp
 import socket, ssl
 import timeit
 
@@ -35,6 +33,13 @@ def connect(port=22025):
     print(sender_ssl.recv().decode())
 
     sender_ssl.close()
-
-
-print(timeit.timeit(connect, number=1))
+    
+if __name__ == '__main__':
+    mp.freeze_support()
+    p1 = mp.Process(target=connect, args=(22025,))
+    p2 = mp.Process(target=connect, args=(22026,))
+    
+    p1.start()
+    p2.start()
+    p1.join()
+    p2.join()

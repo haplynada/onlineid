@@ -353,7 +353,7 @@ def receive_data(connstream):
         data=connstream.read()
 
 
-def listen_connection():
+def listen_connection(port=22025):
     """
     listen_connection, listen on the set port for incoming connections, and
     then uses the set certfile to add an SSL layer to the socket. It will then 
@@ -369,7 +369,7 @@ def listen_connection():
     """
     listener = socket.socket()
     host = socket.gethostname()
-    port = 22025
+    port = port
     listener.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
     listener.bind((host, port))
     
