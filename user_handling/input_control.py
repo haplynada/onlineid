@@ -75,7 +75,7 @@ def check_adressnumber(adressnumber):
         return False
 
 
-def check_postcode(country_provided: str, post_code: int):
+def check_postcode(country_provided: str, post_code: str):
     """ Checks the postcode for the given country.
 
     Looks in a excel-file, with the given country name, and searches for the post-code.
@@ -93,15 +93,19 @@ def check_postcode(country_provided: str, post_code: int):
     p_dir = os.getcwd()
     country = country_provided.capitalize()
     path = p_dir + "/country_and_zip_code/" + country + ".xlsx"
-    df = pd.read_excel(str(path))
-    city = df.loc[df["zip_code"] == post_code]
-    comparison = (((str(city.isin([post_code]))).strip(" ")).split(" "))
-    if comparison[0] != "Empty":
-        if comparison[9] == "True":
+    df = pd.read_excel(path)
+
+    query = "zip_code == ['"+post_code+"']"
+    code = df.query(query).head()
+    code_string = str(code)
+    zip_code = (code_string.strip(" ")).split(" ")
+    try:
+
+        if zip_code[(len(zip_code)-3)] == post_code:
             return True
         else:
             return False
-    else:
+    except IndexError:
         return False
 
 
@@ -122,6 +126,7 @@ def check_country(country_provided: str):
     p_dir = os.getcwd()
     file_path = p_dir + "/country_and_zip_code/country_codes.xlsx"
     df = pd.read_excel(file_path)
+
     country_comp = country_provided.capitalize()
     guery_text = "country == ['" + country_comp + "']"
     query = str(guery_text)
@@ -134,7 +139,6 @@ def check_country(country_provided: str):
         else:
             return False
     except IndexError:
-        print("Country not supported")
         return False
 
 

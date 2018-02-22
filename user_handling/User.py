@@ -336,7 +336,7 @@ class User(object):
             return False
 
 
-    def set_postcode(self, postcode):
+    def set_postcode(self, country, postcode):
         """
         The set data methods calls the input_control functions corresponding 
         to the data type to be changes and then edits that variable in the 
@@ -349,7 +349,7 @@ class User(object):
         Returns: 
             True/False depending on whether the changes was successful or not
         """
-        if check_postcode(postcode) == True:
+        if check_postcode(country, postcode) == True:
             self.__post_code = postcode
             self.__change = True
             return True
@@ -378,7 +378,7 @@ class User(object):
             return False
 
 
-    def set_country_code(self, country_code):
+    def set_country_code(self, country_code, country):
         """
         The set data methods calls the input_control functions corresponding 
         to the data type to be changes and then edits that variable in the 
@@ -391,7 +391,7 @@ class User(object):
         Returns: 
             True/False depending on whether the changes was successful or not
         """
-        if check_countrycode(country_code) == True:
+        if check_countrycode(country, country_code) == True:
             self.__country_code = country_code
             self.__change = True
             return True

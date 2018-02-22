@@ -99,7 +99,7 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
         errors += "\n"
         
     try:
-        if check_postcode(postcode) ==True:
+        if check_postcode(country, postcode) ==True:
             pass
         else:
             raise PostcodeError()
@@ -117,7 +117,7 @@ def create_user(email, password, firstname, lastname, phone, postcode, country, 
         errors += "\n"
         
     try:
-        if check_countrycode(countrycode) ==True:
+        if check_countrycode(country, countrycode) ==True:
             pass
         else:
             raise CountrycodeError()
