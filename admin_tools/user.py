@@ -5,6 +5,7 @@ Created on 8. feb. 2018
 '''
 
 from user_handling import new_user
+from user_handling.User import User
 from database_handling.connect import Connect
 
 
@@ -25,6 +26,150 @@ def create_user():
 
     print(new_user.create_user(email, password, firstname, lastname, phone, postcode, country, countrycode, address,
                          addressnumber, birthday, gender))
+
+
+def edit_user():
+    print("\nEdit user")
+    email = input("Enter email: ")
+    password = input("Enter password")
+    user = User(email, password)
+    while True:
+        if user.is_user() == True:
+            print("\nWhat would you like to edit? - remember to commit changes!!!:\n"
+                  "1. email\n"
+                  "2. firstname\n"
+                  "3. lastname\n"
+                  "4. password\n"
+                  "5. phonenumber\n"
+                  "6. adress\n"
+                  "7. adress number\n"
+                  "8. country\n"
+                  "9. postcode\n"
+                  "10. country code\n"
+                  "11. birthday\n"
+                  "12. gender\n"
+                  "13. Commit changes\n"
+                  "Q. Go back - any changes does not get committed\n")
+            choice = input("")
+            if choice == "1":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_email(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "2":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_firstname(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "2":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_firstname(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "3":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_lastname(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "4":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_password(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "5":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_phonenumber(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "6":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_adress(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "7":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_adress_number(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "8":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_country(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "9":
+                new_value = input("Enter new value: ")
+                country = user.get_country()
+                set_new_value = user.set_postcode(country, new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "10":
+                new_value = input("Enter new value: ")
+                country = user.get_country()
+                set_new_value = user.set_country_code(country, new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "11":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_birthday(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "12":
+                new_value = input("Enter new value: ")
+                set_new_value = user.set_gender(new_value)
+                if set_new_value == True:
+                    print("Value changed to", new_value)
+                else:
+                    print("New value not valid")
+                    continue
+            elif choice == "13":
+                commit = user.commit_changes()
+                if commit == True:
+                    print("Changes have been committed")
+                    break
+                else:
+                    print("Changes have not been committed")
+                    break
+            elif choice == "q" or choice == "Q":
+                break
+        else:
+            print("Invalid user or password")
+            break
 
 
 def lookup():
@@ -156,11 +301,12 @@ def deleteuser():
 def admin_user():
     while True:
 
-        print("\nUser management:")
-        print("1. Create a user")
-        print("2. Look up user")
-        print("3. Delete user")
-        print("Q. Go back")
+        print("\nUser management:\n"
+              "1. Create a user\n"
+              "2. Look up user\n"
+              "3. Edit user\n"
+              "4. Delete user\n"
+              "Q. Go back\n")
 
         selection = input("")
 
@@ -169,6 +315,8 @@ def admin_user():
         elif selection == "2":
             lookup()
         elif selection == "3":
+            edit_user()
+        elif selection == "4":
             deleteuser()
         elif selection == "q" or selection == "Q":
             break
