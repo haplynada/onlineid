@@ -20,7 +20,7 @@ send_changepassword = b"edituser|sau@sau.no|koktsau42|editpassword|koktsau42"
 
 # testdata end
 
-def connect(port=22025):
+def connect(data, port=22025):
     sender = socket.socket()
     host = socket.gethostname()
     sender_ssl = ssl.wrap_socket(sender)
@@ -29,15 +29,15 @@ def connect(port=22025):
 
     print(sender_ssl.getpeername())
 
-    sender_ssl.send(send_login)
+    sender_ssl.send(data)
     print(sender_ssl.recv().decode())
 
     sender_ssl.close()
     
 if __name__ == '__main__':
     mp.freeze_support()
-    p1 = mp.Process(target=connect, args=(22025,))
-    p2 = mp.Process(target=connect, args=(22026,))
+    p1 = mp.Process(target=connect, args=(send_data, 22025))
+    p2 = mp.Process(target=connect, args=(send_login,22026))
     
     p1.start()
     p2.start()

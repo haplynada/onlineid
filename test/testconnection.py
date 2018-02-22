@@ -9,6 +9,7 @@ data used for testing purposes
 '''
 import socket, ssl
 import timeit
+from random import randint
 
 # testdata
 send_data = b"newuser|sau@sau.no|koktsau42|Sau|Sausen|12398456|2520|Norway|0047|Faareveien|42|2004-01-01|female"
@@ -22,11 +23,15 @@ send_changepassword = b"edituser|sau@sau.no|koktsau42|editpassword|koktsau42"
 
 # testdata end
 
-def connect(port=22025):
+def connect():
     sender = socket.socket()
     host = socket.gethostname()
     sender_ssl = ssl.wrap_socket(sender)
-
+    if randint(1,2) == 1 :
+        port=22025
+    else:
+        port=22026
+         
     sender_ssl.connect(("88.88.170.2", port))
 
     print(sender_ssl.getpeername())
@@ -37,4 +42,4 @@ def connect(port=22025):
     sender_ssl.close()
 
 
-print(timeit.timeit(connect, number=1))
+print(timeit.timeit(connect, number=100))
