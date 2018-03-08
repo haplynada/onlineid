@@ -482,10 +482,10 @@ if __name__ == "__main__":
 
     while True:
         print("Admin tool login")
-        user_name = input("Please enter your username:")
-        password = input("Please enter your password")
+        user_name = input("Enter username:")
+        password = input("Enter password")
 
         try:
             Admin(user_name, password)
         except TypeError:
-            print("\nWrong user_name or password\n")
+            print("\nWrong username or password\n")
