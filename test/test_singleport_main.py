@@ -11,6 +11,8 @@ import ssl
 from _socket import SOL_SOCKET, SO_REUSEADDR
 from connection_handling.data_handling_userclass import handle_data
 
+mp.allow_connection_pickling()
+
 def receive_data(queue): 
     """
     receive data taks inn a connection, and reads data from
@@ -23,16 +25,19 @@ def receive_data(queue):
         None
     """  
     while True:
-        connstream = queue.get()
+        
+        newsocket = queue.get()
+        print(newsocket.getpeername())
+        connstream =ssl.wrap_socket(newsocket, server_side=True, certfile="server.pem")
+        print(connstream.getpeercert())
         data=connstream.read()
         while data:
             if not handle_data(connstream, data):
-                queue.task_done()
                 break
             data=connstream.read()
 
 
-def listen(port, queue):
+def listen(port=22025):
     """
    
     """
@@ -46,27 +51,33 @@ def listen(port, queue):
     
     listener.listen(10)
     while True:
+        #accepting connection
         newsocket, fromaddr =listener.accept()
-        connstream =ssl.wrap_socket(newsocket, server_side=True, certfile="server.pem")
-        print("putting" + str(connstream.getpeername()))
-        queue.put(connstream)
+        
+        print("putting" + str(newsocket.getpeername()))
+        
+        queue.put(newsocket)#adding connection to processing queue
+        print(queue)
 
 
 
 
 if __name__ == '__main__':
+    #allows sending sockets between processes
+    
     #determines the number of cores on the cpu
     cpu_count = psutil.cpu_count(logical=False) -1
     
     #sets up the queue
     queue = mp.Queue(50)
     
+    
     mp.freeze_support()#for windows support
     
     pool = mp.Pool(cpu_count, receive_data,(queue,))
     
-    listen_process = mp.Process(target=listen, args=[22025, queue])
     
-    listen_process.start()
+    print(queue)
+    listen()
     
     
