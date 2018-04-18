@@ -27,7 +27,7 @@ class Connect(object):
         Returns: 
             none
         """
-        self.conn = pymysql.connect(host="88.88.170.2",  # your host 
+        self.conn = pymysql.connect(host="88.91.35.168",  # your host 
         user="server",       # username
         passwd="sudoonlineid",     # password
         db="OnlineID" # name of the database, commented out since I am creating the DB in the string below

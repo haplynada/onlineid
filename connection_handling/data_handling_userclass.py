@@ -71,10 +71,10 @@ def handle_data(connstream, data):
         if datalist[3] == " ":#checking if otp was provided
             user = User(datalist[1], datalist[2]) #setting up the user object without otp
         else: 
-            user =User(datalist[1], datalist[2], datalist[3]) #seeting up the user with otp
+            user =User(datalist[1], datalist[2], datalist[3]) #setting up the user with otp
             
     except IndexError: #handles a missing blank space where the otp should be. 
-        user =User(datalist[1], datalist[2]) #seting up the user with otp
+        user =User(datalist[1], datalist[2]) #setting up the user with otp
     
     if datalist[0] == "newwebpage":
         company = Company()
@@ -148,6 +148,7 @@ def handle_data(connstream, data):
             
     elif datalist[0] == "deleteuser":#parses a deleteuser request from client
         if user.authenticate() == True:#authenticates the user
+            log.user_deletion(user.get_user_id(), client_ip) #Logs the user deletion
             if user.delete() == True:#deletes all data about the active user from the databse
                 return_data = b"deleteuser|True"
                 connstream.send(return_data)
@@ -241,7 +242,7 @@ def edit_user(user, datalist):
     del datalist[0]
     del datalist[0]
     del datalist[0]
-    if user.authenticate() == True: 
+    if user.authenticate_edit() == True: 
         
         return_data = b"edituser"
         while len(datalist) != 0:#while there is data to process, processes data

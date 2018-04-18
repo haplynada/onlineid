@@ -88,6 +88,29 @@ def create_database():
                                                     adress varchar(50) NOT NULL, 
                                                     adress_number varchar(50) NOT NULL
                                                                         );
+                                                                        
+                    CREATE TABLE IF NOT EXISTS deleted_users (
+                                        first_name varchar(50) NOT NULL,
+                                        last_name varchar(50) NOT NULL,
+                                        adress varchar(50) NOT NULL,
+                                        adress_number int(20) NOT NULL,
+                                        zip_code int(11) NOT NULL,
+                                        country varchar(50) NOT NULL,
+                                        birthday date NOT NULL,
+                                        phone_Countrycode int(11) NOT NULL,
+                                        phonenumber int(11) NOT NULL,
+                                        email varchar(50) NOT NULL,
+                                        sex ENUM( 'male', 'female', 'other') NOT NULL,
+                                        user_id INT UNSIGNED NOT NULL PRIMARY KEY
+                                                        );
+                    
+                    CREATE TABLE IF NOT EXISTS deletion_log (
+                                        user_id varchar(50) NOT NULL, 
+                                        email varchar(50) NOT NULL,
+                                        ip_adress varchar(16) NOT NULL,
+                                        date varchar(50) NOT NULL,
+                                        time varchar(50) NOT NULL
+                                                        );
                      """
 
         # Execute the query

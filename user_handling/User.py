@@ -210,6 +210,29 @@ class User(object):
             return self.__is_authenticated
         
         
+    def authenticate_edit(self):
+        """Authenticates the active instance of user for editing
+        
+        ONLY USED FOR EDITS
+        
+    
+        Args: 
+            self
+        
+        Returns: 
+            True/False depending on whether the user was authenticated or not
+    
+    """
+        if self.__is_authenticated != None:
+            return self.__is_authenticated
+        else: 
+            if bcrypt.checkpw(self.__password.encode(), self.__hashed_password.encode()) == True:
+                self.__is_authenticated = True 
+            else:
+                self.__is_authenticated = False
+        return self.__is_authenticated       
+
+
     def set_email(self, email):
         """
         The set data methods calls the input_control functions corresponding 
@@ -524,7 +547,7 @@ class User(object):
         """
         
         if self.__change == True: #checks for changes
-            if self.authenticate() == True: #authenticates user
+            if self.authenticate_edit() == True: #authenticates user
                 with Connect() as db: #connects to the database
                     query = ("UPDATE information SET"
                             " email=%s"

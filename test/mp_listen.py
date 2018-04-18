@@ -7,7 +7,6 @@ Test implementation of multiprocessing using several ports
 '''
 
 import multiprocessing as mp
-from database_handling.connect import Connect
 from connection_handling.data_handling_userclass import listen_connection
 import psutil
 

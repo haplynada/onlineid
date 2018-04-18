@@ -89,7 +89,53 @@ class Log(object):
             self.__user_id = str(db.cur.fetchone()[0])
             
         self.__new_user = True #sets housekeeping 
+    
+    
+    def user_deletion(self, user_id, ip_adress):
+        """
+        logs the deletion of a user, also transfer all information about the user to a 
+        deleted_users table in the database. 
+        """
+        self.__user_id = user_id
+        self.__ip_adress = ip_adress
         
+        
+        with Connect() as db: #connecting to database
+            #uses user_id to get all user data from information
+            query = "SELECT * from information WHERE user_id =%s;"
+            db.cur.execute(query, (self.__user_id))
+            self.__data = db.cur.fetchall()[0]
+        
+            #setting variables to data from information query
+            self.__first_name = self.__data[0]
+            self.__last_name = self.__data[1]
+            self.__adress = self.__data[2]
+            self.__adress_number = self.__data[3]
+            self.__post_code = self.__data[4]
+            self.__country = self.__data[5]
+            self.__birthday = str(self.__data[6])
+            self.__country_code = self.__data[7]
+            self.__phone_number = self.__data[8]
+            self.__email = self.__data[9]
+            self.__gender = self.__data[10]
+            
+            #copies the users information into the deleted users table
+            query = (" INSERT INTO deleted_users"
+                        "(first_name, last_name, adress, adress_number, zip_code, country, birthday, sex, phone_Countrycode, phonenumber, email, user_id) "
+                        "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
+            db.cur.execute(query, (self.__email, self.__first_name, self.__last_name, 
+                                    self.__phone_number, self.__adress, self.__adress_number, 
+                                    self.__post_code, self.__country, self.__country_code,
+                                    self.__birthday, self.__gender, self.__user_id))
+            db.conn.commit()
+            
+            #adds the user deletion to the deletion log
+            self.__query = (" INSERT INTO deletion_log"
+                                "(user_id, email, ip_adress, date, time,)"
+                                "VALUES (%s, %s, %s, %s, %s)")
+            self.__data = (self.__user_id, self.__email, self.__ip_adress, self.__date, self.__time)
+            db.cur.execute(self.__query, self.__data)
+            db.conn.commit()
             
 
     
