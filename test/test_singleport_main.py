@@ -15,6 +15,7 @@ mp.allow_connection_pickling()
 
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 context.load_cert_chain(certfile ="server.pem")
+context.options = ssl.OP_NO_TLSv1
 context.set_ciphers('EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH')
 
 def receive_data(queue): 
@@ -28,11 +29,16 @@ def receive_data(queue):
     Returns: 
         None
     """  
+
+
     while True:
-        newsocket = queue.get()
-        print(newsocket.getpeername())
-        connstream =context.wrap_socket(newsocket, server_side=True)
-        print(connstream.getpeercert())
+        sock = queue.get()
+        print(sock.getpeername())
+        try: 
+            connstream =context.wrap_socket(sock, server_side=True)
+        except ssl.SSLError as e:
+            print(e)
+        print(connstream.cipher())
         data=connstream.read()
         while data:
             if not handle_data(connstream, data):
@@ -56,13 +62,13 @@ def listen(port=22025):
     sock.listen(10)
     while True:
         #accepting connection
-        newsocket =sock.accept()
+        newsocket,fromaddr =sock.accept()
         
-        print("putting" + str(newsocket.getpeername()))#print for testing
+        #print("putting" + str(newsocket.getpeername()))#print for testing
         
         queue.put(newsocket)#adding connection to processing queue
         
-        newsocket.close()#closing the listeners open copy of the socket
+        
 
 
 
@@ -82,8 +88,6 @@ if __name__ == '__main__':
     #starting worker process pool
     pool = mp.Pool(cpu_count, receive_data,(queue,))
     
-    
-    print(queue)
-    listen()
+    listen()#starts the server listening
     
     
