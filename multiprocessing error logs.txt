@@ -1,0 +1,132 @@
+<multiprocessing.queues.Queue object at 0x00000000029BB7B8>
+putting('88.91.35.168', 53361)
+<multiprocessing.queues.Queue object at 0x00000000029BB7B8>
+('88.91.35.168', 53361)
+Process SpawnPoolWorker-1:
+Traceback (most recent call last):
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\io\excel.py", line 261, in __init__
+    import xlrd
+ModuleNotFoundError: No module named 'xlrd'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 258, in _bootstrap
+    self.run()
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\pool.py", line 103, in worker
+    initializer(*initargs)
+  File "E:\Workspace\Onlineid\test\test_singleport_main.py", line 35, in receive_data
+    if not handle_data(connstream, data):
+  File "E:\Workspace\onlineid\connection_handling\data_handling_userclass.py", line 60, in handle_data
+    if create_user(datalist[0], datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7], datalist[8], datalist[9], datalist[10], datalist[11]) ==True:
+  File "E:\Workspace\onlineid\user_handling\new_user.py", line 102, in create_user
+    if check_postcode(country, postcode) ==True:
+  File "E:\Workspace\onlineid\user_handling\input_control.py", line 96, in check_postcode
+    df = pd.read_excel(path)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\util\_decorators.py", line 118, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\io\excel.py", line 230, in read_excel
+    io = ExcelFile(io, engine=engine)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\io\excel.py", line 263, in __init__
+    raise ImportError(err_msg)
+ImportError: Install xlrd >= 0.9.0 for Excel support
+putting('88.91.35.168', 53530)
+<multiprocessing.queues.Queue object at 0x00000000029BB7B8>
+('88.91.35.168', 53530)
+Process SpawnPoolWorker-2:
+Traceback (most recent call last):
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 258, in _bootstrap
+    self.run()
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\pool.py", line 103, in worker
+    initializer(*initargs)
+  File "E:\Workspace\Onlineid\test\test_singleport_main.py", line 35, in receive_data
+    if not handle_data(connstream, data):
+  File "E:\Workspace\onlineid\connection_handling\data_handling_userclass.py", line 60, in handle_data
+    if create_user(datalist[0], datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7], datalist[8], datalist[9], datalist[10], datalist[11]) ==True:
+  File "E:\Workspace\onlineid\user_handling\new_user.py", line 102, in create_user
+    if check_postcode(country, postcode) ==True:
+  File "E:\Workspace\onlineid\user_handling\input_control.py", line 96, in check_postcode
+    df = pd.read_excel(path)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\util\_decorators.py", line 118, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\io\excel.py", line 230, in read_excel
+    io = ExcelFile(io, engine=engine)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\io\excel.py", line 294, in __init__
+    self.book = xlrd.open_workbook(self._io)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\site-packages\xlrd\__init__.py", line 116, in open_workbook
+    with open(filename, "rb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\Workspace\\Onlineid\\test/country_and_zip_code/Norway.xlsx'
+putting('88.91.35.168', 53633)
+<multiprocessing.queues.Queue object at 0x00000000029BB7B8>
+('88.91.35.168', 53633)
+Process SpawnPoolWorker-3:
+Traceback (most recent call last):
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 258, in _bootstrap
+    self.run()
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\pool.py", line 103, in worker
+    initializer(*initargs)
+  File "E:\Workspace\Onlineid\test\test_singleport_main.py", line 36, in receive_data
+    queue.task_done()
+AttributeError: 'Queue' object has no attribute 'task_done'
+putting('88.91.35.168', 53684)
+<multiprocessing.queues.Queue object at 0x00000000029BB7B8>
+('88.91.35.168', 53684)
+Process SpawnPoolWorker-4:
+Traceback (most recent call last):
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 258, in _bootstrap
+    self.run()
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\pool.py", line 103, in worker
+    initializer(*initargs)
+  File "E:\Workspace\Onlineid\test\test_singleport_main.py", line 36, in receive_data
+    queue.task_done()
+AttributeError: 'Queue' object has no attribute 'task_done'
+putting('88.91.35.168', 53714)
+<multiprocessing.queues.Queue object at 0x00000000029BB7B8>
+('88.91.35.168', 53714)
+Process SpawnPoolWorker-5:
+Traceback (most recent call last):
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 258, in _bootstrap
+    self.run()
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\pool.py", line 103, in worker
+    initializer(*initargs)
+  File "E:\Workspace\Onlineid\test\test_singleport_main.py", line 36, in receive_data
+    queue.task_done()
+AttributeError: 'Queue' object has no attribute 'task_done'
+putting('88.91.35.168', 53759)
+<multiprocessing.queues.Queue object at 0x00000000029BB7B8>
+('88.91.35.168', 53759)
+Process SpawnPoolWorker-6:
+Traceback (most recent call last):
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 258, in _bootstrap
+    self.run()
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\pool.py", line 103, in worker
+    initializer(*initargs)
+  File "E:\Workspace\Onlineid\test\test_singleport_main.py", line 36, in receive_data
+    queue.task_done()
+AttributeError: 'Queue' object has no attribute 'task_done'
+putting('88.91.35.168', 53790)
+<multiprocessing.queues.Queue object at 0x00000000029BB7B8>
+('88.91.35.168', 53790)
+Process SpawnPoolWorker-7:
+Traceback (most recent call last):
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 258, in _bootstrap
+    self.run()
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\onlineid\AppData\Local\Programs\Python\Python36\lib\multiprocessing\pool.py", line 103, in worker
+    initializer(*initargs)
+  File "E:\Workspace\Onlineid\test\test_singleport_main.py", line 36, in receive_data
+    queue.task_done()
+AttributeError: 'Queue' object has no attribute 'task_done'

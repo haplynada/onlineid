@@ -28,7 +28,7 @@ def connect(data, port=22025):
     sender_ssl.connect(("88.91.35.168", port))
 
     print(sender_ssl.getpeername())
-
+    
     sender_ssl.send(data)
     print(sender_ssl.recv().decode())
 
@@ -36,10 +36,8 @@ def connect(data, port=22025):
     
 if __name__ == '__main__':
     mp.freeze_support()
-    p1 = mp.Process(target=connect, args=(send_data, 22025))
+    p1 = mp.Process(target=connect, args=(send_login, 22025))
     p2 = mp.Process(target=connect, args=(send_login,22026))
     
     p1.start()
-    p2.start()
     p1.join()
-    p2.join()

@@ -13,6 +13,10 @@ from connection_handling.data_handling_userclass import handle_data
 
 mp.allow_connection_pickling()
 
+context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+context.load_cert_chain(certfile ="server.pem")
+context.set_ciphers('EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH')
+
 def receive_data(queue): 
     """
     receive data taks inn a connection, and reads data from
@@ -25,14 +29,14 @@ def receive_data(queue):
         None
     """  
     while True:
-        
         newsocket = queue.get()
         print(newsocket.getpeername())
-        connstream =ssl.wrap_socket(newsocket, server_side=True, certfile="server.pem")
+        connstream =context.wrap_socket(newsocket, server_side=True)
         print(connstream.getpeercert())
         data=connstream.read()
         while data:
             if not handle_data(connstream, data):
+                connstream.close()
                 break
             data=connstream.read()
 
@@ -41,23 +45,24 @@ def listen(port=22025):
     """
    
     """
-    listener = socket.socket()
+    sock = socket.socket()
     host = socket.gethostname()
     port = port
-    listener.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
-    listener.bind((host, port))
+    sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+    sock.bind((host, port))
     
     
     
-    listener.listen(10)
+    sock.listen(10)
     while True:
         #accepting connection
-        newsocket, fromaddr =listener.accept()
+        newsocket =sock.accept()
         
-        print("putting" + str(newsocket.getpeername()))
+        print("putting" + str(newsocket.getpeername()))#print for testing
         
         queue.put(newsocket)#adding connection to processing queue
-        print(queue)
+        
+        newsocket.close()#closing the listeners open copy of the socket
 
 
 
@@ -65,7 +70,7 @@ def listen(port=22025):
 if __name__ == '__main__':
     #allows sending sockets between processes
     
-    #determines the number of cores on the cpu
+    #determines the number of cores on the cpu -1(1 for listener the rest for pool)
     cpu_count = psutil.cpu_count(logical=False) -1
     
     #sets up the queue
@@ -74,6 +79,7 @@ if __name__ == '__main__':
     
     mp.freeze_support()#for windows support
     
+    #starting worker process pool
     pool = mp.Pool(cpu_count, receive_data,(queue,))
     
     
