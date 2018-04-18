@@ -32,7 +32,7 @@ def receive_data(queue):
             data=connstream.read()
 
 
-def listen(port=22025):
+def listen(port, queue):
     """
    
     """
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     
     pool = mp.Pool(cpu_count, receive_data,(queue,))
     
-    listen_process = mp.Process(target=listen, args=[22025])
+    listen_process = mp.Process(target=listen, args=[22025, queue])
     
     listen_process.start()
     
