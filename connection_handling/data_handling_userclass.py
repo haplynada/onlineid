@@ -347,7 +347,7 @@ def receive_data(connstream):
     Returns: 
         None
     """  
-    data=connstream.read()
+    data=connstream.recv()
     while data:
         if not handle_data(connstream, data):
             break

@@ -25,7 +25,7 @@ def connect(data, port=22025):
     host = socket.gethostname()
     sender_ssl = ssl.wrap_socket(sender)
 
-    sender_ssl.connect(("88.88.170.2", port))
+    sender_ssl.connect(("88.91.35.168", port))
 
     print(sender_ssl.getpeername())
 
