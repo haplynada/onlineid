@@ -27,12 +27,11 @@ def connect():
     sender = socket.socket()
     host = socket.gethostname()
     sender_ssl = ssl.wrap_socket(sender)
-    if randint(1,2) == 1 :
-        port=22025
-    else:
-        port=22026
+    
+    port=22025
+    
          
-    sender_ssl.connect(("88.88.170.2", port))
+    sender_ssl.connect(("88.91.35.168", port))
 
     print(sender_ssl.getpeername())
 
@@ -42,4 +41,4 @@ def connect():
     sender_ssl.close()
 
 
-print(timeit.timeit(connect, number=1))
+print(timeit.timeit(connect, number=50))

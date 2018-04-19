@@ -28,7 +28,7 @@ def connect(data, port=22025):
     sender_ssl.connect(("88.91.35.168", port))
 
     print(sender_ssl.getpeername())
-    
+    print(sender_ssl.cipher())
     sender_ssl.send(data)
     print(sender_ssl.recv().decode())
 

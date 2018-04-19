@@ -30,7 +30,7 @@ def receive_data(queue):
         None
     """  
 
-
+    print(mp.current_process())
     while True:
         sock = queue.get()
         print(sock.getpeername())
