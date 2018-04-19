@@ -76,7 +76,7 @@ def check_adressnumber(adressnumber):
         return False
 
 
-def check_postcode(country_provided: str, post_code: str):
+def check_postcode(country: str, post_code: str):
     """ Checks the postcode for the given country.
 
     Looks in a excel-file, with the given country name, and searches for the post-code.
@@ -91,10 +91,15 @@ def check_postcode(country_provided: str, post_code: str):
         Else returns False.
 
     """
+    
     p_dir = os.getcwd()
-    country = country_provided.capitalize()
-    path = p_dir + "/country_and_zip_code/" + country + ".xlsx"
-    df = pd.read_excel(path)
+    if sys.platform == "darwin":
+        p_dir = os.getcwd()
+        file_path = p_dir + "/country_and_zip_code/" + country + ".xlsx"
+    else:
+        p_dir = os.getcwd()
+        file_path = p_dir + "\\country_and_zip_code\\" + country + ".xlsx"
+    df = pd.read_excel(file_path)
 
     query = "zip_code == ['"+post_code+"']"
     code = df.query(query).head()
@@ -129,7 +134,7 @@ def check_country(country_provided: str):
         file_path = p_dir + "/country_and_zip_code/country_codes.xlsx"
     else:
         p_dir = os.getcwd()
-        file_path = p_dir + "\country_and_zip_code\country_codes.xlsx"
+        file_path = p_dir + "\\country_and_zip_code\\country_codes.xlsx"
     df = pd.read_excel(file_path)
     country_comp = country_provided.capitalize()
     guery_text = "country == ['" + country_comp + "']"
