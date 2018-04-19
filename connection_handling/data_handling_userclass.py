@@ -72,6 +72,7 @@ def handle_data(connstream, data, authenticated_logins):
         try:
             token = datalist[0]
             connstream.send(authenticated_logins.pop(token))
+            return False
         except KeyError:
             return_data = b"login|False|token not in store"
             connstream.send(return_data)

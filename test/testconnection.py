@@ -3,6 +3,8 @@ Created on 19. okt. 2017
 
 @author: Tor Larssen Sekse
 '''
+from time import sleep
+from _socket import SHUT_RDWR
 '''
 data used for testing purposes
 =b"newuser|sau@sau.no|koktsau42|Sau|Sausen|12398456|2520|Norway|0047|Faareveien|42|2017-01-01|female"
@@ -37,8 +39,22 @@ def connect():
 
     sender_ssl.send(send_login)
     print(sender_ssl.recv().decode())
+    
+    sender_ssl.shutdown(SHUT_RDWR)
+    sender_ssl.close()
+    
+    sleep(1)
+    sender = socket.socket()
+    host = socket.gethostname()
+    sender_ssl = ssl.wrap_socket(sender)
+    
+    port=22025
+    sender_ssl.connect(("88.91.35.168", port))
+    
+    sender_ssl.send(b"confirm|token")
+    print(sender_ssl.recv().decode())
 
     sender_ssl.close()
 
 
-print(timeit.timeit(connect, number=50))
+print(timeit.timeit(connect, number=1))
