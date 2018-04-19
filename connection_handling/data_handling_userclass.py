@@ -112,7 +112,7 @@ def handle_data(connstream, data, authenticated_logins):
         if company.get_approved() == "True": 
             log.login_site(company.get_company_name())
             if user.authenticate() == True: #authenticates the user
-                return_data = b"login|True|"
+                return_data = b"login|True|token"
                 login_data = b"login|True|"+ str(user.get_firstname()).encode() + b"|" \
                 + str(user.get_lastname()).encode() + b"|" + str(user.get_phonenumber()).encode() + b"|"\
                 + str(user.get_post_code()).encode() + b"|" + str(user.get_country()).encode() + b"|"\
@@ -122,7 +122,7 @@ def handle_data(connstream, data, authenticated_logins):
                 authenticated_logins[token] = login_data
                 connstream.send(return_data)
             else:
-                connstream.send(b"login|False")
+                connstream.send(b"login|False|token")
         else:
             connstream.send(b"login|False|invalidsite")
     
