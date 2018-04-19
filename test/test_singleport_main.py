@@ -19,11 +19,9 @@ context.load_cert_chain(certfile ="server.pem")
 context.options = ssl.OP_NO_TLSv1
 context.set_ciphers('EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH')
 
-#creating dictionary for login authentication
-manager = mp.Manager()
-authenticated_logins = manager.dict()
 
-def receive_data(queue): 
+
+def receive_data(queue, authenticated_logins): 
     """
     receive data taks inn a connection, and reads data from
     the connection until there is data present. When it detects data it will
@@ -82,8 +80,11 @@ def listen(port=22025):
 
 
 if __name__ == '__main__':
-    #allows sending sockets between processes
+    mp.freeze_support()#for windows support
     
+    #creating dictionary for login authentication
+    manager = mp.Manager()
+    authenticated_logins = manager.dict()
     #determines the number of cores on the cpu -1(1 for listener the rest for pool)
     cpu_count = psutil.cpu_count(logical=False) 
     
@@ -91,10 +92,10 @@ if __name__ == '__main__':
     queue = mp.Queue(50)
     
     
-    mp.freeze_support()#for windows support
+    
     
     #starting worker process pool
-    pool = mp.Pool(cpu_count, receive_data,(queue,))
+    pool = mp.Pool(cpu_count, receive_data,(queue, authenticated_logins,))
     
     listen()#starts the server listening
     
