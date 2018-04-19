@@ -171,7 +171,7 @@ def check_countrycode(country_provided: str, country_code: str):
         file_path = p_dir + "/country_and_zip_code/country_codes.xlsx"
     else:
         p_dir = os.getcwd()
-        file_path = p_dir + "\country_and_zip_code\country_codes.xlsx"
+        file_path = p_dir + "\\country_and_zip_code\\country_codes.xlsx"
     df = pd.read_excel(file_path)
     country_comp = country_provided.capitalize()
     guery_text = "country == ['" + country_comp + "']"
