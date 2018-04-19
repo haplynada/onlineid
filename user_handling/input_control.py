@@ -12,6 +12,7 @@ genders = ["Male", "Female", "Other", "male", "female", "other"]
 
 import datetime
 import os
+import sys
 import pandas as pd
 from datetime import date
 from database_handling.connect import Connect
@@ -123,10 +124,13 @@ def check_country(country_provided: str):
         Else returns False.
 
     """
-    p_dir = os.getcwd()
-    file_path = p_dir + "/country_and_zip_code/country_codes.xlsx"
+    if sys.platform == "darwin":
+        p_dir = os.getcwd()
+        file_path = p_dir + "/country_and_zip_code/country_codes.xlsx"
+    else:
+        p_dir = os.getcwd()
+        file_path = p_dir + "\country_and_zip_code\country_codes.xlsx"
     df = pd.read_excel(file_path)
-
     country_comp = country_provided.capitalize()
     guery_text = "country == ['" + country_comp + "']"
     query = str(guery_text)
@@ -157,8 +161,12 @@ def check_countrycode(country_provided: str, country_code: str):
         Else it returns False.
 
     """
-    p_dir = os.getcwd()
-    file_path = p_dir + "/country_and_zip_code/country_codes.xlsx"
+    if sys.platform == "darwin":
+        p_dir = os.getcwd()
+        file_path = p_dir + "/country_and_zip_code/country_codes.xlsx"
+    else:
+        p_dir = os.getcwd()
+        file_path = p_dir + "\country_and_zip_code\country_codes.xlsx"
     df = pd.read_excel(file_path)
     country_comp = country_provided.capitalize()
     guery_text = "country == ['" + country_comp + "']"
