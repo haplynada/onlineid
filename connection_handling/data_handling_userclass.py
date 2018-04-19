@@ -106,10 +106,12 @@ def handle_data(connstream, data, authenticated_logins):
         
     elif datalist[0] == "login": # parses a login request from the client 
         #logs the login attempt
-        log.login_attempt(user.get_user_id(), client_ip)
-        company = Company(datalist[4])
-        token = datalist[5]
-        
+        try: 
+            log.login_attempt(user.get_user_id(), client_ip)
+            company = Company(datalist[4])
+            token = datalist[5]
+        except IndexError:
+            connstream.send(b"login|False|Error, please try again")
         if company.get_approved() == "True": 
             log.login_site(company.get_company_name())
             if user.authenticate() == True: #authenticates the user

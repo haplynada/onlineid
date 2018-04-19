@@ -21,7 +21,7 @@ send_changepassword = b"edituser|sau@sau.no|koktsau42|editpassword|koktsau42"
 # testdata end
 
 def connect(data, port=22025):
-    for x in range (0,1):
+    for x in range (0,100):
         sender = socket.socket()
         host = socket.gethostname()
         sender_ssl = ssl.wrap_socket(sender)
