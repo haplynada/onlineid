@@ -3,7 +3,7 @@ Created on 14. des. 2017
 Dataformats: 
     all data sendt to the server over the secure socket should be in the following formats
 Login: 
-To server: login|email|password|otp|siteid
+To server: login|email|password|otp|siteid|token
 From server: login|boolean|firstname|lastname|phone|postcode|country|countrycode|adress|adressnumber|birthday|gender
 
 Newuser
@@ -30,7 +30,7 @@ from log.Log import Log
 from user_handling.Company import Company
 
 
-def handle_data(connstream, data):
+def handle_data(connstream, data, authenticated_logins):
     """
     Handle data receives a string sent from the client over secure sockets, parses
     the string into keywords, and calls methods from the User class and other
@@ -66,6 +66,16 @@ def handle_data(connstream, data):
             errors = create_user(datalist[0], datalist[1], datalist[2], datalist[3], datalist[4], datalist[5], datalist[6], datalist[7], datalist[8], datalist[9], datalist[10], datalist[11])
             return_data= b"newuser|false|" + str(errors).encode()
             connstream.send(return_data)
+            
+    if datalist[0] == "confirm":
+        del datalist[0]
+        try:
+            token = datalist[0]
+            connstream.send(authenticated_logins.pop(token))
+        except KeyError:
+            return_data = b"login|False|token not in store"
+            connstream.send(return_data)
+            return False
      
     try: 
         if datalist[3] == " ":#checking if otp was provided
@@ -97,16 +107,19 @@ def handle_data(connstream, data):
         #logs the login attempt
         log.login_attempt(user.get_user_id(), client_ip)
         company = Company(datalist[4])
+        token = datalist[5]
         
         if company.get_approved() == "True": 
             log.login_site(company.get_company_name())
             if user.authenticate() == True: #authenticates the user
-                return_data = b"login|True|"+ str(user.get_firstname()).encode() + b"|" \
+                return_data = b"login|True|"
+                login_data = b"login|True|"+ str(user.get_firstname()).encode() + b"|" \
                 + str(user.get_lastname()).encode() + b"|" + str(user.get_phonenumber()).encode() + b"|"\
                 + str(user.get_post_code()).encode() + b"|" + str(user.get_country()).encode() + b"|"\
                 + str(user.get_phone_country()).encode() + b"|" + str(user.get_adress()).encode() + b"|"\
                 + str(user.get_adress_number()).encode() + b"|" + str(user.get_birthday()).encode() + b"|"\
                 + str(user.get_gender()).encode()
+                authenticated_logins[token] = login_data
                 connstream.send(return_data)
             else:
                 connstream.send(b"login|False")

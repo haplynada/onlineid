@@ -13,10 +13,14 @@ from connection_handling.data_handling_userclass import handle_data
 
 mp.allow_connection_pickling()#allows putting sockets in a multiprocessing queue
 
+#SSL Settings
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 context.load_cert_chain(certfile ="server.pem")
 context.options = ssl.OP_NO_TLSv1
 context.set_ciphers('EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH')
+
+#creating dictionary for login authentication
+authenticated_logins = {}
 
 def receive_data(queue): 
     """
@@ -43,7 +47,7 @@ def receive_data(queue):
         print(connstream.cipher())
         data=connstream.read()
         while data:
-            if not handle_data(connstream, data):
+            if not handle_data(connstream, data, authenticated_logins):
                 connstream.close()
                 break
             data=connstream.read()
