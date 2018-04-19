@@ -67,10 +67,14 @@ def handle_data(connstream, data, authenticated_logins):
             return_data= b"newuser|false|" + str(errors).encode()
             connstream.send(return_data)
             
-    if datalist[0] == "confirm":
-        del datalist[0]
-        try:
-            token = datalist[0]
+    #The confirm keyword is used to send data to the server after the user is 
+    #authenticated. The server will connect with a token, the token will be 
+    #checked against a list, and the login return data will be sent to the server
+    if datalist[0] == "confirm":#parses confirm keyword
+        del datalist[0]#deletes keyword
+        try:#error handling for key not in dict
+            token = datalist[0]#set token form input
+            #gets data from token and sends to server
             connstream.send(authenticated_logins.pop(token))
             return False
         except KeyError:
@@ -115,7 +119,9 @@ def handle_data(connstream, data, authenticated_logins):
         if company.get_approved() == "True": 
             log.login_site(company.get_company_name())
             if user.authenticate() == True: #authenticates the user
+                #returns login true
                 return_data = b"login|True|token"
+                #stores token and login_data to be sent on request
                 login_data = b"login|True|"+ str(user.get_firstname()).encode() + b"|" \
                 + str(user.get_lastname()).encode() + b"|" + str(user.get_phonenumber()).encode() + b"|"\
                 + str(user.get_post_code()).encode() + b"|" + str(user.get_country()).encode() + b"|"\
@@ -152,13 +158,15 @@ def handle_data(connstream, data, authenticated_logins):
             return_data = b"getalldata|False|invaliduser"
             connstream.send(return_data)
     
-    elif datalist[0] == "setupotp":
-        secret = user.setup_otp()
-        if secret[0] == True:
-            user.commit_changes()
+    elif datalist[0] == "setupotp":#parses setpupotp keyword(2FA)
+        secret = user.setup_otp()#generates otp secret
+        if secret[0] == True:#if successful generation(requires login)
+            user.commit_changes()#stores changes in database
+            #returns secret to user
             return_data = b"setupotp|True|" + str(secret[1]).encode()
             connstream.send(return_data)
-        else:
+            
+        else:#if not successful generation(login failed)
             return_data = b"setupotp|False"
             connstream.send(return_data)
             
@@ -337,19 +345,6 @@ def edit_user(user, datalist):
         return return_data
     else:
         return b"editdata|False|invaliduser"
-
-
-def company_check(company_id):
-    """
-    company check checks whether the site the login request comes from is whitelisted
-    if the site is whitelisted it will return True otherwise False
-    
-    Args: 
-        site_id: string containing a unique Id for a company site
-    Returns: 
-        True/False
-    """
-    
     
 
 def receive_data(connstream): 
