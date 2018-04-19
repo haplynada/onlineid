@@ -11,7 +11,7 @@ import ssl
 from _socket import SOL_SOCKET, SO_REUSEADDR
 from connection_handling.data_handling_userclass import handle_data
 
-mp.allow_connection_pickling()
+mp.allow_connection_pickling()#allows putting sockets in a multiprocessing queue
 
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 context.load_cert_chain(certfile ="server.pem")
@@ -36,8 +36,10 @@ def receive_data(queue):
         print(sock.getpeername())
         try: 
             connstream =context.wrap_socket(sock, server_side=True)
-        except ssl.SSLError as e:
+        except ssl.SSLError as e:#prints error to console and closes
             print(e)
+            connstream.close()
+            break
         print(connstream.cipher())
         data=connstream.read()
         while data:
@@ -77,7 +79,7 @@ if __name__ == '__main__':
     #allows sending sockets between processes
     
     #determines the number of cores on the cpu -1(1 for listener the rest for pool)
-    cpu_count = psutil.cpu_count(logical=False) -1
+    cpu_count = psutil.cpu_count(logical=False) 
     
     #sets up the queue
     queue = mp.Queue(50)
