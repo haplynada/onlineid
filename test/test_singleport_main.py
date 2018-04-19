@@ -34,8 +34,9 @@ def receive_data(queue):
         None
     """  
 
-    print(mp.current_process())
     while True:
+        print(mp.current_process())
+        print(authenticated_logins)
         sock = queue.get()
         print(sock.getpeername())
         try: 
