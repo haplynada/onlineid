@@ -20,7 +20,8 @@ context.options = ssl.OP_NO_TLSv1
 context.set_ciphers('EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH')
 
 #creating dictionary for login authentication
-authenticated_logins = {}
+manager = mp.Manager()
+authenticated_logins = manager.dict()
 
 def receive_data(queue): 
     """

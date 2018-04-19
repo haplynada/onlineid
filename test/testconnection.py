@@ -43,7 +43,7 @@ def connect():
     sender_ssl.shutdown(SHUT_RDWR)
     sender_ssl.close()
     
-    sleep(1)
+    sleep(2)
     sender = socket.socket()
     host = socket.gethostname()
     sender_ssl = ssl.wrap_socket(sender)
